@@ -1,1 +1,1 @@
-gnutar cvfz fmk.gz ../../fmk/ --exclude=fm*.gz
+gnutar cvfz fmk.gz ../../fmk/ --exclude=fm*.gz --exclude=.git

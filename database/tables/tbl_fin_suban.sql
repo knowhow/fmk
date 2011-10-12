@@ -1,4 +1,4 @@
-CREATE TABLE fmk.fin_suban
+CREATE TABLE IF NOT EXISTS fmk.fin_suban
 (
   idfirma character(2),
   idkonto character(7),

@@ -18,19 +18,6 @@
     </message>
   </prerequisite>
 
-  <prerequisite type="Query"
-                name="Uvjerimo se da paket fmk već nije instaliran" >
-    <query>
-      SELECT COUNT(*) &lt;= 0
-      FROM (SELECT *
-            FROM pkghead
-            WHERE (pkghead_name = 'fmk') ) AS dummy;
-    </query>
-    <message>
-	  xTuple fmk paket je već instaliran, uklonite ga ili odradite upgrade.
-    </message>
-  </prerequisite>
-
   <prerequisite type="license" name="xTuple Concise EULA">
     <message>
       &lt;p>

@@ -1,4 +1,4 @@
-CREATE TABLE fmk.fin_sint
+CREATE TABLE IF NOT EXISTS fmk.fin_sint
 (
   idfirma character(2),
   idkonto character(3),

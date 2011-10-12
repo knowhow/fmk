@@ -1,4 +1,4 @@
-CREATE TABLE fmk.fin_anal
+CREATE TABLE IF NOT EXISTS fmk.fin_anal
 (
   idfirma character(2),
   idkonto character(7),

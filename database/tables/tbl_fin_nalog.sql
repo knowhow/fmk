@@ -1,4 +1,4 @@
-CREATE TABLE fmk.fin_nalog
+CREATE TABLE IF NOT EXISTS fmk.fin_nalog
 (
   idfirma character(2),
   idvn character(2),
