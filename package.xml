@@ -46,5 +46,6 @@
   <createview file="database/views/v_fin_anal_list_all.sql" name="v_fin_anal_list_all"/>
   <createview file="database/views/v_rnal_list_docs.sql" name="v_rnal_list_docs"/>
   <createview file="database/views/v_rnal_list_due_date.sql" name="v_rnal_list_due_date"/>
+  <createview file="database/views/v_rnal_list_effect.sql" name="v_rnal_list_effect"/>
   
 </package>
