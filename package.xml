@@ -2,7 +2,7 @@
          name="fmk"
          developer="vsasa@bring.out.ba"
          descrip="xtuple fmk package"
-         version="0.5.0"
+         version="0.6.0"
          updater="2.2.4">
   <pkgnotes></pkgnotes>
 
@@ -44,5 +44,7 @@
   <createview file="database/views/v_fin_nalog_list_all.sql" name="v_fin_nalog_list_all"/>
   <createview file="database/views/v_fin_sint_list_all.sql" name="v_fin_sint_list_all"/>
   <createview file="database/views/v_fin_anal_list_all.sql" name="v_fin_anal_list_all"/>
+  <createview file="database/views/v_rnal_list_docs.sql" name="v_rnal_list_docs"/>
+  <createview file="database/views/v_rnal_list_due_date.sql" name="v_rnal_list_due_date"/>
   
 </package>
