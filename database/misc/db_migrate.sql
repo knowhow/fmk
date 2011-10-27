@@ -100,3 +100,69 @@ GRANT ALL ON TABLE fmk.fin_nalog TO xtrole;
 
 $$)
 WHERE (u2.knowhow_package_version('fmk') < 600);
+
+
+------------------------------------------------------
+-- semafori 2.0.0
+-- create table semaphores
+---------------------------------------------------------
+
+SELECT u2.execute($$
+
+
+CREATE SEQUENCE  fmk.sem_ver_fin_suban START 1;
+SELECT setval('fmk.sem_ver_fin_suban', 1);
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_suban
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_fin_suban'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20)
+);
+
+CREATE INDEX on fmk.semaphores_fin_suban(user_code);
+GRANT ALL ON TABLE fmk.semaphores_fin_suban TO xtrole;
+
+
+
+CREATE SEQUENCE  fmk.sem_ver_partn START 1;
+SELECT setval('fmk.sem_ver_partn', 1);
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_partn
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_partn'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20)
+);
+
+CREATE INDEX on fmk.semaphores_partn(user_code);
+GRANT ALL ON TABLE fmk.semaphores_partn TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_konto START 1;
+SELECT setval('fmk.sem_ver_konto', 1);
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_konto
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_konto'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20)
+);
+
+CREATE INDEX on fmk.semaphores_konto(user_code);
+GRANT ALL ON TABLE fmk.semaphores_konto TO xtrole;
+
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 20000);
+
+
