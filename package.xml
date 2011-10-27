@@ -2,7 +2,7 @@
          name="fmk"
          developer="vsasa@bring.out.ba"
          descrip="xtuple fmk package"
-         version="0.6.0"
+         version="1.0.0"
          updater="2.2.4">
   <pkgnotes></pkgnotes>
 
@@ -23,7 +23,7 @@
       &lt;p>
           This file is part of the knowhow ERP, a free and open source
           Enterprise Resource Planning software suite,
-          Copyright (c) 2010-2011 by bring.out doo Sarajevo.
+          Copyright (c) 2010-2011 by bring.out d.o.o Sarajevo.
           It is licensed to you under the Common Public Attribution License
           version 1.0, the full text of which (including knowhow-specific Exhibits)
           is available in the file LICENSE_CPAL_bring.out_knowhow.md located at the
