@@ -38,4 +38,7 @@
   <script file="database/views/views_migrate.sql" name="views_migrate"/>
   <script file="database/views/views_rnal_migrate.sql" name="views_rnal_migrate"/>
   
+  
+  <script file="database/misc/end_migrate" name="end_migrate"/>
+  
 </package>
