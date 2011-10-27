@@ -35,17 +35,7 @@
 
   <script file="database/misc/schemaComment.sql" />
 
-  <createtable file="database/tables/tbl_fin_suban.sql" name="fin_suban"/>
-  <createtable file="database/tables/tbl_fin_anal.sql" name="fin_anal"/>
-  <createtable file="database/tables/tbl_fin_sint.sql" name="fin_sint"/>
-  <createtable file="database/tables/tbl_fin_nalog.sql" name="fin_nalog"/>
-
-  <createview file="database/views/v_fin_suban_list_all.sql" name="v_fin_suban_list_all"/>
-  <createview file="database/views/v_fin_nalog_list_all.sql" name="v_fin_nalog_list_all"/>
-  <createview file="database/views/v_fin_sint_list_all.sql" name="v_fin_sint_list_all"/>
-  <createview file="database/views/v_fin_anal_list_all.sql" name="v_fin_anal_list_all"/>
-  <createview file="database/views/v_rnal_list_docs.sql" name="v_rnal_list_docs"/>
-  <createview file="database/views/v_rnal_list_due_date.sql" name="v_rnal_list_due_date"/>
-  <createview file="database/views/v_rnal_list_effect.sql" name="v_rnal_list_effect"/>
+  <createtable file="database/misc/db_migrate.sql" name="db_migrate"/>
+  <createview file="database/views/views_migrate.sql" name="views_migrate"/>
   
 </package>
