@@ -163,8 +163,6 @@ GRANT ALL ON TABLE fmk.semaphores_konto TO xtrole;
 $$)
 WHERE (u2.knowhow_package_version('fmk') < 20000);
 
-
-
 SELECT u2.execute($$
 
 SELECT setval('fmk.sem_ver_fin_suban', 1);
@@ -173,6 +171,24 @@ SELECT setval('fmk.sem_ver_konto', 1);
 
 $$)
 WHERE (u2.knowhow_package_version('fmk') < 20000);
+
+SELECT u2.execute($$
+
+CREATE TABLE IF NOT EXISTS fmk.partn
+(
+  id varchar(10)  PRIMARY KEY,
+  naz  varchar(250)
+);
+
+GRANT ALL ON TABLE fmk.partn TO xtrole;
+
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 20100);
+
+
+
+
 
 
 
