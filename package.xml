@@ -7,7 +7,7 @@
   <pkgnotes></pkgnotes>
 
   <prerequisite type="Query"
-                name="xTuple ERP version">
+                name="knowhowERP version">
     <query>
       SELECT (SUBSTRING(fetchMetricText('ServerVersion') FOR 1) > '3') 
           OR (SUBSTRING(fetchMetricText('ServerVersion') FOR 1) = '3'
@@ -18,7 +18,7 @@
     </message>
   </prerequisite>
 
-  <prerequisite type="license" name="xTuple Concise EULA">
+  <prerequisite type="license" name="knowhow ERP EULA">
     <message>
       &lt;p>
           This file is part of the knowhow ERP, a free and open source
@@ -34,8 +34,8 @@
   </prerequisite>
 
   <script file="database/misc/schemaComment.sql" />
-
-  <createtable file="database/misc/db_migrate.sql" name="db_migrate"/>
-  <createview file="database/views/views_migrate.sql" name="views_migrate"/>
+  <script file="database/misc/db_migrate.sql" name="db_migrate"/>
+  <script file="database/views/views_migrate.sql" name="views_migrate"/>
+  <script file="database/views/views_rnal_migrate.sql" name="views_rnal_migrate"/>
   
 </package>

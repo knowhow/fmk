@@ -99,4 +99,4 @@ GRANT ALL ON TABLE fmk.fin_nalog TO xtrole;
 
 
 $$)
-WHERE (u2.knowhow_package_version('fin') < 600);
+WHERE (u2.knowhow_package_version('fmk') < 600);
