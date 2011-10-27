@@ -109,7 +109,7 @@ WHERE (u2.knowhow_package_version('fmk') < 600);
 
 SELECT u2.execute($$
 
-
+-- DROP SEQUENCE IF EXISTS fmk.sem_ver_fin_suban CASCADE;
 CREATE SEQUENCE  fmk.sem_ver_fin_suban START 1;
 SELECT setval('fmk.sem_ver_fin_suban', 1);
 
@@ -126,8 +126,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_suban
 CREATE INDEX on fmk.semaphores_fin_suban(user_code);
 GRANT ALL ON TABLE fmk.semaphores_fin_suban TO xtrole;
 
-
-
+-- DROP SEQUENCE IF EXISTS fmk.sem_ver_partn CASCADE;
 CREATE SEQUENCE  fmk.sem_ver_partn START 1;
 SELECT setval('fmk.sem_ver_partn', 1);
 
@@ -145,6 +144,7 @@ CREATE INDEX on fmk.semaphores_partn(user_code);
 GRANT ALL ON TABLE fmk.semaphores_partn TO xtrole;
 
 
+-- DROP SEQUENCE IF EXISTS fmk.sem_ver_konto CASCADE;
 CREATE SEQUENCE  fmk.sem_ver_konto START 1;
 SELECT setval('fmk.sem_ver_konto', 1);
 
@@ -161,8 +161,5 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_konto
 CREATE INDEX on fmk.semaphores_konto(user_code);
 GRANT ALL ON TABLE fmk.semaphores_konto TO xtrole;
 
-
 $$)
 WHERE (u2.knowhow_package_version('fmk') < 20000);
-
-
