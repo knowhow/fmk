@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS fmk.fin_suban
   brnal varchar(10),
   idkonto varchar(10),
   idpartner varchar(6),
-  rbr character(4),
+  rbr varchar(4),
   idtipdok character(2),
   brdok varchar(20),
   datdok date,
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS fmk.fin_suban
   idrj character(6),
   funk character(5),
   fond character(4),
-  PRIMARY KEY(idfirma, idvn, brnal)
+  PRIMARY KEY(idfirma, idvn, brnal, rbr)
 );
 
 CREATE INDEX fin_suban_datdok ON fmk.fin_suban(datdok);
