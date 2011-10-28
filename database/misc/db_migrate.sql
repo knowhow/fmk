@@ -18,33 +18,34 @@ SELECT u2.execute($$
 
 CREATE TABLE IF NOT EXISTS fmk.fin_suban
 (
-  idfirma character(2),
-  idkonto character(7),
-  idpartner character(6),
-  idvn character(2),
-  brnal character(8),
+  idfirma varchar(2),
+  idvn varchar(2),
+  brnal varchar(10),
+  idkonto varchar(10),
+  idpartner varchar(6),
   rbr character(4),
   idtipdok character(2),
-  brdok character(10),
+  brdok varchar(20),
   datdok date,
   datval date,
   otvst character(1),
   d_p character(1),
   iznosbhd numeric(17,2),
   iznosdem numeric(15,2),
-  opis character(40),
+  opis varchar(500),
   k1 character(1),
   k2 character(1),
   k3 character(2),
   k4 character(2),
   m1 character(1),
   m2 character(1),
-  brisano character(1),
   idrj character(6),
   funk character(5),
-  fond character(4)
+  fond character(4),
+  PRIMARY KEY(idfirma, idvn, brnal)
 );
 
+CREATE INDEX fin_suban_datdok ON fmk.fin_suban(datdok);
 GRANT ALL ON TABLE fmk.fin_suban TO xtrole;
 
 CREATE TABLE IF NOT EXISTS fmk.fin_anal
@@ -100,7 +101,6 @@ GRANT ALL ON TABLE fmk.fin_nalog TO xtrole;
 
 $$)
 WHERE (u2.knowhow_package_version('fmk') < 600);
-
 
 ------------------------------------------------------
 -- semafori 2.0.0
@@ -185,10 +185,5 @@ GRANT ALL ON TABLE fmk.partn TO xtrole;
 
 $$)
 WHERE (u2.knowhow_package_version('fmk') < 20100);
-
-
-
-
-
 
 
