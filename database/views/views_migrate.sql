@@ -31,4 +31,4 @@ CREATE OR REPLACE VIEW v_fin_anal_list_all AS
 
 
 $$)
-WHERE (u2.knowhow_package_version('fmk') < 600);
+WHERE (u2.knowhow_package_version('fmk') <= 20100);
