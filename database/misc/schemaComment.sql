@@ -1,3 +1,3 @@
-COMMENT ON SCHEMA fmk IS 'Ovo je test paket namjenjen isključivo za vježbanje...';
+COMMENT ON SCHEMA fmk IS 'fmk/F118';
 
 GRANT ALL ON SCHEMA fmk TO xtrole;

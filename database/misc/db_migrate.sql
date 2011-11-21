@@ -191,14 +191,14 @@ WHERE (u2.knowhow_package_version('fmk') < 20100);
 
 SELECT u2.execute($$
 
-ALTER TABLE fmk.semaphores_partn ADD COLUMN ids text[]
-ALTER TABLE fmk.semaphores_partn ADD COLUMN dat date
+ALTER TABLE fmk.semaphores_partn ADD COLUMN ids text[];
+ALTER TABLE fmk.semaphores_partn ADD COLUMN dat date;
 
-ALTER TABLE fmk.semaphores_konto ADD COLUMN ids text[]
-ALTER TABLE fmk.semaphores_konto ADD COLUMN dat date
+ALTER TABLE fmk.semaphores_konto ADD COLUMN ids text[];
+ALTER TABLE fmk.semaphores_konto ADD COLUMN dat date;
 
-ALTER TABLE fmk.semaphores_fin_suban ADD COLUMN ids text[]
-ALTER TABLE fmk.semaphores_fin_suban ADD COLUMN dat date
+ALTER TABLE fmk.semaphores_fin_suban ADD COLUMN ids text[];
+ALTER TABLE fmk.semaphores_fin_suban ADD COLUMN dat date;
 
 
 
@@ -208,6 +208,9 @@ WHERE (u2.knowhow_package_version('fmk') < 30000);
 -- fin_anal
 
 SELECT u2.execute($$
+
+CREATE SEQUENCE  fmk.sem_ver_fin_anal START 1;
+
 CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_anal
 (
       user_code varchar(20) NOT NULL PRIMARY KEY,
@@ -229,6 +232,9 @@ WHERE (u2.knowhow_package_version('fmk') < 30000);
 -- fin_sint
 
 SELECT u2.execute($$
+
+CREATE SEQUENCE  fmk.sem_ver_fin_sint START 1;
+
 CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_sint
 (
       user_code varchar(20) NOT NULL PRIMARY KEY,
@@ -250,6 +256,10 @@ WHERE (u2.knowhow_package_version('fmk') < 30000);
 -- fin_nalog
 
 SELECT u2.execute($$
+
+    
+CREATE SEQUENCE  fmk.sem_ver_fin_nalog START 1;
+
 CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_nalog
 (
       user_code varchar(20) NOT NULL PRIMARY KEY,
