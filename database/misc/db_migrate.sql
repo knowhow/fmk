@@ -186,4 +186,98 @@ GRANT ALL ON TABLE fmk.partn TO xtrole;
 $$)
 WHERE (u2.knowhow_package_version('fmk') < 20100);
 
+-- 3.0.0
+-- ids text[], dat date
+
+SELECT u2.execute($$
+
+ALTER TABLE fmk.semaphores_partn ADD COLUMN ids text[]
+ALTER TABLE fmk.semaphores_partn ADD COLUMN dat date
+
+ALTER TABLE fmk.semaphores_konto ADD COLUMN ids text[]
+ALTER TABLE fmk.semaphores_konto ADD COLUMN dat date
+
+ALTER TABLE fmk.semaphores_fin_suban ADD COLUMN ids text[]
+ALTER TABLE fmk.semaphores_fin_suban ADD COLUMN dat date
+
+
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 30000);
+
+-- fin_anal
+
+SELECT u2.execute($$
+CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_anal
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_fin_anal'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_fin_anal(user_code);
+GRANT ALL ON TABLE fmk.semaphores_fin_anal TO xtrole;
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 30000);
+
+-- fin_sint
+
+SELECT u2.execute($$
+CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_sint
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_fin_sint'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_fin_sint(user_code);
+GRANT ALL ON TABLE fmk.semaphores_fin_sint TO xtrole;
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 30000);
+
+-- fin_nalog
+
+SELECT u2.execute($$
+CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_nalog
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_fin_nalog'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_fin_nalog(user_code);
+GRANT ALL ON TABLE fmk.semaphores_fin_nalog TO xtrole;
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 30000);
+
+-- setuje inicijalne vrijednosti
+
+SELECT u2.execute($$
+
+SELECT setval('fmk.sem_ver_fin_anal', 1);
+SELECT setval('fmk.sem_ver_fin_sint', 1);
+SELECT setval('fmk.sem_ver_fin_nalog', 1);
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 30000);
+
+-- end 3.0.0 verzija
 
