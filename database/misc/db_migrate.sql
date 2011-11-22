@@ -278,6 +278,56 @@ GRANT ALL ON TABLE fmk.semaphores_fin_nalog TO xtrole;
 $$)
 WHERE (u2.knowhow_package_version('fmk') < 30000);
 
+
+-- kalk_kalk
+
+SELECT u2.execute($$
+
+CREATE SEQUENCE  fmk.sem_ver_kalk_kalk START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_kalk_kalk
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_kalk_kalk'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_kalk_kalk(user_code);
+GRANT ALL ON TABLE fmk.semaphores_kalk_kalk TO xtrole;
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 30000);
+
+-- kalk_doks
+
+SELECT u2.execute($$
+    
+CREATE SEQUENCE  fmk.sem_ver_kalk_doks START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_kalk_doks
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_kalk_doks'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_kalk_doks(user_code);
+GRANT ALL ON TABLE fmk.semaphores_kalk_doks TO xtrole;
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 30000);
+
+
 -- setuje inicijalne vrijednosti
 
 SELECT u2.execute($$
@@ -286,8 +336,12 @@ SELECT setval('fmk.sem_ver_fin_anal', 1);
 SELECT setval('fmk.sem_ver_fin_sint', 1);
 SELECT setval('fmk.sem_ver_fin_nalog', 1);
 
+SELECT setval('fmk.sem_ver_kalk_kalk', 1);
+SELECT setval('fmk.sem_ver_kalk_doks', 1);
+
 $$)
 WHERE (u2.knowhow_package_version('fmk') < 30000);
 
 -- end 3.0.0 verzija
+
 
