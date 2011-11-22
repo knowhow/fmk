@@ -287,7 +287,7 @@ SELECT setval('fmk.sem_ver_fin_anal', 1);
 SELECT setval('fmk.sem_ver_fin_sint', 1);
 SELECT setval('fmk.sem_ver_fin_nalog', 1);
 
-$)
+$$)
 WHERE (u2.knowhow_package_version('fmk') < 30000);
 
 -- end 3.0.0 verzija
@@ -350,7 +350,7 @@ SELECT u2.execute($$
 SELECT setval('fmk.sem_ver_kalk_kalk', 1);
 SELECT setval('fmk.sem_ver_kalk_doks', 1);
 
-$)
+$$)
 WHERE (u2.knowhow_package_version('fmk') < 30001);
 
 -- end 3.0.1 verzija
