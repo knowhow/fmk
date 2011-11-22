@@ -294,7 +294,20 @@ WHERE (u2.knowhow_package_version('fmk') < 30000);
 
 -- verzija 3.0.1
 
--- kalk_kalk
+-- indeksi i grantovi
+SELECT u2.execute($$
+
+CREATE INDEX on fmk.kalk_kalk(datdok);
+GRANT ALL ON TABLE fmk.kalk_kalk TO xtrole;
+
+CREATE INDEX on fmk.kalk_doks(datdok);
+GRANT ALL ON TABLE fmk.kalk_doks TO xtrole;
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 30001);
+
+
+-- sem.kalk_kalk
 
 SELECT u2.execute($$
 
