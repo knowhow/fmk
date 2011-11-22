@@ -279,6 +279,21 @@ $$)
 WHERE (u2.knowhow_package_version('fmk') < 30000);
 
 
+-- setuje inicijalne vrijednosti
+
+SELECT u2.execute($$
+
+SELECT setval('fmk.sem_ver_fin_anal', 1);
+SELECT setval('fmk.sem_ver_fin_sint', 1);
+SELECT setval('fmk.sem_ver_fin_nalog', 1);
+
+$)
+WHERE (u2.knowhow_package_version('fmk') < 30000);
+
+-- end 3.0.0 verzija
+
+-- verzija 3.0.1
+
 -- kalk_kalk
 
 SELECT u2.execute($$
@@ -301,7 +316,7 @@ CREATE INDEX on fmk.semaphores_kalk_kalk(user_code);
 GRANT ALL ON TABLE fmk.semaphores_kalk_kalk TO xtrole;
 
 $$)
-WHERE (u2.knowhow_package_version('fmk') < 30000);
+WHERE (u2.knowhow_package_version('fmk') < 30001);
 
 -- kalk_doks
 
@@ -325,23 +340,19 @@ CREATE INDEX on fmk.semaphores_kalk_doks(user_code);
 GRANT ALL ON TABLE fmk.semaphores_kalk_doks TO xtrole;
 
 $$)
-WHERE (u2.knowhow_package_version('fmk') < 30000);
+WHERE (u2.knowhow_package_version('fmk') < 30001);
 
 
 -- setuje inicijalne vrijednosti
 
 SELECT u2.execute($$
 
-SELECT setval('fmk.sem_ver_fin_anal', 1);
-SELECT setval('fmk.sem_ver_fin_sint', 1);
-SELECT setval('fmk.sem_ver_fin_nalog', 1);
-
 SELECT setval('fmk.sem_ver_kalk_kalk', 1);
 SELECT setval('fmk.sem_ver_kalk_doks', 1);
 
-$$)
-WHERE (u2.knowhow_package_version('fmk') < 30000);
+$)
+WHERE (u2.knowhow_package_version('fmk') < 30001);
 
--- end 3.0.0 verzija
+-- end 3.0.1 verzija
 
 
