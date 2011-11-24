@@ -164,6 +164,7 @@ CREATE TABLE IF NOT EXISTS fmk.kalk_kalk
   CONSTRAINT kalk_kalk_pkey PRIMARY KEY (idfirma , idvd , brdok , rbr )
 );
 
+CREATE INDEX kalk_kalk_datdok ON fmk.kalk_kalk(datdok);
 CREATE INDEX kalk_kalk_id1 ON fmk.kalk_kalk(idfirma, idvd, brdok, rbr, mkonto, pkonto);
 GRANT ALL ON TABLE fmk.kalk_kalk TO xtrole;
 
@@ -188,6 +189,7 @@ CREATE TABLE IF NOT EXISTS fmk.kalk_doks
   CONSTRAINT kalk_doks_pkey PRIMARY KEY (idfirma , idvd , brdok )
 );
 
+CREATE INDEX kalk_doks_datdok ON fmk.kalk_doks(datdok);
 CREATE INDEX kalk_doks_id1 ON fmk.kalk_doks(idfirma, idvd, brdok, mkonto, pkonto );
 GRANT ALL ON TABLE fmk.kalk_doks TO xtrole;
 
@@ -220,6 +222,7 @@ CREATE TABLE IF NOT EXISTS fmk.fakt_doks
   CONSTRAINT fakt_doks_pkey PRIMARY KEY (idfirma , idtipdok , brdok )
 );
 
+CREATE INDEX fakt_doks_datdok ON fmk.fakt_doks(datdok);
 CREATE INDEX fakt_doks_id1 ON fmk.fakt_doks(idfirma, idtipdok, brdok, datdok, idpartner );
 GRANT ALL ON TABLE fmk.fakt_doks TO xtrole;
 
@@ -276,6 +279,7 @@ CREATE TABLE IF NOT EXISTS fmk.fakt_fakt
   CONSTRAINT fakt_fakt_pkey PRIMARY KEY (idfirma , idtipdok , brdok, rbr )
 );
 
+CREATE INDEX fakt_fakt_datdok ON fmk.fakt_fakt(datdok);
 CREATE INDEX fakt_fakt_id1 ON fmk.fakt_fakt(idfirma, idtipdok, brdok, rbr, idpartner );
 GRANT ALL ON TABLE fmk.fakt_fakt TO xtrole;
 
@@ -361,6 +365,239 @@ CREATE TABLE IF NOT EXISTS fmk.fakt_ugov
 CREATE INDEX fakt_ugov_id1 ON fmk.fakt_ugov(id, idpartner);
 GRANT ALL ON TABLE fmk.fakt_ugov TO xtrole;
 
+
+
+CREATE TABLE IF NOT EXISTS fmk.fakt_ftxt
+(
+  id character(2),
+  naz varchar(100)
+);
+CREATE INDEX fakt_ftxt_id1 ON fmk.fakt_ftxt(id);
+GRANT ALL ON TABLE fmk.fakt_ftxt TO xtrole;
+
+
+-- sifrarnici
+
+CREATE TABLE IF NOT EXISTS fmk.roba
+(
+  id character(10) PRIMARY KEY,
+  sifradob character(20),
+  naz character(40),
+  jmj character(3),
+  idtarifa character(6),
+  nc numeric(18,8),
+  vpc numeric(18,8),
+  mpc numeric(18,8),
+  tip character(1),
+  carina numeric(5,2),
+  opis text,
+  vpc2 numeric(18,8),
+  mpc2 numeric(18,8),
+  mpc3 numeric(18,8),
+  k1 character(4),
+  k2 character(4),
+  n1 numeric(12,2),
+  n2 numeric(12,2),
+  plc numeric(18,8),
+  mink numeric(12,2),
+  _m1_ character(1),
+  barkod character(13),
+  zanivel numeric(18,8),
+  zaniv2 numeric(18,8),
+  trosk1 numeric(15,5),
+  trosk2 numeric(15,5),
+  trosk3 numeric(15,5),
+  trosk4 numeric(15,5),
+  trosk5 numeric(15,5),
+  fisc_plu numeric(10,0)
+);
+
+CREATE INDEX roba_id ON fmk.roba(id);
+CREATE INDEX roba_naz ON fmk.roba(naz);
+GRANT ALL ON TABLE fmk.roba TO xtrole;
+
+CREATE TABLE IF NOT EXISTS fmk.partn
+(
+  id character(6) PRIMARY KEY,
+  naz character(250),
+  naz2 character(250),
+  ptt character(5),
+  mjesto character(16),
+  adresa character(24),
+  ziror character(22),
+  rejon character(4),
+  telefon character(12),
+  dziror character(22),
+  fax character(12),
+  mobtel character(20),
+  idops character(4),
+  _kup character(1),
+  _dob character(1),
+  _banka character(1),
+  _radnik character(1),
+  idrefer character(10)
+);
+CREATE INDEX partn_id ON fmk.partn(id);
+CREATE INDEX partn_naz ON fmk.partn(naz);
+GRANT ALL ON TABLE fmk.partn TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.konto
+(
+  id character(7) PRIMARY KEY,
+  naz character(57),
+  pozbilu character(3),
+  pozbils character(3)
+);
+CREATE INDEX konto_id ON fmk.konto(id);
+CREATE INDEX konto_naz ON fmk.konto(naz);
+GRANT ALL ON TABLE fmk.konto TO xtrole;
+
+
+
+
+CREATE TABLE IF NOT EXISTS fmk.rj
+(
+  id character(7) PRIMARY KEY,
+  naz character(100)
+);
+
+CREATE INDEX rj_id ON fmk.rj(id);
+CREATE INDEX rj_naz ON fmk.rj(naz);
+GRANT ALL ON TABLE fmk.rj TO xtrole;
+
+
+
+
+CREATE TABLE IF NOT EXISTS fmki.ld_rj
+(
+  id character(2) PRIMARY KEY,
+  naz character(100),
+  tiprada character(1),
+  opor character(1)
+);
+
+CREATE INDEX ld_rj_id ON fmk.ld_rj(id);
+CREATE INDEX ld_rj_naz ON fmk.ld_rj(naz);
+GRANT ALL ON TABLE fmk.ld_rj TO xtrole;
+
+
+
+CREATE TABLE IF NOT EXISTS fmk.valute
+(
+  id character(4) PRIMARY KEY,
+  naz character(30),
+  naz2 character(4),
+  datum date,
+  kurs1 numeric(18,8),
+  kurs2 numeric(18,8),
+  kurs3 numeric(18,8),
+  tip character(1)
+);
+
+CREATE INDEX valute_id ON fmk.valute(id);
+CREATE INDEX valute_naz ON fmk.valute(naz);
+CREATE INDEX valute_id2 ON fmk.valute(tip, id, datum);
+CREATE INDEX valute_id3 ON fmk.valute(id, datum);
+GRANT ALL ON TABLE fmk.valute TO xtrole;
+
+
+
+CREATE TABLE IF NOT EXISTS fmk.sifk
+(
+  id character(8),
+  sort character(2),
+  naz character(25),
+  oznaka character(4),
+  veza character(1),
+  unique character(1),
+  izvor character(15),
+  uslov character(200),
+  duzina numeric(2,0),
+  decimal numeric(1,0),
+  tip character(1),
+  kvalid character(100),
+  kwhen character(100),
+  ubrowsu character(1),
+  edkolona numeric(2,0),
+  k1 character(1),
+  k2 character(2),
+  k3 character(3),
+  k4 character(4)
+);
+
+CREATE INDEX sifk_id ON fmk.sifk(id, sort, naz);
+GRANT ALL ON TABLE fmk.sifk TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.sifv
+(
+  id character(8),
+  idsif character(15),
+  naz character(200),
+  oznaka character(4)
+);
+
+CREATE INDEX sifv_id1 ON fmk.sifv(id, oznaka, idsif, naz);
+CREATE INDEX sifv_id2 ON fmk.sifv(id, idsif);
+CREATE INDEX sifv_id3 ON fmk.sifv(id, oznaka, naz);
+GRANT ALL ON TABLE fmk.sifv TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.tnal
+(
+  id character(2),
+  naz character(30)
+);
+
+CREATE INDEX tnal_id1 ON fmk.tnal(id);
+CREATE INDEX tnal_id2 ON fmk.tnal(naz);
+GRANT ALL ON TABLE fmk.tnal TO xtrole;
+
+
+
+CREATE TABLE IF NOT EXISTS fmk.tdok
+(
+  id character(2),
+  naz character(30)
+);
+
+CREATE INDEX tdok_id1 ON fmk.tdok(id);
+CREATE INDEX tdok_id2 ON fmk.tdok(naz);
+GRANT ALL ON TABLE fmk.tdok TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.ops
+(
+  id character(4),
+  idj character(3),
+  idn0 character(1),
+  idkan character(2),
+  naz character(20),
+  zipcode character(5),
+  puccanton character(2),
+  puccity character(5),
+  region character(1)
+);
+
+CREATE INDEX ops_id1 ON fmk.ops(id);
+CREATE INDEX ops_id2 ON fmk.ops(naz);
+GRANT ALL ON TABLE fmk.ops TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.banke
+(
+  id character(3),
+  naz character(45),
+  mjesto character(30),
+  adresa character(30)
+);
+
+CREATE INDEX banke_id1 ON fmk.banke(id);
+GRANT ALL ON TABLE fmk.banke TO xtrole;
+
+
+
 $$)
 WHERE (u2.knowhow_package_version('fmk') < 600);
 
@@ -372,7 +609,8 @@ WHERE (u2.knowhow_package_version('fmk') < 600);
 
 SELECT u2.execute($$
 
--- DROP SEQUENCE IF EXISTS fmk.sem_ver_fin_suban CASCADE;
+-- fin tabele
+
 CREATE SEQUENCE  fmk.sem_ver_fin_suban START 1;
 
 CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_suban
@@ -382,95 +620,14 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_suban
       version bigint NOT NULL, 
       last_trans_version bigint DEFAULT currval('fmk.sem_ver_fin_suban'),
       last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
-      last_trans_user_code varchar(20)
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
 );
 
 CREATE INDEX on fmk.semaphores_fin_suban(user_code);
 GRANT ALL ON TABLE fmk.semaphores_fin_suban TO xtrole;
 
--- DROP SEQUENCE IF EXISTS fmk.sem_ver_partn CASCADE;
-CREATE SEQUENCE  fmk.sem_ver_partn START 1;
--- SELECT setval('fmk.sem_ver_partn', 1);
-
-CREATE TABLE IF NOT EXISTS fmk.semaphores_partn
-(
-      user_code varchar(20) NOT NULL PRIMARY KEY,
-      algorithm character(15) NOT NULL DEFAULT 'full',
-      version bigint NOT NULL, 
-      last_trans_version bigint DEFAULT currval('fmk.sem_ver_partn'),
-      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
-      last_trans_user_code varchar(20)
-);
-
-CREATE INDEX on fmk.semaphores_partn(user_code);
-GRANT ALL ON TABLE fmk.semaphores_partn TO xtrole;
-
-
--- DROP SEQUENCE IF EXISTS fmk.sem_ver_konto CASCADE;
-CREATE SEQUENCE  fmk.sem_ver_konto START 1;
--- SELECT setval('fmk.sem_ver_konto', 1);
-
-CREATE TABLE IF NOT EXISTS fmk.semaphores_konto
-(
-      user_code varchar(20) NOT NULL PRIMARY KEY,
-      algorithm character(15) NOT NULL DEFAULT 'full',
-      version bigint NOT NULL, 
-      last_trans_version bigint DEFAULT currval('fmk.sem_ver_konto'),
-      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
-      last_trans_user_code varchar(20)
-);
-
-CREATE INDEX on fmk.semaphores_konto(user_code);
-GRANT ALL ON TABLE fmk.semaphores_konto TO xtrole;
-
-$$)
-WHERE (u2.knowhow_package_version('fmk') < 20000);
-
-SELECT u2.execute($$
-
-SELECT setval('fmk.sem_ver_fin_suban', 1);
-SELECT setval('fmk.sem_ver_partn', 1);
-SELECT setval('fmk.sem_ver_konto', 1);
-
-$$)
-WHERE (u2.knowhow_package_version('fmk') < 20000);
-
-SELECT u2.execute($$
-
-CREATE TABLE IF NOT EXISTS fmk.partn
-(
-  id varchar(10)  PRIMARY KEY,
-  naz  varchar(250)
-);
-
-GRANT ALL ON TABLE fmk.partn TO xtrole;
-
-
-$$)
-WHERE (u2.knowhow_package_version('fmk') < 20100);
-
--- 3.0.0
--- ids text[], dat date
-
-SELECT u2.execute($$
-
-ALTER TABLE fmk.semaphores_partn ADD COLUMN ids text[];
-ALTER TABLE fmk.semaphores_partn ADD COLUMN dat date;
-
-ALTER TABLE fmk.semaphores_konto ADD COLUMN ids text[];
-ALTER TABLE fmk.semaphores_konto ADD COLUMN dat date;
-
-ALTER TABLE fmk.semaphores_fin_suban ADD COLUMN ids text[];
-ALTER TABLE fmk.semaphores_fin_suban ADD COLUMN dat date;
-
-
-
-$$)
-WHERE (u2.knowhow_package_version('fmk') < 30000);
-
--- fin_anal
-
-SELECT u2.execute($$
 
 CREATE SEQUENCE  fmk.sem_ver_fin_anal START 1;
 
@@ -489,13 +646,6 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_anal
 CREATE INDEX on fmk.semaphores_fin_anal(user_code);
 GRANT ALL ON TABLE fmk.semaphores_fin_anal TO xtrole;
 
-$$)
-WHERE (u2.knowhow_package_version('fmk') < 30000);
-
--- fin_sint
-
-SELECT u2.execute($$
-
 CREATE SEQUENCE  fmk.sem_ver_fin_sint START 1;
 
 CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_sint
@@ -513,14 +663,6 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_sint
 CREATE INDEX on fmk.semaphores_fin_sint(user_code);
 GRANT ALL ON TABLE fmk.semaphores_fin_sint TO xtrole;
 
-$$)
-WHERE (u2.knowhow_package_version('fmk') < 30000);
-
--- fin_nalog
-
-SELECT u2.execute($$
-
-    
 CREATE SEQUENCE  fmk.sem_ver_fin_nalog START 1;
 
 CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_nalog
@@ -538,37 +680,51 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_nalog
 CREATE INDEX on fmk.semaphores_fin_nalog(user_code);
 GRANT ALL ON TABLE fmk.semaphores_fin_nalog TO xtrole;
 
+-- sifrarnici
+
+CREATE SEQUENCE  fmk.sem_ver_partn START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_partn
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_partn'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_partn(user_code);
+GRANT ALL ON TABLE fmk.semaphores_partn TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_konto START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_konto
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_konto'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+	  dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_konto(user_code);
+GRANT ALL ON TABLE fmk.semaphores_konto TO xtrole;
+
+
 $$)
-WHERE (u2.knowhow_package_version('fmk') < 30000);
+WHERE (u2.knowhow_package_version('fmk') < 20000);
 
+-- end 2.0.0 version
 
--- setuje inicijalne vrijednosti
-
-SELECT u2.execute($$
-
-SELECT setval('fmk.sem_ver_fin_anal', 1);
-SELECT setval('fmk.sem_ver_fin_sint', 1);
-SELECT setval('fmk.sem_ver_fin_nalog', 1);
-
-$$)
-WHERE (u2.knowhow_package_version('fmk') < 30000);
-
--- end 3.0.0 verzija
 
 -- verzija 3.0.1
-
--- indeksi i grantovi
-SELECT u2.execute($$
-
-GRANT ALL ON TABLE fmk.kalk_kalk TO xtrole;
-CREATE INDEX on fmk.kalk_kalk(datdok);
-
-GRANT ALL ON TABLE fmk.kalk_doks TO xtrole;
-CREATE INDEX on fmk.kalk_doks(datdok);
-
-$$)
-WHERE (u2.knowhow_package_version('fmk') < 30001);
-
 
 -- sem.kalk_kalk
 
@@ -618,17 +774,350 @@ GRANT ALL ON TABLE fmk.semaphores_kalk_doks TO xtrole;
 $$)
 WHERE (u2.knowhow_package_version('fmk') < 30001);
 
+-- end 3.0.1 verzija
 
--- setuje inicijalne vrijednosti
+-------------------------------------------------------------
+-- verzija 3.0.2
+
 
 SELECT u2.execute($$
 
-SELECT setval('fmk.sem_ver_kalk_kalk', 1);
-SELECT setval('fmk.sem_ver_kalk_doks', 1);
+-- roba
+
+CREATE SEQUENCE  fmk.sem_ver_roba START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_roba
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_roba'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+	  dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_roba(user_code);
+GRANT ALL ON TABLE fmk.semaphores_roba TO xtrole;
+
+-- sem.fakt_fakt
+
+CREATE SEQUENCE  fmk.sem_ver_fakt_fakt START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_fakt
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_fakt_fakt'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_fakt_fakt(user_code);
+GRANT ALL ON TABLE fmk.semaphores_fakt_fakt TO xtrole;
+
+-- fakt_doks
+    
+CREATE SEQUENCE  fmk.sem_ver_fakt_doks START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_doks
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_fakt_doks'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_fakt_doks(user_code);
+GRANT ALL ON TABLE fmk.semaphores_fakt_doks TO xtrole;
+
+CREATE SEQUENCE  fmk.sem_ver_fakt_doks2 START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_doks2
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_fakt_doks2'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_fakt_doks2(user_code);
+GRANT ALL ON TABLE fmk.semaphores_fakt_doks2 TO xtrole;
+
+
+-- fakt_ugov / rugov / gen_ug / gen_ug_p
+
+CREATE SEQUENCE  fmk.sem_ver_fakt_ugov START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_ugov
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_fakt_ugov'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_fakt_ugov(user_code);
+GRANT ALL ON TABLE fmk.semaphores_fakt_ugov TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_fakt_rugov START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_rugov
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_fakt_rugov'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_fakt_rugov(user_code);
+GRANT ALL ON TABLE fmk.semaphores_fakt_rugov TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_fakt_gen_ug START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_gen_ug
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_fakt_gen_ug'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_fakt_gen_ug(user_code);
+GRANT ALL ON TABLE fmk.semaphores_fakt_gen_ug TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_fakt_gen_ug_p START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_gen_ug_p
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_fakt_gen_ug_p'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_fakt_gen_ug_p(user_code);
+GRANT ALL ON TABLE fmk.semaphores_fakt_gen_ug_p TO xtrole;
+
+
+
+CREATE SEQUENCE  fmk.sem_ver_fakt_ftxt START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_ftxt
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_fakt_ftxt'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_fakt_ftxt(user_code);
+GRANT ALL ON TABLE fmk.semaphores_fakt_ftxt TO xtrole;
+
+-- sifrarnici
+
+CREATE SEQUENCE  fmk.sem_ver_rj START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_rj
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_rj'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_rj(user_code);
+GRANT ALL ON TABLE fmk.semaphores_rj TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_ld_rj START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_rj
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_ld_rj'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_ld_rj(user_code);
+GRANT ALL ON TABLE fmk.semaphores_ld_rj TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_valute START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_valute
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_valute'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_valute(user_code);
+GRANT ALL ON TABLE fmk.semaphores_valute TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_ops START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_ops
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_ops'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_ops(user_code);
+GRANT ALL ON TABLE fmk.semaphores_ops TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_banke START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_banke
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_bakne'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_banke(user_code);
+GRANT ALL ON TABLE fmk.semaphores_banke TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_tnal START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_tnal
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_tnal'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_tnal(user_code);
+GRANT ALL ON TABLE fmk.semaphores_tnal TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_tdok START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_dok
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_tdok'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_tdok(user_code);
+GRANT ALL ON TABLE fmk.semaphores_tdok TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_sifk START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_sifk
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_sifk'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_sifk(user_code);
+GRANT ALL ON TABLE fmk.semaphores_sifk TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_sifv START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_sifv
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_sifv'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_sifv(user_code);
+GRANT ALL ON TABLE fmk.semaphores_sifv TO xtrole;
+
+
 
 $$)
-WHERE (u2.knowhow_package_version('fmk') < 30001);
+WHERE (u2.knowhow_package_version('fmk') < 30002);
 
--- end 3.0.1 verzija
+-- end 3.0.2 verzija
+
 
 
