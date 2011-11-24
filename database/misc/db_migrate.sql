@@ -834,6 +834,184 @@ CREATE INDEX os_reval_id1 ON fmk.os_reval(id);
 GRANT ALL ON TABLE fmk.os_reval TO xtrole;
 
 
+-- epdv
+
+CREATE TABLE IF NOT EXISTS fmk.epdv_kif
+(
+  datum date,
+  datum_2 date,
+  src character(1),
+  td_src character(2),
+  src_2 character(1),
+  id_tar character(6),
+  id_part character(6),
+  part_idbr character(13),
+  part_kat character(1),
+  part_kat_2 character(13),
+  src_pm character(6),
+  src_td character(12),
+  src_br character(12),
+  src_veza_b character(12),
+  src_br_2 character(12),
+  r_br numeric(6,0),
+  br_dok numeric(6,0),
+  g_r_br numeric(8,0),
+  lock character(1),
+  kat character(1),
+  kat_2 character(1),
+  opis character(160),
+  i_b_pdv numeric(16,2),
+  i_pdv numeric(16,2),
+  i_v_b_pdv numeric(16,2),
+  i_v_pdv numeric(16,2),
+  status character(1),
+  kat_p character(1),
+  kat_p_2 character(1)
+);
+CREATE INDEX epdv_kif_id1 ON fmk.epdv_kif(datum, datum_2);
+GRANT ALL ON TABLE fmk.epdv_kif TO xtrole;
+
+
+
+
+CREATE TABLE IF NOT EXISTS fmk.epdv_kuf
+(
+  datum date,
+  datum_2 date,
+  src character(1),
+  td_src character(2),
+  src_2 character(1),
+  id_tar character(6),
+  id_part character(6),
+  part_idbr character(13),
+  part_kat character(1),
+  src_td character(12),
+  src_br character(12),
+  src_veza_b character(12),
+  src_br_2 character(12),
+  r_br numeric(6,0),
+  br_dok numeric(6,0),
+  g_r_br numeric(8,0),
+  lock character(1),
+  kat character(1),
+  kat_2 character(1),
+  opis character(160),
+  i_b_pdv numeric(16,2),
+  i_pdv numeric(16,2),
+  i_v_b_pdv numeric(16,2),
+  i_v_pdv numeric(16,2),
+  status character(1),
+  kat_p character(1),
+  kat_p_2 character(1)
+);
+CREATE INDEX epdv_kuf_id1 ON fmk.epdv_kuf(datum, datum_2);
+GRANT ALL ON TABLE fmk.epdv_kuf TO xtrole;
+
+
+
+CREATE TABLE IF NOT EXISTS fmk.epdv_pdv
+(
+  datum_1 date,
+  datum_2 date,
+  datum_3 date,
+  id_br character(12),
+  per_od date,
+  per_do date,
+  po_naziv character(60),
+  po_adresa character(60),
+  po_ptt character(10),
+  po_mjesto character(40),
+  isp_opor numeric(18,2),
+  isp_izv numeric(18,2),
+  isp_neopor numeric(18,2),
+  isp_nep_sv numeric(18,2),
+  nab_opor numeric(18,2),
+  nab_uvoz numeric(18,2),
+  nab_ne_opo numeric(18,2),
+  nab_st_sr numeric(18,2),
+  i_pdv_r numeric(18,2),
+  i_pdv_nr_1 numeric(18,2),
+  i_pdv_nr_2 numeric(18,2),
+  i_pdv_nr_3 numeric(18,2),
+  i_pdv_nr_4 numeric(18,2),
+  u_pdv_r numeric(18,2),
+  u_pdv_uv numeric(18,2),
+  u_pdv_pp numeric(18,2),
+  i_pdv_uk numeric(18,2),
+  u_pdv_uk numeric(18,2),
+  pdv_uplati numeric(18,2),
+  pdv_prepla numeric(18,2),
+  pdv_povrat character(1),
+  pot_mjesto character(40),
+  pot_datum date,
+  pot_ob character(80),
+  lock character(1)
+);
+CREATE INDEX epdv_pdv_id1 ON fmk.epdv_pdv(datum_1, datum_2);
+GRANT ALL ON TABLE fmk.epdv_pdv TO xtrole;
+
+
+
+CREATE TABLE IF NOT EXISTS fmk.epdv_sg_kif
+(
+  id character(4),
+  naz character(60),
+  src character(1),
+  s_path character(60),
+  s_path_s character(60),
+  form_b_pdv character(160),
+  form_pdv character(160),
+  id_tar character(160),
+  id_kto character(160),
+  razb_tar character(1),
+  razb_kto character(1),
+  razb_dan character(1),
+  kat_part character(1),
+  td_src character(2),
+  kat_p character(1),
+  kat_p_2 character(1),
+  s_id_tar character(6),
+  zaok numeric(1,0),
+  zaok2 numeric(1,0),
+  s_id_part character(6),
+  aktivan character(1),
+  id_kto_naz character(10),
+  s_br_dok character(12)
+);
+CREATE INDEX epdv_sg_kif_id1 ON fmk.epdv_sg_kif(id);
+GRANT ALL ON TABLE fmk.epdv_sg_kif TO xtrole;
+
+
+
+CREATE TABLE IF NOT EXISTS fmk.epdv_sg_kuf
+(
+  id character(4),
+  naz character(60),
+  src character(1),
+  s_path character(60),
+  s_path_s character(60),
+  form_b_pdv character(160),
+  form_pdv character(160),
+  id_tar character(160),
+  id_kto character(160),
+  razb_tar character(1),
+  razb_kto character(1),
+  razb_dan character(1),
+  kat_part character(1),
+  td_src character(2),
+  kat_p character(1),
+  kat_p_2 character(1),
+  s_id_tar character(6),
+  zaok numeric(1,0),
+  zaok2 numeric(1,0),
+  s_id_part character(6),
+  aktivan character(1),
+  id_kto_naz character(10),
+  s_br_dok character(12)
+);
+CREATE INDEX epdv_sg_kuf_id1 ON fmk.epdv_sg_kuf(id);
+GRANT ALL ON TABLE fmk.epdv_sg_kuf TO xtrole;
+
 
 -- sifrarnici
 
@@ -1509,6 +1687,441 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_ftxt
 
 CREATE INDEX on fmk.semaphores_fakt_ftxt(user_code);
 GRANT ALL ON TABLE fmk.semaphores_fakt_ftxt TO xtrole;
+
+-- ld
+
+CREATE SEQUENCE  fmk.sem_ver_ld_ld START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_ld
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_ld_ld'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_ld_ld(user_code);
+GRANT ALL ON TABLE fmk.semaphores_ld_ld TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_ld_pk_data START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_pk_data
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_ld_pk_data'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_ld_pk_data(user_code);
+GRANT ALL ON TABLE fmk.semaphores_ld_pk_data TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_ld_pk_radn START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_pk_radn
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_ld_pk_radn'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_ld_pk_radn(user_code);
+GRANT ALL ON TABLE fmk.semaphores_ld_pk_radn TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_ld_radkr START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_radkr
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_ld_radkr'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_ld_radkr(user_code);
+GRANT ALL ON TABLE fmk.semaphores_ld_radkr TO xtrole;
+
+
+CREATE SEQUENCE fmk.sem_ver_ld_radsat START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_radsat
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_ld_radsat'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_ld_radsat(user_code);
+GRANT ALL ON TABLE fmk.semaphores_ld_radsat TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_ld_norsiht START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_norsiht
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_ld_norsiht'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_ld_norsiht(user_code);
+GRANT ALL ON TABLE fmk.semaphores_ld_norsiht TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_ld_obracuni START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_obracuni
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_ld_obracuni'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_ld_obracuni(user_code);
+GRANT ALL ON TABLE fmk.semaphores_ld_obracuni TO xtrole;
+
+
+CREATE SEQUENCE fmk.sem_ver_ld_radn START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_radn
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_ld_radn'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_ld_radn(user_code);
+GRANT ALL ON TABLE fmk.semaphores_ld_radn TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_dopr START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_dopr
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_dopr'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_dopr(user_code);
+GRANT ALL ON TABLE fmk.semaphores_dopr TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_por START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_por
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_por'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_por(user_code);
+GRANT ALL ON TABLE fmk.semaphores_por TO xtrole;
+
+
+CREATE SEQUENCE fmk.sem_ver_tippr START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_tippr
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_tippr'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_tippr(user_code);
+GRANT ALL ON TABLE fmk.semaphores_tippr TO xtrole;
+
+CREATE SEQUENCE fmk.sem_ver_tippr2 START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_tippr2
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_tippr2'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_tippr2(user_code);
+GRANT ALL ON TABLE fmk.semaphores_tippr2 TO xtrole;
+
+
+CREATE SEQUENCE fmk.sem_ver_vposla START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_vposla
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_vposla'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_vposla(user_code);
+GRANT ALL ON TABLE fmk.semaphores_vposla TO xtrole;
+
+
+CREATE SEQUENCE fmk.sem_ver_vprih START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_vprih
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_vprih'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_vprih(user_code);
+GRANT ALL ON TABLE fmk.semaphores_vprih TO xtrole;
+
+
+-- os
+
+CREATE SEQUENCE  fmk.sem_ver_os_os START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_os_os
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_os_os'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_os_os(user_code);
+GRANT ALL ON TABLE fmk.semaphores_os_os TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_os_k1 START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_os_k1
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_os_k1'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_os_k1(user_code);
+GRANT ALL ON TABLE fmk.semaphores_os_k1 TO xtrole;
+
+CREATE SEQUENCE  fmk.sem_ver_os_promj START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_os_promj
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_os_promj'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_os_promj(user_code);
+GRANT ALL ON TABLE fmk.semaphores_os_promj TO xtrole;
+
+CREATE SEQUENCE  fmk.sem_ver_os_reval START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_os_reval
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_os_reval'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_os_reval(user_code);
+GRANT ALL ON TABLE fmk.semaphores_os_reval TO xtrole;
+
+CREATE SEQUENCE  fmk.sem_ver_os_amort START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_os_amort
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_os_amort'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_os_amort(user_code);
+GRANT ALL ON TABLE fmk.semaphores_os_amort TO xtrole;
+
+
+-- epdv
+
+CREATE SEQUENCE fmk.sem_ver_epdv_kuf START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_epdv_kuf
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_epdv_kuf'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_epdv_kuf(user_code);
+GRANT ALL ON TABLE fmk.semaphores_epdv_kuf TO xtrole;
+
+
+CREATE SEQUENCE fmk.sem_ver_epdv_kif START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_epdv_kif
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_epdv_kif'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_epdv_kif(user_code);
+GRANT ALL ON TABLE fmk.semaphores_epdv_kif TO xtrole;
+
+
+CREATE SEQUENCE fmk.sem_ver_epdv_pdv START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_epdv_pdv
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_epdv_pdv'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_epdv_pdv(user_code);
+GRANT ALL ON TABLE fmk.semaphores_epdv_pdv TO xtrole;
+
+
+
+CREATE SEQUENCE fmk.sem_ver_epdv_sg_kuf START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_epdv_sg_kuf
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_epdv_sg_kuf'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_epdv_sg_kuf(user_code);
+GRANT ALL ON TABLE fmk.semaphores_epdv_sg_kuf TO xtrole;
+
+
+CREATE SEQUENCE fmk.sem_ver_epdv_sg_kif START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_epdv_sg_kif
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_epdv_sg_kif'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_epdv_sg_kif(user_code);
+GRANT ALL ON TABLE fmk.semaphores_epdv_sg_kif TO xtrole;
+
 
 -- sifrarnici
 
