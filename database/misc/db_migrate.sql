@@ -597,6 +597,90 @@ CREATE INDEX banke_id1 ON fmk.banke(id);
 GRANT ALL ON TABLE fmk.banke TO xtrole;
 
 
+CREATE TABLE IF NOT EXISTS fmk.koncij
+(
+  id character(7),
+  shema character(1),
+  naz character(2),
+  idprodmjes character(2),
+  region character(2)
+);
+
+CREATE INDEX koncij_id1 ON fmk.koncij(id);
+GRANT ALL ON TABLE fmk.koncij TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.trfp
+(
+  id character(60),
+  shema character(1),
+  naz character(20),
+  idkonto character(7),
+  dokument character(1),
+  partner character(1),
+  d_p character(1),
+  znak character(1),
+  idvd character(2),
+  idvn character(2),
+  idtarifa character(6)
+);
+
+CREATE INDEX trfp_id1 ON fmk.trfp(id);
+GRANT ALL ON TABLE fmk.trfp TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.trfp2
+(
+  id character(60),
+  shema character(1),
+  naz character(20),
+  idkonto character(7),
+  dokument character(1),
+  partner character(1),
+  d_p character(1),
+  znak character(1),
+  idvd character(2),
+  idvn character(2),
+  idtarifa character(6)
+);
+
+CREATE INDEX trfp2_id1 ON fmk.trfp2(idvd, shema, idkonto);
+GRANT ALL ON TABLE fmk.trfp2 TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.trfp3
+(
+  id character(60),
+  shema character(1),
+  naz character(20),
+  idkonto character(7),
+  d_p character(1),
+  znak character(1),
+  idvn character(2)
+);
+
+CREATE INDEX trfp3_id1 ON fmk.trfp3(shema, idkonto);
+GRANT ALL ON TABLE fmk.trfp3 TO xtrole;
+
+
+
+CREATE TABLE IF NOT EXISTS fmk.sast
+(
+  id character(10),
+  r_br numeric(4,0),
+  id2 character(10),
+  kolicina numeric(20,5),
+  k1 character(1),
+  k2 character(1),
+  n1 numeric(20,5),
+  n2 numeric(20,5)
+);
+
+CREATE INDEX sast_id1 ON fmk.sast(id, id2);
+GRANT ALL ON TABLE fmk.sast TO xtrole;
+
+
+
 
 $$)
 WHERE (u2.knowhow_package_version('fmk') < 600);
@@ -1111,6 +1195,96 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_sifv
 
 CREATE INDEX on fmk.semaphores_sifv(user_code);
 GRANT ALL ON TABLE fmk.semaphores_sifv TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_koncij START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_koncij
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_koncij'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_koncij(user_code);
+GRANT ALL ON TABLE fmk.semaphores_koncij TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_sast START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_sast
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_sast'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_sast(user_code);
+GRANT ALL ON TABLE fmk.semaphores_sast TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_trfp START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_trfp
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_trfp'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_trfp(user_code);
+GRANT ALL ON TABLE fmk.semaphores_trfp TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_trfp2 START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_trfp2
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_trfp2'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_trfp2(user_code);
+GRANT ALL ON TABLE fmk.semaphores_trfp2 TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_trfp3 START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_trfp3
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_trfp3'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_trfp3(user_code);
+GRANT ALL ON TABLE fmk.semaphores_trfp3 TO xtrole;
 
 
 
