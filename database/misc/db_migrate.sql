@@ -2378,6 +2378,42 @@ GRANT ALL ON TABLE fmk.semaphores_trfp3 TO xtrole;
 
 
 
+CREATE SEQUENCE  fmk.sem_ver_lokal START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_lokal
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_lokal'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_lokal(user_code);
+GRANT ALL ON TABLE fmk.semaphores_lokal TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_refer START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_refer
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_refer'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_refer(user_code);
+GRANT ALL ON TABLE fmk.semaphores_refer TO xtrole;
+
+
 $$)
 WHERE (u2.knowhow_package_version('fmk') < 30002);
 
