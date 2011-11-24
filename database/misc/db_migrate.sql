@@ -370,6 +370,7 @@ GRANT ALL ON TABLE fmk.fakt_ugov TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.fakt_ftxt
 (
   id character(2),
+  match_code character(10),
   naz varchar(100)
 );
 CREATE INDEX fakt_ftxt_id1 ON fmk.fakt_ftxt(id);
@@ -575,6 +576,7 @@ GRANT ALL ON TABLE fmk.ld_ld TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.ld_radn
 (
   id character(6) PRIMARY KEY,
+  match_code character(10),
   naz character(20),
   imerod character(15),
   ime character(15),
@@ -630,6 +632,7 @@ GRANT ALL ON TABLE fmk.ld_radn TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.dopr
 (
   id character(2),
+  match_code character(10),
   naz character(20),
   iznos numeric(5,2),
   idkbenef character(1),
@@ -645,6 +648,7 @@ GRANT ALL ON TABLE fmk.dopr TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.por
 (
   id character(2),
+  match_code character(10),
   naz character(20),
   iznos numeric(5,2),
   dlimit numeric(12,2),
@@ -669,6 +673,7 @@ GRANT ALL ON TABLE fmk.por TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.kbenef
 (
   id character(1),
+  match_code character(10),
   naz character(8),
   iznos numeric(5,2)
 );
@@ -679,6 +684,7 @@ GRANT ALL ON TABLE fmk.kbenef TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.kred
 (
   id character(6) PRIMARY KEY,
+  match_code character(10),
   naz character(30),
   ziro character(20),
   zirod character(20),
@@ -695,6 +701,7 @@ GRANT ALL ON TABLE fmk.kred TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.tippr
 (
   id character(2) PRIMARY KEY,
+  match_code character(10),
   naz character(20),
   aktivan character(1),
   fiksan character(1),
@@ -712,6 +719,7 @@ GRANT ALL ON TABLE fmk.tippr TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.tippr2
 (
   id character(2) PRIMARY KEY,
+  match_code character(10),
   naz character(20),
   aktivan character(1),
   fiksan character(1),
@@ -729,6 +737,7 @@ GRANT ALL ON TABLE fmk.tippr2 TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.vposla
 (
   id character(2) PRIMARY KEY,
+  match_code character(10),
   naz character(20),
   idkbenef character(1)
 );
@@ -739,6 +748,7 @@ GRANT ALL ON TABLE fmk.vposla TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.vprih
 (
   id character(3),
+  match_code character(10),
   naz character(20)
 );
 CREATE INDEX vprih_id1 ON fmk.vprih(id);
@@ -750,6 +760,7 @@ GRANT ALL ON TABLE fmk.vprih TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.os_os
 (
   id character(10),
+  match_code character(10),
   naz character(30),
   idrj character(4),
   datum date,
@@ -780,6 +791,7 @@ GRANT ALL ON TABLE fmk.os_os TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.os_k1
 (
   id character(4),
+  match_code character(10),
   naz character(25)
 );
 CREATE INDEX os_k1_id1 ON fmk.os_k1(id);
@@ -789,6 +801,7 @@ GRANT ALL ON TABLE fmk.os_k1 TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.os_promj
 (
   id character(10),
+  match_code character(10),
   opis character(30),
   datum date,
   tip character(2),
@@ -806,6 +819,7 @@ GRANT ALL ON TABLE fmk.os_promj TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.os_amort
 (
   id character(8),
+  match_code character(10),
   naz character(25),
   iznos numeric(7,3)
 );
@@ -816,6 +830,7 @@ GRANT ALL ON TABLE fmk.os_amort TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.os_reval
 (
   id character(4),
+  match_code character(10),
   naz character(10),
   i1 numeric(7,3),
   i2 numeric(7,3),
@@ -955,6 +970,7 @@ GRANT ALL ON TABLE fmk.epdv_pdv TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.epdv_sg_kif
 (
   id character(4),
+  match_code character(10),
   naz character(60),
   src character(1),
   s_path character(60),
@@ -986,6 +1002,7 @@ GRANT ALL ON TABLE fmk.epdv_sg_kif TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.epdv_sg_kuf
 (
   id character(4),
+  match_code character(10),
   naz character(60),
   src character(1),
   s_path character(60),
@@ -1018,6 +1035,7 @@ GRANT ALL ON TABLE fmk.epdv_sg_kuf TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.roba
 (
   id character(10) PRIMARY KEY,
+  match_code character(10),
   sifradob character(20),
   naz character(40),
   jmj character(3),
@@ -1056,6 +1074,7 @@ GRANT ALL ON TABLE fmk.roba TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.partn
 (
   id character(6) PRIMARY KEY,
+  match_code character(10),
   naz character(250),
   naz2 character(250),
   ptt character(5),
@@ -1082,6 +1101,7 @@ GRANT ALL ON TABLE fmk.partn TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.konto
 (
   id character(7) PRIMARY KEY,
+  match_code character(10),
   naz character(57),
   pozbilu character(3),
   pozbils character(3)
@@ -1096,6 +1116,7 @@ GRANT ALL ON TABLE fmk.konto TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.rj
 (
   id character(7) PRIMARY KEY,
+  match_code character(10),
   naz character(100)
 );
 
@@ -1109,6 +1130,7 @@ GRANT ALL ON TABLE fmk.rj TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.ld_rj
 (
   id character(2) PRIMARY KEY,
+  match_code character(10),
   naz character(100),
   tiprada character(1),
   opor character(1)
@@ -1123,6 +1145,7 @@ GRANT ALL ON TABLE fmk.ld_rj TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.valute
 (
   id character(4) PRIMARY KEY,
+  match_code character(10),
   naz character(30),
   naz2 character(4),
   datum date,
@@ -1143,6 +1166,7 @@ GRANT ALL ON TABLE fmk.valute TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.sifk
 (
   id character(8),
+  match_code character(10),
   sort character(2),
   naz character(25),
   oznaka character(4),
@@ -1184,6 +1208,7 @@ GRANT ALL ON TABLE fmk.sifv TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.tnal
 (
   id character(2),
+  match_code character(10),
   naz character(30)
 );
 
@@ -1196,6 +1221,7 @@ GRANT ALL ON TABLE fmk.tnal TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.tdok
 (
   id character(2),
+  match_code character(10),
   naz character(30)
 );
 
@@ -1207,6 +1233,7 @@ GRANT ALL ON TABLE fmk.tdok TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.ops
 (
   id character(4),
+  match_code character(10),
   idj character(3),
   idn0 character(1),
   idkan character(2),
@@ -1225,6 +1252,7 @@ GRANT ALL ON TABLE fmk.ops TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.banke
 (
   id character(3),
+  match_code character(10),
   naz character(45),
   mjesto character(30),
   adresa character(30)
@@ -1237,6 +1265,7 @@ GRANT ALL ON TABLE fmk.banke TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.koncij
 (
   id character(7),
+  match_code character(10),
   shema character(1),
   naz character(2),
   idprodmjes character(2),
@@ -1250,6 +1279,7 @@ GRANT ALL ON TABLE fmk.koncij TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.trfp
 (
   id character(60),
+  match_code character(10),
   shema character(1),
   naz character(20),
   idkonto character(7),
@@ -1269,6 +1299,7 @@ GRANT ALL ON TABLE fmk.trfp TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.trfp2
 (
   id character(60),
+  match_code character(10),
   shema character(1),
   naz character(20),
   idkonto character(7),
@@ -1288,6 +1319,7 @@ GRANT ALL ON TABLE fmk.trfp2 TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.trfp3
 (
   id character(60),
+  match_code character(10),
   shema character(1),
   naz character(20),
   idkonto character(7),
@@ -1304,6 +1336,7 @@ GRANT ALL ON TABLE fmk.trfp3 TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.sast
 (
   id character(10),
+  match_code character(10),
   r_br numeric(4,0),
   id2 character(10),
   kolicina numeric(20,5),
@@ -1320,6 +1353,7 @@ GRANT ALL ON TABLE fmk.sast TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.lokal
 (
   id character(2),
+  match_code character(10),
   id_str numeric(6,0),
   naz character(200)
 );
@@ -1330,6 +1364,7 @@ GRANT ALL ON TABLE fmk.lokal TO xtrole;
 CREATE TABLE IF NOT EXISTS fmk.refer
 (
   id character(10),
+  match_code character(10),
   idops character(4),
   naz character(40)
 );
