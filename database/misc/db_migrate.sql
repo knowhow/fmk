@@ -568,7 +568,7 @@ CREATE TABLE IF NOT EXISTS fmk.ld_ld
   v_ispl character(2),
   CONSTRAINT ld_ld_pkey PRIMARY KEY (idrj , godina , mjesec , obr, idradn )
 );
-CREATE INDEX ld_ld_id1 ON fmk.ld_ld(rj, godina, mjesec, obr, idradn );
+CREATE INDEX ld_ld_id1 ON fmk.ld_ld(idrj, godina, mjesec, obr, idradn );
 GRANT ALL ON TABLE fmk.ld_ld TO xtrole;
 
 
@@ -1106,7 +1106,7 @@ GRANT ALL ON TABLE fmk.rj TO xtrole;
 
 
 
-CREATE TABLE IF NOT EXISTS fmki.ld_rj
+CREATE TABLE IF NOT EXISTS fmk.ld_rj
 (
   id character(2) PRIMARY KEY,
   naz character(100),
@@ -1147,11 +1147,11 @@ CREATE TABLE IF NOT EXISTS fmk.sifk
   naz character(25),
   oznaka character(4),
   veza character(1),
-  unique character(1),
+  funique character(1),
   izvor character(15),
   uslov character(200),
   duzina numeric(2,0),
-  decimal numeric(1,0),
+  fdecimal numeric(1,0),
   tip character(1),
   kvalid character(100),
   kwhen character(100),
@@ -2204,7 +2204,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_banke
       user_code varchar(20) NOT NULL PRIMARY KEY,
       algorithm character(15) NOT NULL DEFAULT 'full',
       version bigint NOT NULL, 
-      last_trans_version bigint DEFAULT currval('fmk.sem_ver_bakne'),
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_banke'),
       last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
       last_trans_user_code varchar(20),
       dat date,
@@ -2235,7 +2235,7 @@ GRANT ALL ON TABLE fmk.semaphores_tnal TO xtrole;
 
 CREATE SEQUENCE  fmk.sem_ver_tdok START 1;
 
-CREATE TABLE IF NOT EXISTS fmk.semaphores_dok
+CREATE TABLE IF NOT EXISTS fmk.semaphores_tdok
 (
       user_code varchar(20) NOT NULL PRIMARY KEY,
       algorithm character(15) NOT NULL DEFAULT 'full',
