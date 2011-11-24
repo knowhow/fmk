@@ -375,6 +375,465 @@ CREATE TABLE IF NOT EXISTS fmk.fakt_ftxt
 CREATE INDEX fakt_ftxt_id1 ON fmk.fakt_ftxt(id);
 GRANT ALL ON TABLE fmk.fakt_ftxt TO xtrole;
 
+-- ld tabele
+
+CREATE TABLE IF NOT EXISTS fmk.ld_pk_data
+(
+  idradn character(6),
+  ident character(1),
+  rbr numeric(2,0),
+  ime_pr character(50),
+  jmb character(13),
+  sr_naz character(30),
+  sr_kod numeric(2,0),
+  prihod numeric(10,2),
+  udio numeric(3,0),
+  koef numeric(10,3)
+);
+CREATE INDEX ld_pk_data_id1 ON fmk.ld_pk_data(idradn);
+GRANT ALL ON TABLE fmk.ld_pk_data TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.ld_pk_radn
+(
+  idradn character(6),
+  zahtjev numeric(4,0),
+  datum date,
+  r_prez character(20),
+  r_ime character(20),
+  r_imeoca character(20),
+  r_jmb character(13),
+  r_adr character(30),
+  r_opc character(30),
+  r_opckod character(10),
+  r_drodj date,
+  r_tel numeric(12,0),
+  p_naziv character(100),
+  p_jib character(13),
+  p_zap character(1),
+  lo_osn numeric(10,3),
+  lo_brdr numeric(10,3),
+  lo_izdj numeric(10,3),
+  lo_clp numeric(10,3),
+  lo_clpi numeric(10,3),
+  lo_ufakt numeric(10,3)
+);
+CREATE INDEX ld_pk_radn_id1 ON fmk.ld_pk_radn(idradn);
+GRANT ALL ON TABLE fmk.ld_pk_radn TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.ld_radkr
+(
+  idradn character(6),
+  mjesec numeric(2,0),
+  godina numeric(4,0),
+  idkred character(6),
+  naosnovu character(20),
+  iznos numeric(12,2),
+  placeno numeric(12,2)
+);
+CREATE INDEX ld_radkr_id1 ON fmk.ld_radkr(idradn, idkred, mjesec, godina);
+GRANT ALL ON TABLE fmk.ld_radkr TO xtrole;
+
+
+
+CREATE TABLE IF NOT EXISTS fmk.ld_radsat
+(
+  idradn character(6),
+  sati numeric(10,0),
+  status character(2)
+);
+CREATE INDEX ld_radsat_id1 ON fmk.ld_radsat(idradn);
+GRANT ALL ON TABLE fmk.ld_radsat TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.ld_norsiht
+(
+  id character(4),
+  naz character(30),
+  jmj character(3),
+  iznos numeric(8,2),
+  n1 numeric(6,2),
+  k1 character(1),
+  k2 character(2)
+);
+CREATE INDEX ld_norsiht_id1 ON fmk.ld_norsiht(id);
+GRANT ALL ON TABLE fmk.ld_norsiht TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.ld_obracuni
+(
+  rj character(2),
+  godina numeric(4,0),
+  mjesec numeric(2,0),
+  status character(1),
+  dat_ispl date,
+  obr character(1),
+  mj_ispl numeric(2,0),
+  ispl_za character(50),
+  vr_ispl character(50)
+);
+CREATE INDEX ld_obracuni_id1 ON fmk.ld_obracuni(rj, godina, mjesec, obr, dat_ispl);
+GRANT ALL ON TABLE fmk.ld_obracuni TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.ld_ld
+(
+  godina numeric(4,0),
+  idrj character(2),
+  idradn character(6),
+  mjesec numeric(2,0),
+  brbod numeric(11,2),
+  idstrspr character(3),
+  idvposla character(2),
+  kminrad numeric(5,2),
+  s01 numeric(5,1),
+  i01 numeric(12,2),
+  s02 numeric(5,1),
+  i02 numeric(12,2),
+  s03 numeric(5,1),
+  i03 numeric(12,2),
+  s04 numeric(5,1),
+  i04 numeric(12,2),
+  s05 numeric(5,1),
+  i05 numeric(12,2),
+  s06 numeric(5,1),
+  i06 numeric(12,2),
+  s07 numeric(5,1),
+  i07 numeric(12,2),
+  s08 numeric(5,1),
+  i08 numeric(12,2),
+  s09 numeric(5,1),
+  i09 numeric(12,2),
+  s10 numeric(5,1),
+  i10 numeric(12,2),
+  s11 numeric(5,1),
+  i11 numeric(12,2),
+  s12 numeric(5,1),
+  i12 numeric(12,2),
+  s13 numeric(5,1),
+  i13 numeric(12,2),
+  s14 numeric(5,1),
+  i14 numeric(12,2),
+  s15 numeric(5,1),
+  i15 numeric(12,2),
+  s16 numeric(5,1),
+  i16 numeric(12,2),
+  s17 numeric(5,1),
+  i17 numeric(12,2),
+  s18 numeric(5,1),
+  i18 numeric(12,2),
+  s19 numeric(5,1),
+  i19 numeric(12,2),
+  s20 numeric(5,1),
+  i20 numeric(12,2),
+  s21 numeric(5,1),
+  i21 numeric(12,2),
+  s22 numeric(5,1),
+  i22 numeric(12,2),
+  s23 numeric(5,1),
+  i23 numeric(12,2),
+  s24 numeric(5,1),
+  i24 numeric(12,2),
+  s25 numeric(5,1),
+  i25 numeric(12,2),
+  s26 numeric(5,1),
+  i26 numeric(12,2),
+  s27 numeric(5,1),
+  i27 numeric(12,2),
+  s28 numeric(5,1),
+  i28 numeric(12,2),
+  s29 numeric(5,1),
+  i29 numeric(12,2),
+  s30 numeric(5,1),
+  i30 numeric(12,2),
+  usati numeric(8,1),
+  uneto numeric(13,2),
+  uodbici numeric(13,2),
+  uiznos numeric(13,2),
+  varobr character(1),
+  ubruto numeric(13,2),
+  uneto2 numeric(13,2),
+  ulicodb numeric(13,2),
+  trosk character(1),
+  opor character(1),
+  tiprada character(1),
+  nakn_opor numeric(13,2),
+  nakn_neop numeric(13,2),
+  udopr numeric(13,2),
+  udop_st numeric(10,2),
+  uporez numeric(13,3),
+  upor_st numeric(10,3),
+  obr character(1),
+  v_ispl character(2),
+  CONSTRAINT ld_ld_pkey PRIMARY KEY (idrj , godina , mjesec , obr, idradn )
+);
+CREATE INDEX ld_ld_id1 ON fmk.ld_ld(rj, godina, mjesec, obr, idradn );
+GRANT ALL ON TABLE fmk.ld_ld TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.ld_radn
+(
+  id character(6) PRIMARY KEY,
+  naz character(20),
+  imerod character(15),
+  ime character(15),
+  brbod numeric(11,2),
+  kminrad numeric(7,2),
+  idstrspr character(3),
+  idvposla character(2),
+  idopsst character(4),
+  idopsrad character(4),
+  pol character(1),
+  matbr character(13),
+  datod date,
+  k1 character(1),
+  k2 character(1),
+  k3 character(2),
+  k4 character(2),
+  rmjesto character(30),
+  brknjiz character(12),
+  brtekr character(20),
+  isplata character(2),
+  idbanka character(6),
+  porol numeric(5,2),
+  n1 numeric(12,2),
+  n2 numeric(12,2),
+  n3 numeric(12,2),
+  osnbol numeric(11,4),
+  idrj character(2),
+  streetname character(40),
+  streetnum character(6),
+  hiredfrom date,
+  hiredto date,
+  klo numeric(5,2),
+  tiprada character(1),
+  sp_koef numeric(5,2),
+  opor character(1),
+  trosk character(1),
+  aktivan character(1),
+  ben_srmj character(20),
+  s1 character(10),
+  s2 character(10),
+  s3 character(10),
+  s4 character(10),
+  s5 character(10),
+  s6 character(10),
+  s7 character(10),
+  s8 character(10),
+  s9 character(10)
+);
+CREATE INDEX ld_radn_id1 ON fmk.ld_radn(id);
+GRANT ALL ON TABLE fmk.ld_radn TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.dopr
+(
+  id character(2),
+  naz character(20),
+  iznos numeric(5,2),
+  idkbenef character(1),
+  dlimit numeric(12,2),
+  poopst character(1),
+  dop_tip character(1),
+  tiprada character(1)
+);
+CREATE INDEX dopr_id1 ON fmk.dopr(id, tiprada);
+GRANT ALL ON TABLE fmk.dopr TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.por
+(
+  id character(2),
+  naz character(20),
+  iznos numeric(5,2),
+  dlimit numeric(12,2),
+  poopst character(1),
+  algoritam character(1),
+  por_tip character(1),
+  s_sto_1 numeric(5,2),
+  s_izn_1 numeric(12,2),
+  s_sto_2 numeric(5,2),
+  s_izn_2 numeric(12,2),
+  s_sto_3 numeric(5,2),
+  s_izn_3 numeric(12,2),
+  s_sto_4 numeric(5,2),
+  s_izn_4 numeric(12,2),
+  s_sto_5 numeric(5,2),
+  s_izn_5 numeric(12,2)
+);
+CREATE INDEX por_id1 ON fmk.por(id);
+GRANT ALL ON TABLE fmk.por TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.kbenef
+(
+  id character(1),
+  naz character(8),
+  iznos numeric(5,2)
+);
+CREATE INDEX kbenef_id1 ON fmk.kbenef(id);
+GRANT ALL ON TABLE fmk.kbenef TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.kred
+(
+  id character(6) PRIMARY KEY,
+  naz character(30),
+  ziro character(20),
+  zirod character(20),
+  telefon character(20),
+  adresa character(30),
+  ptt character(5),
+  fil character(30),
+  mjesto character(20)
+);
+CREATE INDEX kred_id1 ON fmk.kred(id);
+GRANT ALL ON TABLE fmk.kred TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.tippr
+(
+  id character(2) PRIMARY KEY,
+  naz character(20),
+  aktivan character(1),
+  fiksan character(1),
+  ufs character(1),
+  koef1 numeric(5,2),
+  formula character(200),
+  uneto character(1),
+  opis character(8),
+  tpr_tip character(1)
+);
+CREATE INDEX tippr_id1 ON fmk.tippr(id);
+GRANT ALL ON TABLE fmk.tippr TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.tippr2
+(
+  id character(2) PRIMARY KEY,
+  naz character(20),
+  aktivan character(1),
+  fiksan character(1),
+  ufs character(1),
+  koef1 numeric(5,2),
+  formula character(200),
+  uneto character(1),
+  opis character(8),
+  tpr_tip character(1)
+);
+CREATE INDEX tippr2_id1 ON fmk.tippr2(id);
+GRANT ALL ON TABLE fmk.tippr2 TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.vposla
+(
+  id character(2) PRIMARY KEY,
+  naz character(20),
+  idkbenef character(1)
+);
+CREATE INDEX vposla_id1 ON fmk.vposla(id);
+GRANT ALL ON TABLE fmk.vposla TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.vprih
+(
+  id character(3),
+  naz character(20)
+);
+CREATE INDEX vprih_id1 ON fmk.vprih(id);
+GRANT ALL ON TABLE fmk.vprih TO xtrole;
+
+
+-- os modul
+
+CREATE TABLE IF NOT EXISTS fmk.os_os
+(
+  id character(10),
+  naz character(30),
+  idrj character(4),
+  datum date,
+  datotp date,
+  opisotp character(30),
+  idkonto character(7),
+  kolicina numeric(6,1),
+  jmj character(3),
+  idam character(8),
+  idrev character(4),
+  nabvr numeric(18,2),
+  otpvr numeric(18,2),
+  amd numeric(18,2),
+  amp numeric(18,2),
+  revd numeric(18,2),
+  revp numeric(18,2),
+  k1 character(4),
+  k2 character(1),
+  k3 character(2),
+  opis character(25),
+  brsoba character(6),
+  idpartner character(6)
+);
+CREATE INDEX os_os_id1 ON fmk.os_os(id);
+GRANT ALL ON TABLE fmk.os_os TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.os_k1
+(
+  id character(4),
+  naz character(25)
+);
+CREATE INDEX os_k1_id1 ON fmk.os_k1(id);
+GRANT ALL ON TABLE fmk.os_k1 TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.os_promj
+(
+  id character(10),
+  opis character(30),
+  datum date,
+  tip character(2),
+  nabvr numeric(18,2),
+  otpvr numeric(18,2),
+  amd numeric(18,2),
+  amp numeric(18,2),
+  revd numeric(18,2),
+  revp numeric(18,2)
+);
+CREATE INDEX os_promj_id1 ON fmk.os_promj(id, datum);
+GRANT ALL ON TABLE fmk.os_promj TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.os_amort
+(
+  id character(8),
+  naz character(25),
+  iznos numeric(7,3)
+);
+CREATE INDEX os_amort_id1 ON fmk.os_amort(id);
+GRANT ALL ON TABLE fmk.os_amort TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.os_reval
+(
+  id character(4),
+  naz character(10),
+  i1 numeric(7,3),
+  i2 numeric(7,3),
+  i3 numeric(7,3),
+  i4 numeric(7,3),
+  i5 numeric(7,3),
+  i6 numeric(7,3),
+  i7 numeric(7,3),
+  i8 numeric(7,3),
+  i9 numeric(7,3),
+  i10 numeric(7,3),
+  i11 numeric(7,3),
+  i12 numeric(7,3)
+);
+CREATE INDEX os_reval_id1 ON fmk.os_reval(id);
+GRANT ALL ON TABLE fmk.os_reval TO xtrole;
+
+
 
 -- sifrarnici
 
@@ -680,6 +1139,24 @@ CREATE INDEX sast_id1 ON fmk.sast(id, id2);
 GRANT ALL ON TABLE fmk.sast TO xtrole;
 
 
+CREATE TABLE IF NOT EXISTS fmk.lokal
+(
+  id character(2),
+  id_str numeric(6,0),
+  naz character(200)
+);
+CREATE INDEX lokal_id1 ON fmk.lokal(id);
+CREATE INDEX lokal_id2 ON fmk.lokal(id_str);
+GRANT ALL ON TABLE fmk.lokal TO xtrole;
+
+CREATE TABLE IF NOT EXISTS fmk.refer
+(
+  id character(10),
+  idops character(4),
+  naz character(40)
+);
+CREATE INDEX refer_id1 ON fmk.refer(id);
+GRANT ALL ON TABLE fmk.refer TO xtrole;
 
 
 $$)
