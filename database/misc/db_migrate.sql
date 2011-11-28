@@ -283,6 +283,19 @@ CREATE INDEX fakt_fakt_datdok ON fmk.fakt_fakt(datdok);
 CREATE INDEX fakt_fakt_id1 ON fmk.fakt_fakt(idfirma, idtipdok, brdok, rbr, idpartner );
 GRANT ALL ON TABLE fmk.fakt_fakt TO xtrole;
 
+
+CREATE TABLE IF NOT EXISTS fmk.fakt_upl
+(
+  datupl date,
+  idpartner character(6),
+  opis character(100),
+  iznos numeric(12,2)
+);
+
+CREATE INDEX fakt_upl_date ON fmk.fakt_upl(idpartner, datupl);
+GRANT ALL ON TABLE fmk.fakt_upl TO xtrole;
+
+
 CREATE TABLE IF NOT EXISTS fmk.fakt_gen_ug
 (
   dat_obr date,
@@ -1668,6 +1681,24 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_doks2
 
 CREATE INDEX on fmk.semaphores_fakt_doks2(user_code);
 GRANT ALL ON TABLE fmk.semaphores_fakt_doks2 TO xtrole;
+
+CREATE SEQUENCE  fmk.sem_ver_fakt_upl START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_upl
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_fakt_upl'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_fakt_upl(user_code);
+GRANT ALL ON TABLE fmk.semaphores_fakt_upl TO xtrole;
+
 
 
 -- fakt_ugov / rugov / gen_ug / gen_ug_p
