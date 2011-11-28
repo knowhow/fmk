@@ -1071,6 +1071,25 @@ CREATE INDEX roba_id ON fmk.roba(id);
 CREATE INDEX roba_naz ON fmk.roba(naz);
 GRANT ALL ON TABLE fmk.roba TO xtrole;
 
+
+CREATE TABLE IF NOT EXISTS fmk.tarifa
+(
+  id character(6) PRIMARY KEY,
+  match_code character(10),
+  naz character(50),
+  opp numeric(6, 2),
+  ppp numeric(6, 2),
+  zpp numeric(6, 2),
+  vpp numeric(6, 2),
+  mpp numeric(6, 2),
+  dlruc numeric(6, 2)
+);
+CREATE INDEX tarifa_id ON fmk.tarifa(id);
+CREATE INDEX tarifa_naz ON fmk.tarifa(naz);
+GRANT ALL ON TABLE fmk.tarifa TO xtrole;
+
+
+
 CREATE TABLE IF NOT EXISTS fmk.partn
 (
   id character(6) PRIMARY KEY,
@@ -1574,6 +1593,26 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_roba
 
 CREATE INDEX on fmk.semaphores_roba(user_code);
 GRANT ALL ON TABLE fmk.semaphores_roba TO xtrole;
+
+
+CREATE SEQUENCE  fmk.sem_ver_tarifa START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_tarifa
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_tarifa'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+	  dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_tarifa(user_code);
+GRANT ALL ON TABLE fmk.semaphores_tarifa TO xtrole;
+
+
 
 -- sem.fakt_fakt
 
