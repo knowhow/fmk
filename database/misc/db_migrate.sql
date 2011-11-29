@@ -2567,7 +2567,11 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_dest
 CREATE INDEX on fmk.semaphores_dest(user_code);
 GRANT ALL ON TABLE fmk.semaphores_dest TO xtrole;
 
+-- alter roba...
 
+ALTER TABLE fmk.roba ADD COLUMN k7 character(4);
+ALTER TABLE fmk.roba ADD COLUMN k8 character(4);
+ALTER TABLE fmk.roba ADD COLUMN k9 character(4);
 
 
 $$)
