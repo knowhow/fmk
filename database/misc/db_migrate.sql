@@ -2578,6 +2578,7 @@ ALTER TABLE fmk.roba ADD COLUMN strings numeric(10,0);
 alter table fmk.fakt_rugov add column k1 character(1);
 alter table fmk.fakt_rugov add column k2 character(2);
 alter table fmk.fakt_rugov add column dest character(6);
+alter table fmk.fakt_rugov add column cijena numeric(15,3);
 
 $$)
 WHERE (u2.knowhow_package_version('fmk') < 30003);
