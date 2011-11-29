@@ -2572,6 +2572,7 @@ GRANT ALL ON TABLE fmk.semaphores_dest TO xtrole;
 ALTER TABLE fmk.roba ADD COLUMN k7 character(4);
 ALTER TABLE fmk.roba ADD COLUMN k8 character(4);
 ALTER TABLE fmk.roba ADD COLUMN k9 character(4);
+ALTER TABLE fmk.roba ADD COLUMN strings numeric(10,0);
 
 
 $$)
