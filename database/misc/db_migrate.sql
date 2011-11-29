@@ -2525,4 +2525,55 @@ WHERE (u2.knowhow_package_version('fmk') < 30002);
 -- end 3.0.2 verzija
 
 
+-- 3.0.3 verzija
+
+
+SELECT u2.execute($$
+
+-- ugovori, dest tabela
+
+CREATE TABLE IF NOT EXISTS fmk.dest
+(
+  id character(6),
+  idpartner character(6),
+  naziv character(60),
+  naziv2 character(60),
+  mjesto character(20),
+  adresa character(40),
+  ptt character(10),
+  telefon character(20),
+  mobitel character(20),
+  fax character(20)
+);
+
+CREATE INDEX dest_id1 ON fmk.dest(id);
+GRANT ALL ON TABLE fmk.dest TO xtrole;
+
+
+CREATE SEQUENCE fmk.sem_ver_dest START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_dest
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_dest'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_dest(user_code);
+GRANT ALL ON TABLE fmk.semaphores_dest TO xtrole;
+
+
+
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 30003);
+
+--- end 3.0.3 verzija
+
+
 
