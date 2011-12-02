@@ -2592,7 +2592,7 @@ SELECT u2.execute($$
 
 -- fmkrules
 
-CREATE TABLE IF NOT EXISTS fmk.fmkrules
+CREATE TABLE IF NOT EXISTS fmk.f18_rules
 (
   rule_id numeric(10,0),
   modul_name character(10),
@@ -2615,26 +2615,26 @@ CREATE TABLE IF NOT EXISTS fmk.fmkrules
   rule_d2 date
 );
 
-CREATE INDEX fmkrules_id1 ON fmk.fmkrules( rule_id );
-GRANT ALL ON TABLE fmk.fmkrules TO xtrole;
+CREATE INDEX f18_rules_id1 ON fmk.f18_rules( rule_id );
+GRANT ALL ON TABLE fmk.f18_rules TO xtrole;
 
 
-CREATE SEQUENCE fmk.sem_ver_fmkrules START 1;
+CREATE SEQUENCE fmk.sem_ver_f18_rules START 1;
 
-CREATE TABLE IF NOT EXISTS fmk.semaphores_fmkrules
+CREATE TABLE IF NOT EXISTS fmk.semaphores_f18_rules
 (
       user_code varchar(20) NOT NULL PRIMARY KEY,
       algorithm character(15) NOT NULL DEFAULT 'full',
       version bigint NOT NULL, 
-      last_trans_version bigint DEFAULT currval('fmk.sem_ver_fmkrules'),
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_f18_rules'),
       last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
       last_trans_user_code varchar(20),
       dat date,
       ids text[]
 );
 
-CREATE INDEX on fmk.semaphores_fmkrules(user_code);
-GRANT ALL ON TABLE fmk.semaphores_fmkrules TO xtrole;
+CREATE INDEX on fmk.semaphores_f18_rules(user_code);
+GRANT ALL ON TABLE fmk.semaphores_f18_rules TO xtrole;
 
 
 $$)
