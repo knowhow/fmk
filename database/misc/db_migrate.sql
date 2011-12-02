@@ -2586,4 +2586,61 @@ WHERE (u2.knowhow_package_version('fmk') < 30003);
 --- end 3.0.3 verzija
 
 
+--- start 3.0.4 verzija
+
+SELECT u2.execute($$
+
+-- fmkrules
+
+CREATE TABLE IF NOT EXISTS fmk.fmkrules
+(
+  rule_id numeric(10,0),
+  modul_name character(10),
+  rule_obj character(30),
+  rule_no numeric(5,0),
+  rule_name character(100),
+  rule_ermsg character(200),
+  rule_level numeric(2,0),
+  rule_c1 character(1),
+  rule_c2 character(5),
+  rule_c3 character(10),
+  rule_c4 character(10),
+  rule_c5 character(50),
+  rule_c6 character(50),
+  rule_c7 character(100),
+  rule_n1 numeric(15,5),
+  rule_n2 numeric(15,5),
+  rule_n3 numeric(15,5),
+  rule_d1 date,
+  rule_d2 date
+);
+
+CREATE INDEX fmkrules_id1 ON fmk.fmkrules( rule_id );
+GRANT ALL ON TABLE fmk.fmkrules TO xtrole;
+
+
+CREATE SEQUENCE fmk.sem_ver_fmkrules START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_fmkrules
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_fmkrules'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_fmkrules(user_code);
+GRANT ALL ON TABLE fmk.semaphores_fmkrules TO xtrole;
+
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 30004);
+
+--- end 3.0.4 verzija
+
+
 
