@@ -493,10 +493,10 @@ GRANT ALL ON TABLE fmk.ld_obracuni TO xtrole;
 
 CREATE TABLE IF NOT EXISTS fmk.ld_ld
 (
-  godina numeric(4,0),
+  godina numeric(4,0) NOT NULL,
   idrj character(2),
-  idradn character(6),
-  mjesec numeric(2,0),
+  idradn character(6) NOT NULL,
+  mjesec numeric(2,0) NOT NULL,
   brbod numeric(11,2),
   idstrspr character(3),
   idvposla character(2),
@@ -578,7 +578,7 @@ CREATE TABLE IF NOT EXISTS fmk.ld_ld
   udop_st numeric(10,2),
   uporez numeric(13,3),
   upor_st numeric(10,3),
-  obr character(1),
+  obr character(1) NOT NULL DEFAULT ' ',
   v_ispl character(2),
   CONSTRAINT ld_ld_pkey PRIMARY KEY (idrj , godina , mjesec , obr, idradn )
 );
