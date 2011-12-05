@@ -384,7 +384,7 @@ CREATE TABLE IF NOT EXISTS fmk.fakt_ftxt
 (
   id character(2),
   match_code character(10),
-  naz varchar(100)
+  naz varchar(250)
 );
 CREATE INDEX fakt_ftxt_id1 ON fmk.fakt_ftxt(id);
 GRANT ALL ON TABLE fmk.fakt_ftxt TO xtrole;
