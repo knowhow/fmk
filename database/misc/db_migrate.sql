@@ -2643,4 +2643,187 @@ WHERE (u2.knowhow_package_version('fmk') < 30004);
 --- end 3.0.4 verzija
 
 
+--- start 3.0.5 verzija
+
+SELECT u2.execute($$
+
+-- ld, tabele
+
+CREATE TABLE IF NOT EXISTS fmk.strspr
+(
+  id character(3),
+  naz character(20),
+  naz2 character(6)
+);
+
+CREATE INDEX strspr_id1 ON fmk.strspr( id );
+GRANT ALL ON TABLE fmk.strspr TO xtrole;
+
+
+CREATE SEQUENCE fmk.sem_ver_strspr START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_strspr
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_strspr'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_strspr(user_code);
+GRANT ALL ON TABLE fmk.semaphores_strspr TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.ld_parobr
+(
+  id character(2),
+  naz character(10),
+  vrbod numeric(15,5),
+  k1 numeric(11,6),
+  k2 numeric(11,6),
+  k3 numeric(9,5),
+  k4 numeric(6,3),
+  k5 numeric(12,6),
+  k6 numeric(12,6),
+  k7 numeric(12,6),
+  k8 numeric(12,6),
+  m_br_sat numeric(12,6),
+  m_net_sat numeric(12,6),
+  prosld numeric(12,2),
+  idrj character(2),
+  godina character(4)
+);
+
+CREATE INDEX ld_parobr_id1 ON fmk.ld_parobr( id );
+GRANT ALL ON TABLE fmk.ld_parobr TO xtrole;
+
+
+CREATE SEQUENCE fmk.sem_ver_ld_parobr START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_parobr
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_ld_parobr'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_ld_parobr(user_code);
+GRANT ALL ON TABLE fmk.semaphores_ld_parobr TO xtrole;
+
+
+CREATE SEQUENCE fmk.sem_ver_kred START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_kred
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_kred'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_kred(user_code);
+GRANT ALL ON TABLE fmk.semaphores_kred TO xtrole;
+
+
+CREATE SEQUENCE fmk.sem_ver_kbenef START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_kbenef
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_kbenef'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_kbenef(user_code);
+GRANT ALL ON TABLE fmk.semaphores_kbenef TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.ld_radsiht
+(
+  godina numeric(4,0),
+  mjesec numeric(2,0),
+  dan numeric(2,0),
+  dandio character(1),
+  idrj character(2),
+  idradn character(6),
+  idkonto character(7),
+  opis character(50),
+  idtippr character(2),
+  brbod numeric(11,2),
+  idnorsiht character(4),
+  izvrseno numeric(14,3),
+  bodova numeric(14,2)
+);
+CREATE INDEX ld_radsiht_id1 ON fmk.ld_radsiht(godina, mjesec, idradn);
+GRANT ALL ON TABLE fmk.ld_radsiht TO xtrole;
+
+
+CREATE SEQUENCE fmk.sem_ver_ld_radsiht START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_radsiht
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_ld_radsiht'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_ld_radsiht(user_code);
+GRANT ALL ON TABLE fmk.semaphores_ld_radsiht TO xtrole;
+
+
+ALTER TABLE fmk.ld_ld 
+    ADD COLUMN i31 numeric(12,2),
+	ADD COLUMN s31 numeric(5,2),
+	ADD COLUMN i32 numeric(12,2),
+	ADD COLUMN s32 numeric(5,2),
+	ADD COLUMN i33 numeric(12,2),
+	ADD COLUMN s33 numeric(5,2),
+	ADD COLUMN i34 numeric(12,2),
+	ADD COLUMN s34 numeric(5,2),
+	ADD COLUMN i35 numeric(12,2),
+	ADD COLUMN s35 numeric(5,2),
+	ADD COLUMN i36 numeric(12,2),
+	ADD COLUMN s36 numeric(5,2),
+	ADD COLUMN i37 numeric(12,2),
+	ADD COLUMN s37 numeric(5,2),
+	ADD COLUMN i38 numeric(12,2),
+	ADD COLUMN s38 numeric(5,2),
+	ADD COLUMN i39 numeric(12,2),
+	ADD COLUMN s39 numeric(5,2),
+	ADD COLUMN i40 numeric(12,2),
+	ADD COLUMN s40 numeric(5,2)
+;
+
+GRANT ALL ON TABLE fmk.ld_ld TO xtrole;
+
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 30005);
+
+--- end 3.0.5 verzija
+
+
 
