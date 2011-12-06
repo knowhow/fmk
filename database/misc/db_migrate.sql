@@ -2906,6 +2906,28 @@ ALTER TABLE fmk.ops RENAME COLUMN region TO reg;
 
 
 $$)
-WHERE (u2.knowhow_package_version('fmk') < 30005);
+WHERE (u2.knowhow_package_version('fmk') < 30006);
 
 --- end 3.0.6 verzija
+
+
+--- start 3.0.7 verzija
+
+SELECT u2.execute($$
+
+-- ld tabela obracnui
+
+ALTER TABLE fmk.ld_obracuni ADD COLUMN k1 character(4), 
+	ADD COLUMN k2 character(10);
+
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 30007);
+
+--- end 3.0.7 verzija
+
+
+
+
+
+
