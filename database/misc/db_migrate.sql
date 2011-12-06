@@ -2896,4 +2896,16 @@ WHERE (u2.knowhow_package_version('fmk') < 30005);
 --- end 3.0.5 verzija
 
 
+--- start 3.0.6 verzija
 
+SELECT u2.execute($$
+
+-- rename table ops column
+
+ALTER TABLE fmk.ops RENAME COLUMN region TO reg;
+
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 30005);
+
+--- end 3.0.6 verzija
