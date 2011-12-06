@@ -3025,3 +3025,41 @@ $$)
 WHERE (u2.knowhow_package_version('fmk') < 30007);
 
 --- end 3.0.7 verzija
+
+
+--- start 3.1.0 verzija
+
+SELECT u2.execute($$
+
+alter table fmk.semaphores_banke  alter column last_trans_version drop default;   
+alter table fmk.semaphores_dest  alter column last_trans_version drop default;   
+alter table fmk.semaphores_dopr  alter column last_trans_version drop default;   
+alter table fmk.semaphores_epdv_kif  alter column last_trans_version drop default;   
+alter table fmk.semaphores_epdv_kuf  alter column last_trans_version drop default;   
+alter table fmk.semaphores_epdv_pdv  alter column last_trans_version drop default;   
+alter table fmk.semaphores_epdv_sg_kif  alter column last_trans_version drop default;   
+alter table fmk.semaphores_epdv_sg_kuf  alter column last_trans_version drop default;   
+alter table fmk.semaphores_f18_rules  alter column last_trans_version drop default;   
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 30100);
+
+-- fakt
+
+SELECT u2.execute($$
+
+alter table fmk.semaphores_fakt_doks  alter column last_trans_version drop default;   
+alter table fmk.semaphores_fakt_doks2  alter column last_trans_version drop default;   
+alter table fmk.semaphores_fakt_fakt  alter column last_trans_version drop default;   
+alter table fmk.semaphores_fakt_ftxt  alter column last_trans_version drop default;   
+alter table fmk.semaphores_fakt_gen_ug  alter column last_trans_version drop default;   
+alter table fmk.semaphores_fakt_gen_ug_p  alter column last_trans_version drop default;   
+alter table fmk.semaphores_fakt_rugov  alter column last_trans_version drop default;   
+alter table fmk.semaphores_fakt_ugov  alter column last_trans_version drop default;   
+alter table fmk.semaphores_fakt_upl  alter column last_trans_version drop default;   
+
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 30100);
+
+--- end 3.1.0 verzija
