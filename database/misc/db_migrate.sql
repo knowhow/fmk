@@ -2859,6 +2859,37 @@ ALTER TABLE fmk.ld_ld
 GRANT ALL ON TABLE fmk.ld_ld TO xtrole;
 
 
+CREATE TABLE IF NOT EXISTS fmk.ld_tprsiht
+(
+  id character(2),
+  naz character(30),
+  k1 character(1),
+  k2 character(2),
+  k3 character(3),
+  ff character(30)
+);
+CREATE INDEX ld_tprsiht_id1 ON fmk.ld_tprsiht(id);
+GRANT ALL ON TABLE fmk.ld_tprsiht TO xtrole;
+
+
+CREATE SEQUENCE fmk.sem_ver_ld_tprsiht START 1;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_tprsiht
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint DEFAULT currval('fmk.sem_ver_ld_tprsiht'),
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+CREATE INDEX on fmk.semaphores_ld_tprsiht(user_code);
+GRANT ALL ON TABLE fmk.semaphores_ld_tprsiht TO xtrole;
+
+
 $$)
 WHERE (u2.knowhow_package_version('fmk') < 30005);
 
