@@ -3063,3 +3063,20 @@ $$)
 WHERE (u2.knowhow_package_version('fmk') < 30100);
 
 --- end 3.1.0 verzija
+
+
+--- start 3.1.1 verzija
+
+-- sifk ima ID2 koji se puno koristi
+
+SELECT u2.execute($$
+
+CREATE INDEX sifk_id2 ON fmk.sifk(id, oznaka);
+CREATE INDEX sifk_naz ON fmk.sifk(naz);
+GRANT ALL ON TABLE fmk.sifk TO xtrole;
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 30101);
+
+--- end 3.1.1 verzija
+
