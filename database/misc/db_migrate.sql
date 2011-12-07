@@ -68,6 +68,7 @@ CREATE TABLE IF NOT EXISTS fmk.fin_anal
   PRIMARY KEY(idfirma, idvn, brnal, rbr)
 );
 
+DROP INDEX IF EXISTS fin_anal_id1;
 CREATE INDEX fin_anal_id1 ON fmk.fin_anal(idfirma, idvn, brnal, rbr);
 GRANT ALL ON TABLE fmk.fin_anal TO xtrole;
 
@@ -86,6 +87,7 @@ CREATE TABLE IF NOT EXISTS fmk.fin_sint
   PRIMARY KEY(idfirma, idvn, brnal, rbr)
 );
 
+DROP INDEX IF EXISTS fin_sint_id1;
 CREATE INDEX fin_sint_id1 ON fmk.fin_sint(idfirma, idvn, brnal, rbr);
 GRANT ALL ON TABLE fmk.fin_sint TO xtrole;
 
@@ -103,6 +105,7 @@ CREATE TABLE IF NOT EXISTS fmk.fin_nalog
   PRIMARY KEY(idfirma, idvn, brnal)
 );
 
+DROP INDEX IF EXISTS fin_nalog_id1;
 CREATE INDEX fin_nalog_id1 ON fmk.fin_nalog(idfirma, idvn, brnal);
 GRANT ALL ON TABLE fmk.fin_nalog TO xtrole;
 
@@ -166,6 +169,8 @@ CREATE TABLE IF NOT EXISTS fmk.kalk_kalk
   CONSTRAINT kalk_kalk_pkey PRIMARY KEY (idfirma , idvd , brdok , rbr )
 );
 
+DROP INDEX IF EXISTS kalk_kalk_datdok;
+DROP INDEX IF EXISTS kalk_kalk_id1;
 CREATE INDEX kalk_kalk_datdok ON fmk.kalk_kalk(datdok);
 CREATE INDEX kalk_kalk_id1 ON fmk.kalk_kalk(idfirma, idvd, brdok, rbr, mkonto, pkonto);
 GRANT ALL ON TABLE fmk.kalk_kalk TO xtrole;
@@ -191,6 +196,8 @@ CREATE TABLE IF NOT EXISTS fmk.kalk_doks
   CONSTRAINT kalk_doks_pkey PRIMARY KEY (idfirma , idvd , brdok )
 );
 
+DROP INDEX IF EXISTS kalk_doks_datdok;
+DROP INDEX IF EXISTS kalk_doks_id1;
 CREATE INDEX kalk_doks_datdok ON fmk.kalk_doks(datdok);
 CREATE INDEX kalk_doks_id1 ON fmk.kalk_doks(idfirma, idvd, brdok, mkonto, pkonto );
 GRANT ALL ON TABLE fmk.kalk_doks TO xtrole;
@@ -224,6 +231,8 @@ CREATE TABLE IF NOT EXISTS fmk.fakt_doks
   CONSTRAINT fakt_doks_pkey PRIMARY KEY (idfirma , idtipdok , brdok )
 );
 
+DROP INDEX IF EXISTS fakt_doks_datdok;
+DROP INDEX IF EXISTS fakt_doks_id1;
 CREATE INDEX fakt_doks_datdok ON fmk.fakt_doks(datdok);
 CREATE INDEX fakt_doks_id1 ON fmk.fakt_doks(idfirma, idtipdok, brdok, datdok, idpartner );
 GRANT ALL ON TABLE fmk.fakt_doks TO xtrole;
@@ -243,6 +252,7 @@ CREATE TABLE IF NOT EXISTS fmk.fakt_doks2
   n2 numeric(15,2)
 );
 
+DROP INDEX IF EXISTS fakt_doks2_id1;
 CREATE INDEX fakt_doks2_id1 ON fmk.fakt_doks2(idfirma, idtipdok, brdok);
 GRANT ALL ON TABLE fmk.fakt_doks2 TO xtrole;
 
@@ -281,6 +291,8 @@ CREATE TABLE IF NOT EXISTS fmk.fakt_fakt
   CONSTRAINT fakt_fakt_pkey PRIMARY KEY (idfirma , idtipdok , brdok, rbr )
 );
 
+DROP INDEX IF EXISTS fakt_fakt_datdok;
+DROP INDEX IF EXISTS fakt_fakt_id1;
 CREATE INDEX fakt_fakt_datdok ON fmk.fakt_fakt(datdok);
 CREATE INDEX fakt_fakt_id1 ON fmk.fakt_fakt(idfirma, idtipdok, brdok, rbr, idpartner );
 GRANT ALL ON TABLE fmk.fakt_fakt TO xtrole;
@@ -294,6 +306,7 @@ CREATE TABLE IF NOT EXISTS fmk.fakt_upl
   iznos numeric(12,2)
 );
 
+DROP INDEX IF EXISTS fakt_upl_date;
 CREATE INDEX fakt_upl_date ON fmk.fakt_upl(idpartner, datupl);
 GRANT ALL ON TABLE fmk.fakt_upl TO xtrole;
 
@@ -315,6 +328,7 @@ CREATE TABLE IF NOT EXISTS fmk.fakt_gen_ug
   dat_val date
 );
 
+DROP INDEX IF EXISTS fakt_gen_ug_id1;
 CREATE INDEX fakt_gen_ug_id1 ON fmk.fakt_gen_ug(dat_obr, dat_gen);
 GRANT ALL ON TABLE fmk.fakt_gen_ug TO xtrole;
 
@@ -332,6 +346,7 @@ CREATE TABLE IF NOT EXISTS fmk.fakt_gen_ug_p
   f_iznos_pd numeric(15,5)
 );
 
+DROP INDEX IF EXISTS fakt_gen_ug_p_id1;
 CREATE INDEX fakt_gen_ug_p_id1 ON fmk.fakt_gen_ug_p(dat_obr, idpartner, id_ugov);
 GRANT ALL ON TABLE fmk.fakt_gen_ug_p TO xtrole;
 
@@ -345,6 +360,7 @@ CREATE TABLE IF NOT EXISTS fmk.fakt_rugov
   porez numeric(5,2)
 );
 
+DROP INDEX IF EXISTS fakt_rugov_id1;
 CREATE INDEX fakt_rugov_id1 ON fmk.fakt_rugov(id, idroba);
 GRANT ALL ON TABLE fmk.fakt_rugov TO xtrole;
 
@@ -377,9 +393,9 @@ CREATE TABLE IF NOT EXISTS fmk.fakt_ugov
   CONSTRAINT fakt_ugov_pkey PRIMARY KEY (id)
 );
 
+DROP INDEX IF EXISTS fakt_ugov_id1;
 CREATE INDEX fakt_ugov_id1 ON fmk.fakt_ugov(id, idpartner);
 GRANT ALL ON TABLE fmk.fakt_ugov TO xtrole;
-
 
 
 CREATE TABLE IF NOT EXISTS fmk.fakt_ftxt
@@ -388,6 +404,8 @@ CREATE TABLE IF NOT EXISTS fmk.fakt_ftxt
   match_code character(10),
   naz varchar(250)
 );
+
+DROP INDEX IF EXISTS fakt_ftxt_id1;
 CREATE INDEX fakt_ftxt_id1 ON fmk.fakt_ftxt(id);
 GRANT ALL ON TABLE fmk.fakt_ftxt TO xtrole;
 
@@ -406,6 +424,8 @@ CREATE TABLE IF NOT EXISTS fmk.ld_pk_data
   udio numeric(3,0),
   koef numeric(10,3)
 );
+
+DROP INDEX IF EXISTS ld_pk_data_id1;
 CREATE INDEX ld_pk_data_id1 ON fmk.ld_pk_data(idradn);
 GRANT ALL ON TABLE fmk.ld_pk_data TO xtrole;
 
@@ -434,6 +454,8 @@ CREATE TABLE IF NOT EXISTS fmk.ld_pk_radn
   lo_clpi numeric(10,3),
   lo_ufakt numeric(10,3)
 );
+
+DROP INDEX IF EXISTS ld_pk_radn_id1;
 CREATE INDEX ld_pk_radn_id1 ON fmk.ld_pk_radn(idradn);
 GRANT ALL ON TABLE fmk.ld_pk_radn TO xtrole;
 
@@ -448,6 +470,8 @@ CREATE TABLE IF NOT EXISTS fmk.ld_radkr
   iznos numeric(12,2),
   placeno numeric(12,2)
 );
+
+DROP INDEX IF EXISTS ld_radkr_id1;
 CREATE INDEX ld_radkr_id1 ON fmk.ld_radkr(idradn, idkred, mjesec, godina);
 GRANT ALL ON TABLE fmk.ld_radkr TO xtrole;
 
@@ -459,6 +483,8 @@ CREATE TABLE IF NOT EXISTS fmk.ld_radsat
   sati numeric(10,0),
   status character(2)
 );
+
+DROP INDEX IF EXISTS ld_radsat_id1;
 CREATE INDEX ld_radsat_id1 ON fmk.ld_radsat(idradn);
 GRANT ALL ON TABLE fmk.ld_radsat TO xtrole;
 
@@ -473,6 +499,8 @@ CREATE TABLE IF NOT EXISTS fmk.ld_norsiht
   k1 character(1),
   k2 character(2)
 );
+
+DROP INDEX IF EXISTS ld_norsiht_id1;
 CREATE INDEX ld_norsiht_id1 ON fmk.ld_norsiht(id);
 GRANT ALL ON TABLE fmk.ld_norsiht TO xtrole;
 
@@ -489,6 +517,8 @@ CREATE TABLE IF NOT EXISTS fmk.ld_obracuni
   ispl_za character(50),
   vr_ispl character(50)
 );
+
+DROP INDEX IF EXISTS ld_obracuni_id1;
 CREATE INDEX ld_obracuni_id1 ON fmk.ld_obracuni(rj, godina, mjesec, obr, dat_ispl);
 GRANT ALL ON TABLE fmk.ld_obracuni TO xtrole;
 
@@ -584,6 +614,8 @@ CREATE TABLE IF NOT EXISTS fmk.ld_ld
   v_ispl character(2),
   CONSTRAINT ld_ld_pkey PRIMARY KEY (idrj , godina , mjesec , obr, idradn )
 );
+
+DROP INDEX IF EXISTS ld_ld_id1;
 CREATE INDEX ld_ld_id1 ON fmk.ld_ld(idrj, godina, mjesec, obr, idradn );
 GRANT ALL ON TABLE fmk.ld_ld TO xtrole;
 
@@ -640,6 +672,8 @@ CREATE TABLE IF NOT EXISTS fmk.ld_radn
   s8 character(10),
   s9 character(10)
 );
+
+DROP INDEX IF EXISTS ld_radn_id1;
 CREATE INDEX ld_radn_id1 ON fmk.ld_radn(id);
 GRANT ALL ON TABLE fmk.ld_radn TO xtrole;
 
@@ -656,6 +690,8 @@ CREATE TABLE IF NOT EXISTS fmk.dopr
   dop_tip character(1),
   tiprada character(1)
 );
+
+DROP INDEX IF EXISTS dopr_id1;
 CREATE INDEX dopr_id1 ON fmk.dopr(id, tiprada);
 GRANT ALL ON TABLE fmk.dopr TO xtrole;
 
@@ -681,6 +717,8 @@ CREATE TABLE IF NOT EXISTS fmk.por
   s_sto_5 numeric(5,2),
   s_izn_5 numeric(12,2)
 );
+
+DROP INDEX IF EXISTS por_id1;
 CREATE INDEX por_id1 ON fmk.por(id);
 GRANT ALL ON TABLE fmk.por TO xtrole;
 
@@ -692,6 +730,8 @@ CREATE TABLE IF NOT EXISTS fmk.kbenef
   naz character(8),
   iznos numeric(5,2)
 );
+
+DROP INDEX IF EXISTS kbenef_id1;
 CREATE INDEX kbenef_id1 ON fmk.kbenef(id);
 GRANT ALL ON TABLE fmk.kbenef TO xtrole;
 
@@ -709,6 +749,8 @@ CREATE TABLE IF NOT EXISTS fmk.kred
   fil character(30),
   mjesto character(20)
 );
+
+DROP INDEX IF EXISTS kred_id1;
 CREATE INDEX kred_id1 ON fmk.kred(id);
 GRANT ALL ON TABLE fmk.kred TO xtrole;
 
@@ -727,6 +769,8 @@ CREATE TABLE IF NOT EXISTS fmk.tippr
   opis character(8),
   tpr_tip character(1)
 );
+
+DROP INDEX IF EXISTS tippr_id1;
 CREATE INDEX tippr_id1 ON fmk.tippr(id);
 GRANT ALL ON TABLE fmk.tippr TO xtrole;
 
@@ -745,6 +789,8 @@ CREATE TABLE IF NOT EXISTS fmk.tippr2
   opis character(8),
   tpr_tip character(1)
 );
+
+DROP INDEX IF EXISTS tippr2_id1;
 CREATE INDEX tippr2_id1 ON fmk.tippr2(id);
 GRANT ALL ON TABLE fmk.tippr2 TO xtrole;
 
@@ -756,6 +802,8 @@ CREATE TABLE IF NOT EXISTS fmk.vposla
   naz character(20),
   idkbenef character(1)
 );
+
+DROP INDEX IF EXISTS vposla_id1;
 CREATE INDEX vposla_id1 ON fmk.vposla(id);
 GRANT ALL ON TABLE fmk.vposla TO xtrole;
 
@@ -766,6 +814,8 @@ CREATE TABLE IF NOT EXISTS fmk.vprih
   match_code character(10),
   naz character(20)
 );
+
+DROP INDEX IF EXISTS vprih_id1;
 CREATE INDEX vprih_id1 ON fmk.vprih(id);
 GRANT ALL ON TABLE fmk.vprih TO xtrole;
 
@@ -799,6 +849,8 @@ CREATE TABLE IF NOT EXISTS fmk.os_os
   brsoba character(6),
   idpartner character(6)
 );
+
+DROP INDEX IF EXISTS os_os_id1;
 CREATE INDEX os_os_id1 ON fmk.os_os(id);
 GRANT ALL ON TABLE fmk.os_os TO xtrole;
 
@@ -809,6 +861,8 @@ CREATE TABLE IF NOT EXISTS fmk.os_k1
   match_code character(10),
   naz character(25)
 );
+
+DROP INDEX IF EXISTS os_k1_id1;
 CREATE INDEX os_k1_id1 ON fmk.os_k1(id);
 GRANT ALL ON TABLE fmk.os_k1 TO xtrole;
 
@@ -827,6 +881,8 @@ CREATE TABLE IF NOT EXISTS fmk.os_promj
   revd numeric(18,2),
   revp numeric(18,2)
 );
+
+DROP INDEX IF EXISTS os_promj_id1;
 CREATE INDEX os_promj_id1 ON fmk.os_promj(id, datum);
 GRANT ALL ON TABLE fmk.os_promj TO xtrole;
 
@@ -838,6 +894,8 @@ CREATE TABLE IF NOT EXISTS fmk.os_amort
   naz character(25),
   iznos numeric(7,3)
 );
+
+DROP INDEX IF EXISTS os_amort_id1;
 CREATE INDEX os_amort_id1 ON fmk.os_amort(id);
 GRANT ALL ON TABLE fmk.os_amort TO xtrole;
 
@@ -860,6 +918,8 @@ CREATE TABLE IF NOT EXISTS fmk.os_reval
   i11 numeric(7,3),
   i12 numeric(7,3)
 );
+
+DROP INDEX IF EXISTS os_reval_id1;
 CREATE INDEX os_reval_id1 ON fmk.os_reval(id);
 GRANT ALL ON TABLE fmk.os_reval TO xtrole;
 
@@ -898,6 +958,8 @@ CREATE TABLE IF NOT EXISTS fmk.epdv_kif
   kat_p character(1),
   kat_p_2 character(1)
 );
+
+DROP INDEX IF EXISTS epdv_kif_id1;
 CREATE INDEX epdv_kif_id1 ON fmk.epdv_kif(datum, datum_2);
 GRANT ALL ON TABLE fmk.epdv_kif TO xtrole;
 
@@ -934,6 +996,8 @@ CREATE TABLE IF NOT EXISTS fmk.epdv_kuf
   kat_p character(1),
   kat_p_2 character(1)
 );
+
+DROP INDEX IF EXISTS epdv_kuf_id1;
 CREATE INDEX epdv_kuf_id1 ON fmk.epdv_kuf(datum, datum_2);
 GRANT ALL ON TABLE fmk.epdv_kuf TO xtrole;
 
@@ -977,6 +1041,8 @@ CREATE TABLE IF NOT EXISTS fmk.epdv_pdv
   pot_ob character(80),
   lock character(1)
 );
+
+DROP INDEX IF EXISTS epdv_pdv_id1;
 CREATE INDEX epdv_pdv_id1 ON fmk.epdv_pdv(datum_1, datum_2);
 GRANT ALL ON TABLE fmk.epdv_pdv TO xtrole;
 
@@ -1009,6 +1075,8 @@ CREATE TABLE IF NOT EXISTS fmk.epdv_sg_kif
   id_kto_naz character(10),
   s_br_dok character(12)
 );
+
+DROP INDEX IF EXISTS epdv_sg_kif_id1;
 CREATE INDEX epdv_sg_kif_id1 ON fmk.epdv_sg_kif(id);
 GRANT ALL ON TABLE fmk.epdv_sg_kif TO xtrole;
 
@@ -1041,6 +1109,8 @@ CREATE TABLE IF NOT EXISTS fmk.epdv_sg_kuf
   id_kto_naz character(10),
   s_br_dok character(12)
 );
+
+DROP INDEX IF EXISTS epdv_sg_kuf_id1;
 CREATE INDEX epdv_sg_kuf_id1 ON fmk.epdv_sg_kuf(id);
 GRANT ALL ON TABLE fmk.epdv_sg_kuf TO xtrole;
 
@@ -1082,6 +1152,8 @@ CREATE TABLE IF NOT EXISTS fmk.roba
   fisc_plu numeric(10,0)
 );
 
+DROP INDEX IF EXISTS roba_id;
+DROP INDEX IF EXISTS roba_naz;
 CREATE INDEX roba_id ON fmk.roba(id);
 CREATE INDEX roba_naz ON fmk.roba(naz);
 GRANT ALL ON TABLE fmk.roba TO xtrole;
@@ -1099,6 +1171,9 @@ CREATE TABLE IF NOT EXISTS fmk.tarifa
   mpp numeric(6, 2),
   dlruc numeric(6, 2)
 );
+
+DROP INDEX IF EXISTS tarifa_id;
+DROP INDEX IF EXISTS tarifa_naz;
 CREATE INDEX tarifa_id ON fmk.tarifa(id);
 CREATE INDEX tarifa_naz ON fmk.tarifa(naz);
 GRANT ALL ON TABLE fmk.tarifa TO xtrole;
@@ -1127,6 +1202,9 @@ CREATE TABLE IF NOT EXISTS fmk.partn
   _radnik character(1),
   idrefer character(10)
 );
+
+DROP INDEX IF EXISTS partn_id;
+DROP INDEX IF EXISTS partn_naz;
 CREATE INDEX partn_id ON fmk.partn(id);
 CREATE INDEX partn_naz ON fmk.partn(naz);
 GRANT ALL ON TABLE fmk.partn TO xtrole;
@@ -1140,6 +1218,9 @@ CREATE TABLE IF NOT EXISTS fmk.konto
   pozbilu character(3),
   pozbils character(3)
 );
+
+DROP INDEX IF EXISTS konto_id;
+DROP INDEX IF EXISTS konto_naz;
 CREATE INDEX konto_id ON fmk.konto(id);
 CREATE INDEX konto_naz ON fmk.konto(naz);
 GRANT ALL ON TABLE fmk.konto TO xtrole;
@@ -1154,6 +1235,8 @@ CREATE TABLE IF NOT EXISTS fmk.rj
   naz character(100)
 );
 
+DROP INDEX IF EXISTS rj_id;
+DROP INDEX IF EXISTS rj_naz;
 CREATE INDEX rj_id ON fmk.rj(id);
 CREATE INDEX rj_naz ON fmk.rj(naz);
 GRANT ALL ON TABLE fmk.rj TO xtrole;
@@ -1170,6 +1253,8 @@ CREATE TABLE IF NOT EXISTS fmk.ld_rj
   opor character(1)
 );
 
+DROP INDEX IF EXISTS ld_rj_id;
+DROP INDEX IF EXISTS ld_rj_naz;
 CREATE INDEX ld_rj_id ON fmk.ld_rj(id);
 CREATE INDEX ld_rj_naz ON fmk.ld_rj(naz);
 GRANT ALL ON TABLE fmk.ld_rj TO xtrole;
@@ -1189,6 +1274,10 @@ CREATE TABLE IF NOT EXISTS fmk.valute
   tip character(1)
 );
 
+DROP INDEX IF EXISTS valute_id;
+DROP INDEX IF EXISTS valute_naz;
+DROP INDEX IF EXISTS valute_id2;
+DROP INDEX IF EXISTS valute_id3;
 CREATE INDEX valute_id ON fmk.valute(id);
 CREATE INDEX valute_naz ON fmk.valute(naz);
 CREATE INDEX valute_id2 ON fmk.valute(tip, id, datum);
@@ -1221,6 +1310,7 @@ CREATE TABLE IF NOT EXISTS fmk.sifk
   k4 character(4)
 );
 
+DROP INDEX IF EXISTS sifk_id;
 CREATE INDEX sifk_id ON fmk.sifk(id, sort, naz);
 GRANT ALL ON TABLE fmk.sifk TO xtrole;
 
@@ -1233,6 +1323,9 @@ CREATE TABLE IF NOT EXISTS fmk.sifv
   oznaka character(4)
 );
 
+DROP INDEX IF EXISTS sifv_id1;
+DROP INDEX IF EXISTS sifv_id2;
+DROP INDEX IF EXISTS sifv_id3;
 CREATE INDEX sifv_id1 ON fmk.sifv(id, oznaka, idsif, naz);
 CREATE INDEX sifv_id2 ON fmk.sifv(id, idsif);
 CREATE INDEX sifv_id3 ON fmk.sifv(id, oznaka, naz);
@@ -1246,6 +1339,8 @@ CREATE TABLE IF NOT EXISTS fmk.tnal
   naz character(30)
 );
 
+DROP INDEX IF EXISTS tnal_id1;
+DROP INDEX IF EXISTS tnal_id2;
 CREATE INDEX tnal_id1 ON fmk.tnal(id);
 CREATE INDEX tnal_id2 ON fmk.tnal(naz);
 GRANT ALL ON TABLE fmk.tnal TO xtrole;
@@ -1259,6 +1354,8 @@ CREATE TABLE IF NOT EXISTS fmk.tdok
   naz character(30)
 );
 
+DROP INDEX IF EXISTS tdok_id1;
+DROP INDEX IF EXISTS tdok_id2;
 CREATE INDEX tdok_id1 ON fmk.tdok(id);
 CREATE INDEX tdok_id2 ON fmk.tdok(naz);
 GRANT ALL ON TABLE fmk.tdok TO xtrole;
@@ -1278,6 +1375,8 @@ CREATE TABLE IF NOT EXISTS fmk.ops
   region character(1)
 );
 
+DROP INDEX IF EXISTS ops_id1;
+DROP INDEX IF EXISTS ops_id2;
 CREATE INDEX ops_id1 ON fmk.ops(id);
 CREATE INDEX ops_id2 ON fmk.ops(naz);
 GRANT ALL ON TABLE fmk.ops TO xtrole;
@@ -1292,6 +1391,7 @@ CREATE TABLE IF NOT EXISTS fmk.banke
   adresa character(30)
 );
 
+DROP INDEX IF EXISTS banke_id1;
 CREATE INDEX banke_id1 ON fmk.banke(id);
 GRANT ALL ON TABLE fmk.banke TO xtrole;
 
@@ -1306,6 +1406,7 @@ CREATE TABLE IF NOT EXISTS fmk.koncij
   region character(2)
 );
 
+DROP INDEX IF EXISTS koncij_id1;
 CREATE INDEX koncij_id1 ON fmk.koncij(id);
 GRANT ALL ON TABLE fmk.koncij TO xtrole;
 
@@ -1326,6 +1427,7 @@ CREATE TABLE IF NOT EXISTS fmk.trfp
   idtarifa character(6)
 );
 
+DROP INDEX IF EXISTS trfp_id1;
 CREATE INDEX trfp_id1 ON fmk.trfp(id);
 GRANT ALL ON TABLE fmk.trfp TO xtrole;
 
@@ -1346,6 +1448,7 @@ CREATE TABLE IF NOT EXISTS fmk.trfp2
   idtarifa character(6)
 );
 
+DROP INDEX IF EXISTS trfp2_id1;
 CREATE INDEX trfp2_id1 ON fmk.trfp2(idvd, shema, idkonto);
 GRANT ALL ON TABLE fmk.trfp2 TO xtrole;
 
@@ -1362,6 +1465,7 @@ CREATE TABLE IF NOT EXISTS fmk.trfp3
   idvn character(2)
 );
 
+DROP INDEX IF EXISTS trfp3_id1;
 CREATE INDEX trfp3_id1 ON fmk.trfp3(shema, idkonto);
 GRANT ALL ON TABLE fmk.trfp3 TO xtrole;
 
@@ -1380,6 +1484,7 @@ CREATE TABLE IF NOT EXISTS fmk.sast
   n2 numeric(20,5)
 );
 
+DROP INDEX IF EXISTS sast_id1;
 CREATE INDEX sast_id1 ON fmk.sast(id, id2);
 GRANT ALL ON TABLE fmk.sast TO xtrole;
 
@@ -1391,9 +1496,13 @@ CREATE TABLE IF NOT EXISTS fmk.lokal
   id_str numeric(6,0),
   naz character(200)
 );
+
+DROP INDEX IF EXISTS lokal_id1;
+DROP INDEX IF EXISTS lokal_id2;
 CREATE INDEX lokal_id1 ON fmk.lokal(id);
 CREATE INDEX lokal_id2 ON fmk.lokal(id_str);
 GRANT ALL ON TABLE fmk.lokal TO xtrole;
+
 
 CREATE TABLE IF NOT EXISTS fmk.refer
 (
@@ -1402,6 +1511,8 @@ CREATE TABLE IF NOT EXISTS fmk.refer
   idops character(4),
   naz character(40)
 );
+
+DROP INDEX IF EXISTS refer_id1;
 CREATE INDEX refer_id1 ON fmk.refer(id);
 GRANT ALL ON TABLE fmk.refer TO xtrole;
 
@@ -1431,6 +1542,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_suban
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_fin_suban_user_code_idx;
 CREATE INDEX on fmk.semaphores_fin_suban(user_code);
 GRANT ALL ON TABLE fmk.semaphores_fin_suban TO xtrole;
 
@@ -1447,6 +1559,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_anal
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_fin_anal_user_code_idx;
 CREATE INDEX on fmk.semaphores_fin_anal(user_code);
 GRANT ALL ON TABLE fmk.semaphores_fin_anal TO xtrole;
 
@@ -1462,6 +1575,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_sint
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_fin_sint_user_code_idx;
 CREATE INDEX on fmk.semaphores_fin_sint(user_code);
 GRANT ALL ON TABLE fmk.semaphores_fin_sint TO xtrole;
 
@@ -1477,6 +1591,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_nalog
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_fin_nalog_user_code_idx;
 CREATE INDEX on fmk.semaphores_fin_nalog(user_code);
 GRANT ALL ON TABLE fmk.semaphores_fin_nalog TO xtrole;
 
@@ -1494,6 +1609,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_partn
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_partn_user_code_idx;
 CREATE INDEX on fmk.semaphores_partn(user_code);
 GRANT ALL ON TABLE fmk.semaphores_partn TO xtrole;
 
@@ -1510,6 +1626,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_konto
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_konto_user_code_idx;
 CREATE INDEX on fmk.semaphores_konto(user_code);
 GRANT ALL ON TABLE fmk.semaphores_konto TO xtrole;
 
@@ -1540,6 +1657,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_kalk_kalk
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_kalk_kalk_user_code_idx;
 CREATE INDEX on fmk.semaphores_kalk_kalk(user_code);
 GRANT ALL ON TABLE fmk.semaphores_kalk_kalk TO xtrole;
 
@@ -1563,6 +1681,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_kalk_doks
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_kalk_doks_user_code_idx;
 CREATE INDEX on fmk.semaphores_kalk_doks(user_code);
 GRANT ALL ON TABLE fmk.semaphores_kalk_doks TO xtrole;
 
@@ -1591,6 +1710,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_roba
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_roba_user_code_idx;
 CREATE INDEX on fmk.semaphores_roba(user_code);
 GRANT ALL ON TABLE fmk.semaphores_roba TO xtrole;
 
@@ -1607,6 +1727,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_tarifa
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_tarifa_user_code_idx;
 CREATE INDEX on fmk.semaphores_tarifa(user_code);
 GRANT ALL ON TABLE fmk.semaphores_tarifa TO xtrole;
 
@@ -1624,6 +1745,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_fakt
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_fakt_fakt_user_code_idx;
 CREATE INDEX on fmk.semaphores_fakt_fakt(user_code);
 GRANT ALL ON TABLE fmk.semaphores_fakt_fakt TO xtrole;
 
@@ -1641,6 +1763,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_doks
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_fakt_doks_user_code_idx;
 CREATE INDEX on fmk.semaphores_fakt_doks(user_code);
 GRANT ALL ON TABLE fmk.semaphores_fakt_doks TO xtrole;
 
@@ -1657,6 +1780,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_doks2
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_fakt_doks2_user_code_idx;
 CREATE INDEX on fmk.semaphores_fakt_doks2(user_code);
 GRANT ALL ON TABLE fmk.semaphores_fakt_doks2 TO xtrole;
 
@@ -1672,6 +1796,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_upl
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_fakt_upl_user_code_idx;
 CREATE INDEX on fmk.semaphores_fakt_upl(user_code);
 GRANT ALL ON TABLE fmk.semaphores_fakt_upl TO xtrole;
 
@@ -1691,6 +1816,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_ugov
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_fakt_ugov_user_code_idx;
 CREATE INDEX on fmk.semaphores_fakt_ugov(user_code);
 GRANT ALL ON TABLE fmk.semaphores_fakt_ugov TO xtrole;
 
@@ -1707,8 +1833,10 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_rugov
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_fakt_rugov_user_code_idx;
 CREATE INDEX on fmk.semaphores_fakt_rugov(user_code);
 GRANT ALL ON TABLE fmk.semaphores_fakt_rugov TO xtrole;
+
 
 CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_gen_ug
 (
@@ -1722,8 +1850,10 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_gen_ug
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_fakt_gen_ug_user_code_idx;
 CREATE INDEX on fmk.semaphores_fakt_gen_ug(user_code);
 GRANT ALL ON TABLE fmk.semaphores_fakt_gen_ug TO xtrole;
+
 
 CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_gen_ug_p
 (
@@ -1737,6 +1867,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_gen_ug_p
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_fakt_gen_ug_p_user_code_idx;
 CREATE INDEX on fmk.semaphores_fakt_gen_ug_p(user_code);
 GRANT ALL ON TABLE fmk.semaphores_fakt_gen_ug_p TO xtrole;
 
@@ -1753,6 +1884,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_fakt_ftxt
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_fakt_ftxt_user_code_idx;
 CREATE INDEX on fmk.semaphores_fakt_ftxt(user_code);
 GRANT ALL ON TABLE fmk.semaphores_fakt_ftxt TO xtrole;
 
@@ -1770,6 +1902,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_ld
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_ld_ld_user_code_idx;
 CREATE INDEX on fmk.semaphores_ld_ld(user_code);
 GRANT ALL ON TABLE fmk.semaphores_ld_ld TO xtrole;
 
@@ -1786,6 +1919,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_pk_data
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_ld_pk_data_user_code_idx;
 CREATE INDEX on fmk.semaphores_ld_pk_data(user_code);
 GRANT ALL ON TABLE fmk.semaphores_ld_pk_data TO xtrole;
 
@@ -1804,6 +1938,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_pk_radn
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_ld_pk_radn_user_code_idx;
 CREATE INDEX on fmk.semaphores_ld_pk_radn(user_code);
 GRANT ALL ON TABLE fmk.semaphores_ld_pk_radn TO xtrole;
 
@@ -1822,6 +1957,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_radkr
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_ld_radkr_user_code_idx;
 CREATE INDEX on fmk.semaphores_ld_radkr(user_code);
 GRANT ALL ON TABLE fmk.semaphores_ld_radkr TO xtrole;
 
@@ -1840,6 +1976,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_radsat
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_ld_radsat_user_code_idx;
 CREATE INDEX on fmk.semaphores_ld_radsat(user_code);
 GRANT ALL ON TABLE fmk.semaphores_ld_radsat TO xtrole;
 
@@ -1858,6 +1995,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_norsiht
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_ld_norsiht_user_code_idx;
 CREATE INDEX on fmk.semaphores_ld_norsiht(user_code);
 GRANT ALL ON TABLE fmk.semaphores_ld_norsiht TO xtrole;
 
@@ -1876,6 +2014,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_obracuni
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_ld_obracuni_user_code_idx;
 CREATE INDEX on fmk.semaphores_ld_obracuni(user_code);
 GRANT ALL ON TABLE fmk.semaphores_ld_obracuni TO xtrole;
 
@@ -1894,6 +2033,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_radn
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_ld_radn_user_code_idx;
 CREATE INDEX on fmk.semaphores_ld_radn(user_code);
 GRANT ALL ON TABLE fmk.semaphores_ld_radn TO xtrole;
 
@@ -1912,6 +2052,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_dopr
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_dopr_user_code_idx;
 CREATE INDEX on fmk.semaphores_dopr(user_code);
 GRANT ALL ON TABLE fmk.semaphores_dopr TO xtrole;
 
@@ -1930,6 +2071,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_por
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_por_user_code_idx;
 CREATE INDEX on fmk.semaphores_por(user_code);
 GRANT ALL ON TABLE fmk.semaphores_por TO xtrole;
 
@@ -1948,6 +2090,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_tippr
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_tippr_user_code_idx;
 CREATE INDEX on fmk.semaphores_tippr(user_code);
 GRANT ALL ON TABLE fmk.semaphores_tippr TO xtrole;
 
@@ -1965,6 +2108,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_tippr2
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_tippr2_user_code_idx;
 CREATE INDEX on fmk.semaphores_tippr2(user_code);
 GRANT ALL ON TABLE fmk.semaphores_tippr2 TO xtrole;
 
@@ -1983,6 +2127,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_vposla
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_vposla_user_code_idx;
 CREATE INDEX on fmk.semaphores_vposla(user_code);
 GRANT ALL ON TABLE fmk.semaphores_vposla TO xtrole;
 
@@ -2001,6 +2146,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_vprih
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_vprih_user_code_idx;
 CREATE INDEX on fmk.semaphores_vprih(user_code);
 GRANT ALL ON TABLE fmk.semaphores_vprih TO xtrole;
 
@@ -2021,9 +2167,9 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_os_os
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_os_os_user_code_idx;
 CREATE INDEX on fmk.semaphores_os_os(user_code);
 GRANT ALL ON TABLE fmk.semaphores_os_os TO xtrole;
-
 
 
 
@@ -2039,6 +2185,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_os_k1
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_os_k1_user_code_idx;
 CREATE INDEX on fmk.semaphores_os_k1(user_code);
 GRANT ALL ON TABLE fmk.semaphores_os_k1 TO xtrole;
 
@@ -2056,6 +2203,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_os_promj
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_os_promj_user_code_idx;
 CREATE INDEX on fmk.semaphores_os_promj(user_code);
 GRANT ALL ON TABLE fmk.semaphores_os_promj TO xtrole;
 
@@ -2073,6 +2221,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_os_reval
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_os_reval_user_code_idx;
 CREATE INDEX on fmk.semaphores_os_reval(user_code);
 GRANT ALL ON TABLE fmk.semaphores_os_reval TO xtrole;
 
@@ -2090,6 +2239,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_os_amort
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_os_amort_user_code_idx;
 CREATE INDEX on fmk.semaphores_os_amort(user_code);
 GRANT ALL ON TABLE fmk.semaphores_os_amort TO xtrole;
 
@@ -2110,6 +2260,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_epdv_kuf
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_epdv_kuf_user_code_idx;
 CREATE INDEX on fmk.semaphores_epdv_kuf(user_code);
 GRANT ALL ON TABLE fmk.semaphores_epdv_kuf TO xtrole;
 
@@ -2128,6 +2279,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_epdv_kif
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_epdv_kif_user_code_idx;
 CREATE INDEX on fmk.semaphores_epdv_kif(user_code);
 GRANT ALL ON TABLE fmk.semaphores_epdv_kif TO xtrole;
 
@@ -2146,6 +2298,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_epdv_pdv
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_epdv_pdv_user_code_idx;
 CREATE INDEX on fmk.semaphores_epdv_pdv(user_code);
 GRANT ALL ON TABLE fmk.semaphores_epdv_pdv TO xtrole;
 
@@ -2165,6 +2318,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_epdv_sg_kuf
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_epdv_sg_kuf_user_code_idx;
 CREATE INDEX on fmk.semaphores_epdv_sg_kuf(user_code);
 GRANT ALL ON TABLE fmk.semaphores_epdv_sg_kuf TO xtrole;
 
@@ -2183,6 +2337,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_epdv_sg_kif
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_epdv_sg_kif_user_code_idx;
 CREATE INDEX on fmk.semaphores_epdv_sg_kif(user_code);
 GRANT ALL ON TABLE fmk.semaphores_epdv_sg_kif TO xtrole;
 
@@ -2203,6 +2358,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_rj
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_rj_user_code_idx;
 CREATE INDEX on fmk.semaphores_rj(user_code);
 GRANT ALL ON TABLE fmk.semaphores_rj TO xtrole;
 
@@ -2221,6 +2377,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_rj
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_ld_rj_user_code_idx;
 CREATE INDEX on fmk.semaphores_ld_rj(user_code);
 GRANT ALL ON TABLE fmk.semaphores_ld_rj TO xtrole;
 
@@ -2239,6 +2396,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_valute
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_valute_user_code_idx;
 CREATE INDEX on fmk.semaphores_valute(user_code);
 GRANT ALL ON TABLE fmk.semaphores_valute TO xtrole;
 
@@ -2257,6 +2415,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_ops
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_ops_user_code_idx;
 CREATE INDEX on fmk.semaphores_ops(user_code);
 GRANT ALL ON TABLE fmk.semaphores_ops TO xtrole;
 
@@ -2275,6 +2434,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_banke
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_banke_user_code_idx;
 CREATE INDEX on fmk.semaphores_banke(user_code);
 GRANT ALL ON TABLE fmk.semaphores_banke TO xtrole;
 
@@ -2293,6 +2453,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_tnal
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_tnal_user_code_idx;
 CREATE INDEX on fmk.semaphores_tnal(user_code);
 GRANT ALL ON TABLE fmk.semaphores_tnal TO xtrole;
 
@@ -2311,6 +2472,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_tdok
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_tdok_user_code_idx;
 CREATE INDEX on fmk.semaphores_tdok(user_code);
 GRANT ALL ON TABLE fmk.semaphores_tdok TO xtrole;
 
@@ -2329,6 +2491,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_sifk
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_sifk_user_code_idx;
 CREATE INDEX on fmk.semaphores_sifk(user_code);
 GRANT ALL ON TABLE fmk.semaphores_sifk TO xtrole;
 
@@ -2347,6 +2510,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_sifv
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_sifv_user_code_idx;
 CREATE INDEX on fmk.semaphores_sifv(user_code);
 GRANT ALL ON TABLE fmk.semaphores_sifv TO xtrole;
 
@@ -2365,6 +2529,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_koncij
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_koncij_user_code_idx;
 CREATE INDEX on fmk.semaphores_koncij(user_code);
 GRANT ALL ON TABLE fmk.semaphores_koncij TO xtrole;
 
@@ -2383,6 +2548,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_sast
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_sast_user_code_idx;
 CREATE INDEX on fmk.semaphores_sast(user_code);
 GRANT ALL ON TABLE fmk.semaphores_sast TO xtrole;
 
@@ -2401,6 +2567,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_trfp
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_trfp_user_code_idx;
 CREATE INDEX on fmk.semaphores_trfp(user_code);
 GRANT ALL ON TABLE fmk.semaphores_trfp TO xtrole;
 
@@ -2419,6 +2586,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_trfp2
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_trfp2_user_code_idx;
 CREATE INDEX on fmk.semaphores_trfp2(user_code);
 GRANT ALL ON TABLE fmk.semaphores_trfp2 TO xtrole;
 
@@ -2437,6 +2605,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_trfp3
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_trfp3_user_code_idx;
 CREATE INDEX on fmk.semaphores_trfp3(user_code);
 GRANT ALL ON TABLE fmk.semaphores_trfp3 TO xtrole;
 
@@ -2456,6 +2625,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_lokal
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_lokal_user_code_idx;
 CREATE INDEX on fmk.semaphores_lokal(user_code);
 GRANT ALL ON TABLE fmk.semaphores_lokal TO xtrole;
 
@@ -2474,6 +2644,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_refer
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_refer_user_code_idx;
 CREATE INDEX on fmk.semaphores_refer(user_code);
 GRANT ALL ON TABLE fmk.semaphores_refer TO xtrole;
 
@@ -2505,6 +2676,7 @@ CREATE TABLE IF NOT EXISTS fmk.dest
   fax character(20)
 );
 
+DROP INDEX IF EXISTS dest_id1;
 CREATE INDEX dest_id1 ON fmk.dest(id);
 GRANT ALL ON TABLE fmk.dest TO xtrole;
 
@@ -2521,6 +2693,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_dest
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_dest_user_code_idx;
 CREATE INDEX on fmk.semaphores_dest(user_code);
 GRANT ALL ON TABLE fmk.semaphores_dest TO xtrole;
 
@@ -2539,15 +2712,6 @@ ALTER TABLE fmk.roba ADD COLUMN k9 character(4);
 ALTER TABLE fmk.roba ADD COLUMN strings numeric(10,0);
 
 -- alter rugov
-
-CREATE TABLE IF NOT EXISTS fmk.fakt_rugov
-(
-      id character(10),
-      idroba character(10),
-      kolicina numeric(15,4),
-      rabat numeric(6,3),
-      porez numeric(5,2)
-);
 
 alter table fmk.fakt_rugov add column k1 character(1);
 alter table fmk.fakt_rugov add column k2 character(2);
@@ -2589,6 +2753,7 @@ CREATE TABLE IF NOT EXISTS fmk.f18_rules
   rule_d2 date
 );
 
+DROP INDEX IF EXISTS f18_rules_id1;
 CREATE INDEX f18_rules_id1 ON fmk.f18_rules( rule_id );
 GRANT ALL ON TABLE fmk.f18_rules TO xtrole;
 
@@ -2607,6 +2772,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_f18_rules
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_f18_rules_user_code_idx;
 CREATE INDEX on fmk.semaphores_f18_rules(user_code);
 GRANT ALL ON TABLE fmk.semaphores_f18_rules TO xtrole;
 
@@ -2619,101 +2785,7 @@ WHERE (u2.knowhow_package_version('fmk') < 30004);
 
 --- start 3.0.5 verzija
 
-
 SELECT u2.execute($$
-
-CREATE TABLE IF NOT EXISTS fmk.ld_ld
-(
-      godina numeric(4,0) NOT NULL,
-      idrj character(2) NOT NULL,
-      idradn character(6) NOT NULL,
-      mjesec numeric(2,0) NOT NULL,
-      brbod numeric(11,2),
-      idstrspr character(3),
-      idvposla character(2),
-      kminrad numeric(5,2),
-      s01 numeric(5,1),
-      i01 numeric(12,2),
-      s02 numeric(5,1),
-      i02 numeric(12,2),
-      s03 numeric(5,1),
-      i03 numeric(12,2),
-      s04 numeric(5,1),
-      i04 numeric(12,2),
-      s05 numeric(5,1),
-      i05 numeric(12,2),
-      s06 numeric(5,1),
-      i06 numeric(12,2),
-      s07 numeric(5,1),
-      i07 numeric(12,2),
-      s08 numeric(5,1),
-      i08 numeric(12,2),
-      s09 numeric(5,1),
-      i09 numeric(12,2),
-      s10 numeric(5,1),
-      i10 numeric(12,2),
-      s11 numeric(5,1),
-      i11 numeric(12,2),
-      s12 numeric(5,1),
-      i12 numeric(12,2),
-      s13 numeric(5,1),
-      i13 numeric(12,2),
-      s14 numeric(5,1),
-      i14 numeric(12,2),
-      s15 numeric(5,1),
-      i15 numeric(12,2),
-      s16 numeric(5,1),
-      i16 numeric(12,2),
-      s17 numeric(5,1),
-      i17 numeric(12,2),
-      s18 numeric(5,1),
-      i18 numeric(12,2),
-      s19 numeric(5,1),
-      i19 numeric(12,2),
-      s20 numeric(5,1),
-      i20 numeric(12,2),
-      s21 numeric(5,1),
-      i21 numeric(12,2),
-      s22 numeric(5,1),
-      i22 numeric(12,2),
-      s23 numeric(5,1),
-      i23 numeric(12,2),
-      s24 numeric(5,1),
-      i24 numeric(12,2),
-      s25 numeric(5,1),
-      i25 numeric(12,2),
-      s26 numeric(5,1),
-      i26 numeric(12,2),
-      s27 numeric(5,1),
-      i27 numeric(12,2),
-      s28 numeric(5,1),
-      i28 numeric(12,2),
-      s29 numeric(5,1),
-      i29 numeric(12,2),
-      s30 numeric(5,1),
-      i30 numeric(12,2),
-      usati numeric(8,1),
-      uneto numeric(13,2),
-      uodbici numeric(13,2),
-      uiznos numeric(13,2),
-      varobr character(1),
-      ubruto numeric(13,2),
-      uneto2 numeric(13,2),
-      ulicodb numeric(13,2),
-      trosk character(1),
-      opor character(1),
-      tiprada character(1),
-      nakn_opor numeric(13,2),
-      nakn_neop numeric(13,2),
-      udopr numeric(13,2),
-      udop_st numeric(10,2),
-      uporez numeric(13,3),
-      upor_st numeric(10,3),
-      obr character(1) NOT NULL DEFAULT ' '::bpchar,
-      v_ispl character(2),
-      CONSTRAINT ld_ld_pkey PRIMARY KEY (idrj , godina , mjesec , obr , idradn )
-);
-
 
 ALTER TABLE fmk.ld_ld 
     ADD COLUMN i31 numeric(12,2),
@@ -2794,6 +2866,7 @@ CREATE TABLE IF NOT EXISTS fmk.strspr
   naz2 character(6)
 );
 
+DROP INDEX IF EXISTS strspr_id1;
 CREATE INDEX strspr_id1 ON fmk.strspr( id );
 GRANT ALL ON TABLE fmk.strspr TO xtrole;
 
@@ -2812,6 +2885,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_strspr
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_strspr_user_code_idx;
 CREATE INDEX on fmk.semaphores_strspr(user_code);
 GRANT ALL ON TABLE fmk.semaphores_strspr TO xtrole;
 
@@ -2836,6 +2910,7 @@ CREATE TABLE IF NOT EXISTS fmk.ld_parobr
   godina character(4)
 );
 
+DROP INDEX IF EXISTS ld_parobr_id1;
 CREATE INDEX ld_parobr_id1 ON fmk.ld_parobr( id );
 GRANT ALL ON TABLE fmk.ld_parobr TO xtrole;
 
@@ -2854,6 +2929,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_parobr
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_ld_parobr_user_code_idx;
 CREATE INDEX on fmk.semaphores_ld_parobr(user_code);
 GRANT ALL ON TABLE fmk.semaphores_ld_parobr TO xtrole;
 
@@ -2872,6 +2948,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_kred
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_kred_user_code_idx;
 CREATE INDEX on fmk.semaphores_kred(user_code);
 GRANT ALL ON TABLE fmk.semaphores_kred TO xtrole;
 
@@ -2890,6 +2967,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_kbenef
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_kbenef_user_code_idx;
 CREATE INDEX on fmk.semaphores_kbenef(user_code);
 GRANT ALL ON TABLE fmk.semaphores_kbenef TO xtrole;
 
@@ -2910,6 +2988,8 @@ CREATE TABLE IF NOT EXISTS fmk.ld_radsiht
   izvrseno numeric(14,3),
   bodova numeric(14,2)
 );
+
+DROP INDEX IF EXISTS ld_radsiht_id1;
 CREATE INDEX ld_radsiht_id1 ON fmk.ld_radsiht(godina, mjesec, idradn);
 GRANT ALL ON TABLE fmk.ld_radsiht TO xtrole;
 
@@ -2928,6 +3008,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_radsiht
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_ld_radsiht_user_code_idx;
 CREATE INDEX on fmk.semaphores_ld_radsiht(user_code);
 GRANT ALL ON TABLE fmk.semaphores_ld_radsiht TO xtrole;
 
@@ -2942,6 +3023,8 @@ CREATE TABLE IF NOT EXISTS fmk.ld_tprsiht
   k3 character(3),
   ff character(30)
 );
+
+DROP INDEX IF EXISTS ld_tprsiht_id1;
 CREATE INDEX ld_tprsiht_id1 ON fmk.ld_tprsiht(id);
 GRANT ALL ON TABLE fmk.ld_tprsiht TO xtrole;
 
@@ -2958,6 +3041,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_ld_tprsiht
       ids text[]
 );
 
+DROP INDEX IF EXISTS semaphores_ld_tprsiht_user_code_idx;
 CREATE INDEX on fmk.semaphores_ld_tprsiht(user_code);
 GRANT ALL ON TABLE fmk.semaphores_ld_tprsiht TO xtrole;
 
@@ -2972,27 +3056,8 @@ WHERE (u2.knowhow_package_version('fmk') < 30005);
 
 SELECT u2.execute($$
 
-CREATE TABLE IF NOT EXISTS fmk.ops
-(
-      id character(4),
-      match_code character(10),
-      idj character(3),
-      idn0 character(1),
-      idkan character(2),
-      naz character(20),
-      zipcode character(5),
-      puccanton character(2),
-      puccity character(5),
-      region character(1)
-
-);
-
-
-
-
 -- rename table ops column
 ALTER TABLE fmk.ops RENAME COLUMN region TO reg;
-
 
 $$)
 WHERE (u2.knowhow_package_version('fmk') < 30006);
@@ -3006,22 +3071,8 @@ SELECT u2.execute($$
 
 -- ld tabela obracnui
 
-CREATE TABLE IF NOT EXISTS fmk.ld_obracuni
-(
-      rj character(2),
-      godina numeric(4,0),
-      mjesec numeric(2,0),
-      status character(1),
-      dat_ispl date,
-      obr character(1),
-      mj_ispl numeric(2,0),
-      ispl_za character(50),
-      vr_ispl character(50)
-);
-
 ALTER TABLE fmk.ld_obracuni ADD COLUMN k1 character(4), 
 	ADD COLUMN k2 character(10);
-
 
 $$)
 WHERE (u2.knowhow_package_version('fmk') < 30007);
