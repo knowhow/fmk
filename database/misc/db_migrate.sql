@@ -47,6 +47,8 @@ CREATE TABLE IF NOT EXISTS fmk.fin_suban
   PRIMARY KEY(idfirma, idvn, brnal, rbr)
 );
 
+DROP INDEX IF EXISTS fin_suban_datdok;
+DROP INDEX IF EXISTS fin_suban_id1;
 CREATE INDEX fin_suban_datdok ON fmk.fin_suban(datdok);
 CREATE INDEX fin_suban_id1 ON fmk.fin_suban(idfirma, idvn, brnal, rbr);
 GRANT ALL ON TABLE fmk.fin_suban TO xtrole;
