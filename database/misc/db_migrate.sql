@@ -1568,7 +1568,7 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_sint
       user_code varchar(20) NOT NULL PRIMARY KEY,
       algorithm character(15) NOT NULL DEFAULT 'full',
       version bigint NOT NULL, 
-      last_trans_version bigint DEFAULT,
+      last_trans_version bigint,
       last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
       last_trans_user_code varchar(20),
       dat date,
@@ -2706,12 +2706,21 @@ SELECT u2.execute($$
 
 -- alter roba...
 
+ALTER TABLE fmk.roba DROP COLUMN IF EXISTS k7;
+ALTER TABLE fmk.roba DROP COLUMN IF EXISTS k8;
+ALTER TABLE fmk.roba DROP COLUMN IF EXISTS k9;
+ALTER TABLE fmk.roba DROP COLUMN IF EXISTS strings;
+
 ALTER TABLE fmk.roba ADD COLUMN k7 character(4);
 ALTER TABLE fmk.roba ADD COLUMN k8 character(4);
 ALTER TABLE fmk.roba ADD COLUMN k9 character(4);
 ALTER TABLE fmk.roba ADD COLUMN strings numeric(10,0);
 
 -- alter rugov
+alter table fmk.fakt_rugov drop column if exists k1;
+alter table fmk.fakt_rugov drop column if exists k2;
+alter table fmk.fakt_rugov drop column if exists dest;
+alter table fmk.fakt_rugov drop column if exists cijena;
 
 alter table fmk.fakt_rugov add column k1 character(1);
 alter table fmk.fakt_rugov add column k2 character(2);
@@ -2786,6 +2795,71 @@ WHERE (u2.knowhow_package_version('fmk') < 30004);
 --- start 3.0.5 verzija
 
 SELECT u2.execute($$
+
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i31;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i32;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i33;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i34;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i35;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i36;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i37;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i38;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i39;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i40;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i41;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i42;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i43;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i44;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i45;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i46;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i47;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i48;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i49;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i50;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i51;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i52;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i53;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i54;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i55;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i56;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i57;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i58;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i59;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS i60;
+
+
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s31;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s32;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s33;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s34;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s35;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s36;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s37;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s38;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s39;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s40;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s41;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s42;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s43;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s44;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s45;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s46;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s47;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s48;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s49;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s50;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s51;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s52;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s53;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s54;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s55;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s56;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s57;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s58;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s59;
+ALTER TABLE fmk.ld_ld DROP COLUMN IF EXISTS s60;
+
+
 
 ALTER TABLE fmk.ld_ld 
     ADD COLUMN i31 numeric(12,2),
@@ -3056,8 +3130,10 @@ WHERE (u2.knowhow_package_version('fmk') < 30005);
 
 SELECT u2.execute($$
 
--- rename table ops column
-ALTER TABLE fmk.ops RENAME COLUMN region TO reg;
+ALTER TABLE fmk.ops DROP COLUMN IF EXISTS reg;
+ALTER TABLE fmk.ops DROP COLUMN IF EXISTS region;
+
+ALTER TABLE fmk.ops ADD COLUMN reg character(1); 
 
 $$)
 WHERE (u2.knowhow_package_version('fmk') < 30006);
@@ -3070,6 +3146,9 @@ WHERE (u2.knowhow_package_version('fmk') < 30006);
 SELECT u2.execute($$
 
 -- ld tabela obracnui
+
+ALTER TABLE fmk.ld_obracuni DROP COLUMN IF EXISTS k1;
+ALTER TABLE fmk.ld_obracuni DROP COLUMN IF EXISTS k2;
 
 ALTER TABLE fmk.ld_obracuni ADD COLUMN k1 character(4), 
 	ADD COLUMN k2 character(10);
