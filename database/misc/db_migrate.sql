@@ -3212,3 +3212,223 @@ WHERE (u2.knowhow_package_version('fmk') < 30101);
 
 --- end 3.1.1 verzija
 
+
+--- start 3.1.2 verzija
+
+
+SELECT u2.execute($$
+
+-- tabele modula MAT
+
+CREATE TABLE IF NOT EXISTS fmk.mat_suban
+(
+  idfirma character(2),
+  idroba character(10),
+  idkonto character(7),
+  idvn character(2),
+  brnal character(4),
+  rbr character(4),
+  idtipdok character(2),
+  brdok character(8),
+  datdok date,
+  u_i character(1),
+  kolicina numeric(10,3),
+  d_p character(1),
+  iznos numeric(15,2),
+  idpartner character(6),
+  idzaduz character(6),
+  iznos2 numeric(15,2),
+  datkurs date,
+  k1 character(1),
+  k2 character(1),
+  k3 character(1),
+  k4 character(1),
+  PRIMARY KEY( idfirma, idvn, brnal, rbr )
+);
+
+DROP INDEX IF EXISTS mat_suban_id1;
+DROP INDEX IF EXISTS mat_suban_id2;
+DROP INDEX IF EXISTS mat_suban_id3;
+DROP INDEX IF EXISTS mat_suban_id4;
+DROP INDEX IF EXISTS mat_suban_id5;
+CREATE INDEX mat_suban_id1 ON fmk.mat_suban(idfirma, idroba, datdok);
+CREATE INDEX mat_suban_id2 ON fmk.mat_suban(idfirma, idpartner, idroba);
+CREATE INDEX mat_suban_id3 ON fmk.mat_suban(idfirma, idkonto, idroba, datdok);
+CREATE INDEX mat_suban_id4 ON fmk.mat_suban(idfirma, idvn, brnal, rbr);
+CREATE INDEX mat_suban_id5 ON fmk.mat_suban(idfirma, idkonto, idpartner, idroba, datdok);
+GRANT ALL ON TABLE fmk.mat_suban TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_mat_suban
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_mat_suban_user_code_idx;
+CREATE INDEX on fmk.semaphores_mat_suban(user_code);
+GRANT ALL ON TABLE fmk.semaphores_mat_suban TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.mat_nalog
+(
+  idfirma character(2),
+  idvn character(2),
+  brnal character(4),
+  datdok date,
+  dug numeric(15,2),
+  pot numeric(15,2),
+  dug2 numeric(15,2),
+  pot2 numeric(15,2),
+  PRIMARY KEY( idfirma, idvn, brnal )
+);
+
+DROP INDEX IF EXISTS mat_nalog_id1;
+CREATE INDEX mat_nalog_id1 ON fmk.mat_nalog(idfirma, idvn, brnal);
+GRANT ALL ON TABLE fmk.mat_nalog TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_mat_nalog
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_mat_nalog_user_code_idx;
+CREATE INDEX on fmk.semaphores_mat_nalog(user_code);
+GRANT ALL ON TABLE fmk.semaphores_mat_nalog TO xtrole;
+
+
+
+CREATE TABLE IF NOT EXISTS fmk.mat_anal
+(
+  idfirma character(2),
+  idkonto character(7),
+  idvn character(2),
+  brnal character(4),
+  datnal date,
+  rbr character(3),
+  dug numeric(15,2),
+  pot numeric(15,2),
+  dug2 numeric(15,2),
+  pot2 numeric(15,2),
+  PRIMARY KEY( idfirma, idvn, brnal, rbr )
+);
+
+DROP INDEX IF EXISTS mat_anal_id1;
+DROP INDEX IF EXISTS mat_anal_id2;
+CREATE INDEX mat_anal_id1 ON fmk.mat_anal(idfirma, idkonto, datnal);
+CREATE INDEX mat_anal_id2 ON fmk.mat_anal(idfirma, idvn, brnal, idkonto);
+GRANT ALL ON TABLE fmk.mat_anal TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_mat_anal
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_mat_anal_user_code_idx;
+CREATE INDEX on fmk.semaphores_mat_anal(user_code);
+GRANT ALL ON TABLE fmk.semaphores_mat_anal TO xtrole;
+
+
+
+
+CREATE TABLE IF NOT EXISTS fmk.mat_sint
+(
+  idfirma character(2),
+  idkonto character(3),
+  idvn character(2),
+  brnal character(4),
+  datnal date,
+  rbr character(3),
+  dug numeric(15,2),
+  pot numeric(15,2),
+  dug2 numeric(15,2),
+  pot2 numeric(15,2),
+  PRIMARY KEY( idfirma, idvn, brnal, rbr )
+);
+
+DROP INDEX IF EXISTS mat_sint_id1;
+DROP INDEX IF EXISTS mat_sint_id2;
+CREATE INDEX mat_sint_id1 ON fmk.mat_sint(idfirma, idkonto, datnal);
+CREATE INDEX mat_sint_id2 ON fmk.mat_sint(idfirma, idvn, brnal, idkonto);
+GRANT ALL ON TABLE fmk.mat_sint TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_mat_sint
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_mat_sint_user_code_idx;
+CREATE INDEX on fmk.semaphores_mat_sint(user_code);
+GRANT ALL ON TABLE fmk.semaphores_mat_sint TO xtrole;
+
+
+
+CREATE TABLE IF NOT EXISTS fmk.mat_karkon
+(
+  id character(2),
+  tip_nc character(1),
+  tip_pc character(1)
+);
+
+DROP INDEX IF EXISTS mat_anal_id1;
+CREATE INDEX mat_anal_id1 ON fmk.mat_karkon(id);
+GRANT ALL ON TABLE fmk.mat_karkon TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_mat_karkon
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_mat_karkon_user_code_idx;
+CREATE INDEX on fmk.semaphores_mat_karkon(user_code);
+GRANT ALL ON TABLE fmk.semaphores_mat_karkon TO xtrole;
+
+
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 30102);
+
+--- end 3.1.2 verzija
+
+
+
+
+
