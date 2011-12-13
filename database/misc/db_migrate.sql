@@ -3281,7 +3281,7 @@ CREATE TABLE IF NOT EXISTS fmk.mat_nalog
   idfirma character(2),
   idvn character(2),
   brnal character(4),
-  datdok date,
+  datnal date,
   dug numeric(15,2),
   pot numeric(15,2),
   dug2 numeric(15,2),
