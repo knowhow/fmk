@@ -3400,8 +3400,8 @@ CREATE TABLE IF NOT EXISTS fmk.mat_karkon
   tip_pc character(1)
 );
 
-DROP INDEX IF EXISTS mat_anal_id1;
-CREATE INDEX mat_anal_id1 ON fmk.mat_karkon(id);
+DROP INDEX IF EXISTS mat_karkon_id1;
+CREATE INDEX mat_karkon_id1 ON fmk.mat_karkon(id);
 GRANT ALL ON TABLE fmk.mat_karkon TO xtrole;
 
 
