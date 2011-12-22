@@ -3430,5 +3430,21 @@ WHERE (u2.knowhow_package_version('fmk') < 30102);
 
 
 
+--- start 3.1.21 verzija
+
+
+SELECT u2.execute($$
+
+-- tabela ROBA, polje idkonto, modul MAT
+
+ALTER TABLE fmk.roba ADD COLUMN idkonto character(7);
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 301021);
+
+--- end 3.1.21 verzija
+
+
+
 
 
