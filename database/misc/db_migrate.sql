@@ -3421,8 +3421,6 @@ DROP INDEX IF EXISTS semaphores_mat_karkon_user_code_idx;
 CREATE INDEX on fmk.semaphores_mat_karkon(user_code);
 GRANT ALL ON TABLE fmk.semaphores_mat_karkon TO xtrole;
 
-
-
 $$)
 WHERE (u2.knowhow_package_version('fmk') < 30102);
 
@@ -3430,19 +3428,20 @@ WHERE (u2.knowhow_package_version('fmk') < 30102);
 
 
 
---- start 3.1.21 verzija
+--- start 3.2.0 verzija
 
 
 SELECT u2.execute($$
 
 -- tabela ROBA, polje idkonto, modul MAT
 
+ALTER TABLE fmk.roba DROP COLUMN IF EXISTS idkonto;
 ALTER TABLE fmk.roba ADD COLUMN idkonto character(7);
 
 $$)
-WHERE (u2.knowhow_package_version('fmk') < 301021);
+WHERE (u2.knowhow_package_version('fmk') < 30200);
 
---- end 3.1.21 verzija
+--- end 3.2.0 verzija
 
 
 
