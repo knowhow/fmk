@@ -1,3 +1,5 @@
+3.2.0, vsasa, polje idkonto u tabeli roba (modul MAT)
+
 3.0.7, vsasa, ld_obracuni, dodata nova polja u tabelu
 
 3.0.6, vsasa, tabela ops, promjena naziva polja
