@@ -1,3 +1,7 @@
+4.0.6, 2011-12-24 hernad
+
+ - [#25309](http://redmine.bring.out.ba/issues/25309) not found, setmetric "!!UNSET!!" parametar
+
 4.0.2, 2011-12-24 hernad
 
  - [#25309](http://redmine.bring.out.ba/issues/25309)

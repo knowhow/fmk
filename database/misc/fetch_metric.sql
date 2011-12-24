@@ -1,4 +1,4 @@
----- start verzija 4.0.2
+---- start verzija 4.0.6
 
 SELECT u2.execute($$
 
@@ -43,7 +43,8 @@ CREATE INDEX metric_name_key
   (metric_name COLLATE pg_catalog."default" );
 
 
-CREATE OR REPLACE FUNCTION FetchMetricText(text) RETURNS TEXT STABLE AS '
+CREATE OR REPLACE FUNCTION FetchMetricText(text) RETURNS TEXT STABLE AS 
+$BODY$
 DECLARE
   _pMetricName ALIAS FOR $1;
   _returnVal TEXT;
@@ -51,12 +52,20 @@ BEGIN
   SELECT metric_value::TEXT INTO _returnVal
     FROM metric
    WHERE metric_name = _pMetricName;
-  RETURN _returnVal;
+  
+  IF (FOUND) THEN
+     RETURN _returnVal;
+  ELSE
+     RETURN '!!notfound!!';
+  END IF;
+
 END;
-' LANGUAGE 'plpgsql';
+$BODY$
+LANGUAGE 'plpgsql';
 
 
-CREATE OR REPLACE FUNCTION setMetric(TEXT, TEXT) RETURNS BOOLEAN AS '
+CREATE OR REPLACE FUNCTION setMetric(TEXT, TEXT) RETURNS BOOLEAN AS 
+$BODY$
 DECLARE
   pMetricName ALIAS FOR $1;
   pMetricValue ALIAS FOR $2;
@@ -64,6 +73,12 @@ DECLARE
 
 BEGIN
 
+  IF (pMetricValue = '!!UNSET!!'::TEXT) THEN
+     DELETE FROM metric
+     WHERE (metric_name=pMetricName);
+     RETURN TRUE;
+  END IF;
+  
   SELECT metric_id INTO _metricid
   FROM metric
   WHERE (metric_name=pMetricName);
@@ -82,9 +97,11 @@ BEGIN
   RETURN TRUE;
 
 END;
-' LANGUAGE 'plpgsql';
+$BODY$
+LANGUAGE 'plpgsql';
+
 
 $$)
-WHERE (u2.knowhow_package_version('fmk') <  40002);
+WHERE (u2.knowhow_package_version('fmk') <  40006);
 
----- verzija 4.0.2
+---- verzija 4.0.6
