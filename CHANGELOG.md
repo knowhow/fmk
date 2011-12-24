@@ -1,10 +1,16 @@
-3.2.0, vsasa, polje idkonto u tabeli roba (modul MAT)
+4.0.2, 2011-12-24 hernad
+
+ - [#25309](http://redmine.bring.out.ba/issues/25309)
+
+3.2.0, 2011-12-23 vsasa, polje idkonto u tabeli roba (modul MAT)
 
 3.0.7, vsasa, ld_obracuni, dodata nova polja u tabelu
 
 3.0.6, vsasa, tabela ops, promjena naziva polja
 
-3.0.5, vsasa, ld tabele, kreiranje [pogledaj #25530](http://redmine.bring.out.ba/issues/25530)
+3.0.5, vsasa, ld tabele, kreiranje 
+
+  - [#25530](http://redmine.bring.out.ba/issues/25530)
 
 3.0.4, vsasa, fmk tabele, skripte za kreiranje
 
