@@ -2,7 +2,7 @@
          name="fmk"
          developer="vsasa@bring.out.ba"
          descrip="xtuple fmk package"
-         version="3.2.0"
+         version="4.0.2"
          updater="2.2.4">
   <pkgnotes></pkgnotes>
 
@@ -35,6 +35,7 @@
 
   <script file="database/misc/schemaComment.sql" />
   <script file="database/misc/db_migrate.sql" name="db_migrate"/>
+  <script file="database/misc/fetch_metric.sql" name="db_migrate"/>
   <script file="database/views/views_migrate.sql" name="views_migrate"/>
   <script file="database/views/views_rnal_migrate.sql" name="views_rnal_migrate"/>
   
