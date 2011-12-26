@@ -9,14 +9,15 @@
  * By using this software, you agree to be bound by its terms.
  */
 
----- start verzija 4.0.7
+---- start verzija 4.0.8
 
 SELECT u2.execute($$
 
 GRANT ALL ON SCHEMA u2 TO admin;
 GRANT ALL ON SCHEMA u2 TO xtrole;
+GRANT ALL ON u2._versions TO xtrole;
 
 $$)
-WHERE (u2.knowhow_package_version('fmk') <  40007);
+WHERE (u2.knowhow_package_version('fmk') <  40008);
 
----- verzija 4.0.7
+---- verzija 4.0.8
