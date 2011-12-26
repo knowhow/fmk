@@ -1,3 +1,7 @@
+4.0.8, 2011-12-26 hernad
+
+ - [#25887](http://redmine.bring.out.ba/issues/25887) u2._versions non-admin user
+
 4.0.6, 2011-12-24 hernad
 
  - [#25309](http://redmine.bring.out.ba/issues/25309) not found, setmetric "!!UNSET!!" parametar
