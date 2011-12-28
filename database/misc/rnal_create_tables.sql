@@ -282,8 +282,8 @@ CREATE TABLE fmk.rnal_articles
 
 DROP INDEX IF EXISTS fmk.rnal_articles_id1;
 DROP INDEX IF EXISTS fmk.rnal_articles_id2;
-CREATE INDEX fmk.rnal_articles_id1 ON fmk.rnal_articles(art_no);
-CREATE INDEX fmk.rnal_articles_id2 ON fmk.rnal_articles(doc_no, doc_log_ty, doc_log_no);
+CREATE INDEX fmk.rnal_articles_id1 ON fmk.rnal_articles(art_id);
+CREATE INDEX fmk.rnal_articles_id2 ON fmk.rnal_articles(art_desc);
 GRANT ALL ON TABLE fmk.rnal_articles TO xtrole;
 
 CREATE TABLE IF NOT EXISTS fmk.semaphores_rnal_articles
@@ -315,8 +315,8 @@ CREATE TABLE fmk.rnal_elements
 
 DROP INDEX IF EXISTS fmk.rnal_elements_id1;
 DROP INDEX IF EXISTS fmk.rnal_elements_id2;
-CREATE INDEX fmk.rnal_elements_id1 ON fmk.rnal_elements(art_no);
-CREATE INDEX fmk.rnal_elements_id2 ON fmk.rnal_elements(doc_no, doc_log_ty, doc_log_no);
+CREATE INDEX fmk.rnal_elements_id1 ON fmk.rnal_elements(art_id, el_no, el_id);
+CREATE INDEX fmk.rnal_elements_id2 ON fmk.rnal_elements(el_id);
 GRANT ALL ON TABLE fmk.rnal_elements TO xtrole;
 
 CREATE TABLE IF NOT EXISTS fmk.semaphores_rnal_elements
@@ -348,8 +348,8 @@ CREATE TABLE fmk.rnal_e_att
 
 DROP INDEX IF EXISTS fmk.rnal_e_att_id1;
 DROP INDEX IF EXISTS fmk.rnal_e_att_id2;
-CREATE INDEX fmk.rnal_e_att_id1 ON fmk.rnal_e_att(art_no);
-CREATE INDEX fmk.rnal_e_att_id2 ON fmk.rnal_e_att(doc_no, doc_log_ty, doc_log_no);
+CREATE INDEX fmk.rnal_e_att_id1 ON fmk.rnal_e_att(el_id, el_att_id);
+CREATE INDEX fmk.rnal_e_att_id2 ON fmk.rnal_e_att(el_att_id);
 GRANT ALL ON TABLE fmk.rnal_e_att TO xtrole;
 
 CREATE TABLE IF NOT EXISTS fmk.semaphores_rnal_e_att
@@ -381,8 +381,8 @@ CREATE TABLE fmk.rnal_e_aops
 
 DROP INDEX IF EXISTS fmk.rnal_e_aops_id1;
 DROP INDEX IF EXISTS fmk.rnal_e_aops_id2;
-CREATE INDEX fmk.rnal_e_aops_id1 ON fmk.rnal_e_aops(art_no);
-CREATE INDEX fmk.rnal_e_aops_id2 ON fmk.rnal_e_aops(doc_no, doc_log_ty, doc_log_no);
+CREATE INDEX fmk.rnal_e_aops_id1 ON fmk.rnal_e_aops(el_id, el_op_id);
+CREATE INDEX fmk.rnal_e_aops_id2 ON fmk.rnal_e_aops(el_op_id);
 GRANT ALL ON TABLE fmk.rnal_e_aops TO xtrole;
 
 CREATE TABLE IF NOT EXISTS fmk.semaphores_rnal_e_aops
@@ -450,8 +450,8 @@ CREATE TABLE fmk.rnal_e_gr_att
 
 DROP INDEX IF EXISTS fmk.rnal_e_gr_att_id1;
 DROP INDEX IF EXISTS fmk.rnal_e_gr_att_id2;
-CREATE INDEX fmk.rnal_e_gr_att_id1 ON fmk.rnal_e_gr_att(e_gr_id);
-CREATE INDEX fmk.rnal_e_gr_att_id2 ON fmk.rnal_e_gr_att(e_gr_desc);
+CREATE INDEX fmk.rnal_e_gr_att_id1 ON fmk.rnal_e_gr_att(e_gr_at_id);
+CREATE INDEX fmk.rnal_e_gr_att_id2 ON fmk.rnal_e_gr_att(e_gr_id, e_gr_at_re, e_gr_at_id);
 GRANT ALL ON TABLE fmk.rnal_e_gr_att TO xtrole;
 
 CREATE TABLE IF NOT EXISTS fmk.semaphores_rnal_e_gr_att
@@ -485,8 +485,8 @@ CREATE TABLE fmk.rnal_e_gr_val
 
 DROP INDEX IF EXISTS fmk.rnal_e_gr_val_id1;
 DROP INDEX IF EXISTS fmk.rnal_e_gr_val_id2;
-CREATE INDEX fmk.rnal_e_gr_val_id1 ON fmk.rnal_e_gr_val(e_gr_id);
-CREATE INDEX fmk.rnal_e_gr_val_id2 ON fmk.rnal_e_gr_val(e_gr_desc);
+CREATE INDEX fmk.rnal_e_gr_val_id1 ON fmk.rnal_e_gr_val(e_gr_vl_id);
+CREATE INDEX fmk.rnal_e_gr_val_id2 ON fmk.rnal_e_gr_val(e_gr_at_id, e_gr_vl_id);
 GRANT ALL ON TABLE fmk.rnal_e_gr_val TO xtrole;
 
 CREATE TABLE IF NOT EXISTS fmk.semaphores_rnal_e_gr_val
@@ -520,9 +520,7 @@ CREATE TABLE fmk.rnal_aops
 );
 
 DROP INDEX IF EXISTS fmk.rnal_aops_id1;
-DROP INDEX IF EXISTS fmk.rnal_aops_id2;
-CREATE INDEX fmk.rnal_aops_id1 ON fmk.rnal_aops(e_gr_id);
-CREATE INDEX fmk.rnal_aops_id2 ON fmk.rnal_aops(e_gr_desc);
+CREATE INDEX fmk.rnal_aops_id1 ON fmk.rnal_aops(aop_id);
 GRANT ALL ON TABLE fmk.rnal_aops TO xtrole;
 
 CREATE TABLE IF NOT EXISTS fmk.semaphores_rnal_aops
@@ -556,8 +554,8 @@ CREATE TABLE fmk.rnal_aops_att
 
 DROP INDEX IF EXISTS fmk.rnal_aops_att_id1;
 DROP INDEX IF EXISTS fmk.rnal_aops_att_id2;
-CREATE INDEX fmk.rnal_aops_att_id1 ON fmk.rnal_aops_att(e_gr_id);
-CREATE INDEX fmk.rnal_aops_att_id2 ON fmk.rnal_aops_att(e_gr_desc);
+CREATE INDEX fmk.rnal_aops_att_id1 ON fmk.rnal_aops_att(aop_att_id);
+CREATE INDEX fmk.rnal_aops_att_id2 ON fmk.rnal_aops_att(aop_id, aop_att_id);
 GRANT ALL ON TABLE fmk.rnal_aops_att TO xtrole;
 
 CREATE TABLE IF NOT EXISTS fmk.semaphores_rnal_aops_att
@@ -591,9 +589,7 @@ CREATE TABLE fmk.rnal_customs
 );
 
 DROP INDEX IF EXISTS fmk.rnal_customs_id1;
-DROP INDEX IF EXISTS fmk.rnal_customs_id2;
-CREATE INDEX fmk.rnal_customs_id1 ON fmk.rnal_customs(e_gr_id);
-CREATE INDEX fmk.rnal_customs_id2 ON fmk.rnal_customs(e_gr_desc);
+CREATE INDEX fmk.rnal_customs_id1 ON fmk.rnal_customs(cust_id);
 GRANT ALL ON TABLE fmk.rnal_customs TO xtrole;
 
 CREATE TABLE IF NOT EXISTS fmk.semaphores_rnal_customs
@@ -627,8 +623,12 @@ CREATE TABLE fmk.rnal_contacts
 
 DROP INDEX IF EXISTS fmk.rnal_contacts_id1;
 DROP INDEX IF EXISTS fmk.rnal_contacts_id2;
-CREATE INDEX fmk.rnal_contacts_id1 ON fmk.rnal_contacts(e_gr_id);
-CREATE INDEX fmk.rnal_contacts_id2 ON fmk.rnal_contacts(e_gr_desc);
+DROP INDEX IF EXISTS fmk.rnal_contacts_id3;
+DROP INDEX IF EXISTS fmk.rnal_contacts_id4;
+CREATE INDEX fmk.rnal_contacts_id1 ON fmk.rnal_contacts(cont_id);
+CREATE INDEX fmk.rnal_contacts_id2 ON fmk.rnal_contacts(cust_id, cont_id);
+CREATE INDEX fmk.rnal_contacts_id3 ON fmk.rnal_contacts(cust_id, cont_desc);
+CREATE INDEX fmk.rnal_contacts_id4 ON fmk.rnal_contacts(cont_desc);
 GRANT ALL ON TABLE fmk.rnal_contacts TO xtrole;
 
 CREATE TABLE IF NOT EXISTS fmk.semaphores_rnal_contacts
@@ -661,8 +661,12 @@ CREATE TABLE fmk.rnal_objects
 
 DROP INDEX IF EXISTS fmk.rnal_objects_id1;
 DROP INDEX IF EXISTS fmk.rnal_objects_id2;
-CREATE INDEX fmk.rnal_objects_id1 ON fmk.rnal_objects(e_gr_id);
-CREATE INDEX fmk.rnal_objects_id2 ON fmk.rnal_objects(e_gr_desc);
+DROP INDEX IF EXISTS fmk.rnal_objects_id3;
+DROP INDEX IF EXISTS fmk.rnal_objects_id4;
+CREATE INDEX fmk.rnal_objects_id1 ON fmk.rnal_objects(obj_id);
+CREATE INDEX fmk.rnal_objects_id2 ON fmk.rnal_objects(cust_id, obj_id);
+CREATE INDEX fmk.rnal_objects_id3 ON fmk.rnal_objects(cust_id, obj_desc);
+CREATE INDEX fmk.rnal_objects_id4 ON fmk.rnal_objects(obj_desc);
 GRANT ALL ON TABLE fmk.rnal_objects TO xtrole;
 
 CREATE TABLE IF NOT EXISTS fmk.semaphores_rnal_objects
@@ -681,19 +685,50 @@ DROP INDEX IF EXISTS semaphores_rnal_objects_user_code_idx;
 CREATE INDEX on fmk.semaphores_rnal_objects(user_code);
 GRANT ALL ON TABLE fmk.semaphores_rnal_objects TO xtrole;
 
+-- rnal/ral
 
+CREATE TABLE fmk.rnal_ral
+(
+  id numeric(5,0),
+  gl_tick numeric(2,0),
+  desc character(50),
+  en_desc character(50),
+  col_1 numeric(8,0),
+  col_2 numeric(8,0),
+  col_3 numeric(8,0),
+  col_4 numeric(8,0),
+  colp_1 numeric(12,5),
+  colp_2 numeric(12,5),
+  colp_3 numeric(12,5),
+  colp_4 numeric(12,5),
+  PRIMARY KEY ( id, gl_tick )
+);
 
+DROP INDEX IF EXISTS fmk.rnal_ral_id1;
+DROP INDEX IF EXISTS fmk.rnal_ral_id2;
+CREATE INDEX fmk.rnal_ral_id1 ON fmk.rnal_ral(id, gl_tick);
+CREATE INDEX fmk.rnal_ral_id2 ON fmk.rnal_ral(desc);
+GRANT ALL ON TABLE fmk.rnal_ral TO xtrole;
 
+CREATE TABLE IF NOT EXISTS fmk.semaphores_rnal_ral
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
 
-
-
-
-
-
-
+DROP INDEX IF EXISTS semaphores_rnal_ral_user_code_idx;
+CREATE INDEX on fmk.semaphores_rnal_ral(user_code);
+GRANT ALL ON TABLE fmk.semaphores_rnal_ral TO xtrole;
 
 
 $$)
 WHERE (u2.knowhow_package_version('fmk') <  40007);
 
 ---- verzija 4.0.7
+
