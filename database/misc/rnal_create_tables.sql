@@ -121,7 +121,7 @@ CREATE TABLE IF NOT EXISTS fmk.rnal_doc_it2
   doc_it_q2 numeric(15,5),
   doc_it_pri numeric(15,5),
   sh_desc text,
-  f_desc text,
+  descr text,
   PRIMARY KEY ( doc_no, doc_it_no, it_no )
 );
 
@@ -691,7 +691,7 @@ CREATE TABLE IF NOT EXISTS fmk.rnal_ral
 (
   id numeric(5,0),
   gl_tick numeric(2,0),
-  f_desc varchar(50),
+  descr varchar(50),
   en_desc varchar(50),
   col_1 numeric(8,0),
   col_2 numeric(8,0),
@@ -707,7 +707,7 @@ CREATE TABLE IF NOT EXISTS fmk.rnal_ral
 DROP INDEX IF EXISTS fmk.rnal_ral_id1;
 DROP INDEX IF EXISTS fmk.rnal_ral_id2;
 CREATE INDEX rnal_ral_id1 ON fmk.rnal_ral(id, gl_tick);
-CREATE INDEX rnal_ral_id2 ON fmk.rnal_ral(f_desc);
+CREATE INDEX rnal_ral_id2 ON fmk.rnal_ral(descr);
 GRANT ALL ON TABLE fmk.rnal_ral TO xtrole;
 
 CREATE TABLE IF NOT EXISTS fmk.semaphores_rnal_ral
