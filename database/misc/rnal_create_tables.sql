@@ -548,6 +548,7 @@ CREATE TABLE IF NOT EXISTS fmk.rnal_aops_att
   aop_att_de text,
   aop_att_fu text,
   in_art_des varchar(1),
+  aop_att_jo varchar(20),
   match_code varchar(10),
   PRIMARY KEY ( aop_att_id, aop_id )
 );
