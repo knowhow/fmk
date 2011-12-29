@@ -8,6 +8,7 @@
 -- root directory of this source code archive.
 -- By using this software, you agree to be bound by its terms.
 --
+---- TODO: trenutno disable-ovano
 
 ---- start verzija 4.1.1
 
@@ -299,7 +300,8 @@ ALTER table semaphores_vprih          ADD COLUMN b_season int;
 ALTER table semaphores_vprih          ADD COLUMN client_id int;
 
 $$)
-WHERE (u2.knowhow_package_version('fmk') <  040101);
+WHERE (u2.knowhow_package_version('fmk') <  0);
+-- WHERE (u2.knowhow_package_version('fmk') <  040101);
 
 ---- verzija 4.1.1
 

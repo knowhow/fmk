@@ -9,7 +9,8 @@
 -- By using this software, you agree to be bound by its terms.
 --
 
----- start verzija 4.1.0
+--- start verzija 4.1.0
+--- TODO: primary key dodati, disabele-ovano trenutno
 
 SELECT u2.execute($$
 
@@ -24,7 +25,7 @@ GRANT ALL ON TABLE client_id_seq TO xtrole;
 
 CREATE TABLE client_id
 (
-  client_id integer NOT NULL DEFAULT nextval('client_id_seq'),
+  client_id integer NOT NULL DEFAULT nextval('client_id_seq') PRIMARY KEY,
   host_name varchar(100),
   host_ip inet,
   os_name varchar(100),
@@ -37,7 +38,8 @@ GRANT ALL ON TABLE metric TO xtrole;
 COMMENT ON TABLE client_id  IS 'database client ids';
 
 $$)
-WHERE (u2.knowhow_package_version('fmk') <  040100);
+WHERE (u2.knowhow_package_version('fmk') <  0);
+-- WHERE (u2.knowhow_package_version('fmk') <  040100);
 
 ---- verzija 4.1.0
 
