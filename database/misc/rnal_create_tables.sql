@@ -47,18 +47,6 @@ CREATE INDEX rnal_docs_idD1 ON fmk.rnal_docs(doc_date, doc_no);
 CREATE INDEX rnal_docs_idD2 ON fmk.rnal_docs(doc_dvr_da, doc_no);
 GRANT ALL ON TABLE fmk.rnal_docs TO xtrole;
 
-CREATE TABLE IF NOT EXISTS fmk.semaphores_rnal_docs
-(
-      user_code varchar(20) NOT NULL PRIMARY KEY,
-      algorithm varchar(15) NOT NULL DEFAULT 'full',
-      version bigint NOT NULL, 
-      last_trans_version bigint ,
-      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
-      last_trans_user_code varchar(20),
-      dat date,
-      ids text[]
-);
-
 DROP INDEX IF EXISTS semaphores_rnal_docs_user_code_idx;
 CREATE INDEX on fmk.semaphores_rnal_docs(user_code);
 GRANT ALL ON TABLE fmk.semaphores_rnal_docs TO xtrole;
