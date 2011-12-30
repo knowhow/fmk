@@ -47,10 +47,6 @@ CREATE INDEX rnal_docs_idD1 ON fmk.rnal_docs(doc_date, doc_no);
 CREATE INDEX rnal_docs_idD2 ON fmk.rnal_docs(doc_dvr_da, doc_no);
 GRANT ALL ON TABLE fmk.rnal_docs TO xtrole;
 
-DROP INDEX IF EXISTS semaphores_rnal_docs_user_code_idx;
-CREATE INDEX on fmk.semaphores_rnal_docs(user_code);
-GRANT ALL ON TABLE fmk.semaphores_rnal_docs TO xtrole;
-
 -- rnal/doc_it
 
 CREATE TABLE IF NOT EXISTS fmk.rnal_doc_it

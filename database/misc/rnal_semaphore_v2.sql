@@ -34,6 +34,11 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_rnal_docs
 
 );
 
+DROP INDEX IF EXISTS semaphores_rnal_docs_user_code_idx;
+CREATE INDEX on fmk.semaphores_rnal_docs(user_code);
+GRANT ALL ON TABLE fmk.semaphores_rnal_docs TO xtrole;
+
+
 WHERE (u2.knowhow_package_version('fmk') <  0);
 -- WHERE (u2.knowhow_package_version('fmk') <  040101);
 
