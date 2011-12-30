@@ -3443,7 +3443,29 @@ WHERE (u2.knowhow_package_version('fmk') < 30200);
 
 --- end 3.2.0 verzija
 
+--- start 4.1.2 verzija
 
+SELECT u2.execute($$
 
+alter table fmk.semaphores_ld_radn  alter column last_trans_version drop default;   
+alter table fmk.semaphores_ld_ld  alter column last_trans_version drop default;   
+alter table fmk.semaphores_ld_radkr  alter column last_trans_version drop default;   
+alter table fmk.semaphores_ld_dopr  alter column last_trans_version drop default;   
+alter table fmk.semaphores_ld_por  alter column last_trans_version drop default;   
+alter table fmk.semaphores_ld_rj  alter column last_trans_version drop default;   
+alter table fmk.semaphores_ld_radsiht  alter column last_trans_version drop default;   
+alter table fmk.semaphores_ld_tippr  alter column last_trans_version drop default;   
+alter table fmk.semaphores_ld_tippr2  alter column last_trans_version drop default;   
+alter table fmk.semaphores_ld_norsiht  alter column last_trans_version drop default;   
+alter table fmk.semaphores_ld_obracuni  alter column last_trans_version drop default;   
+alter table fmk.semaphores_ld_parobr  alter column last_trans_version drop default;   
+alter table fmk.semaphores_ld_pk_data  alter column last_trans_version drop default;   
+alter table fmk.semaphores_ld_pk_radn  alter column last_trans_version drop default;   
+alter table fmk.semaphores_ld_radsat  alter column last_trans_version drop default;   
+alter table fmk.semaphores_ld_tprsiht  alter column last_trans_version drop default;   
 
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40102);
+
+--- end 4.1.2 verzija
 
