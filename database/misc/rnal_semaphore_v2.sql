@@ -39,6 +39,7 @@ CREATE INDEX on fmk.semaphores_rnal_docs(user_code);
 GRANT ALL ON TABLE fmk.semaphores_rnal_docs TO xtrole;
 
 
+$$)
 WHERE (u2.knowhow_package_version('fmk') <  0);
 -- WHERE (u2.knowhow_package_version('fmk') <  040101);
 
