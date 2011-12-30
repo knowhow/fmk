@@ -41,6 +41,7 @@
   <script file="database/misc/fetch_metric.sql" name="fetch_metric"/>
   <script file="database/misc/u2_permissions.sql" name="u2_permissions"/>
   <script file="database/misc/rnal_create_tables.sql" name="rnal_create_tables"/>
+  <script file="database/misc/rnal_semaphore_v2.sql" name="rnal_semaphore_v2"/>
   
   <script file="database/misc/client_id.sql" name="client_id"/>
   <script file="database/misc/semaphore_v2.sql" name="semaphore_v2"/>
