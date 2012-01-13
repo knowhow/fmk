@@ -717,3 +717,16 @@ WHERE (u2.knowhow_package_version('fmk') <  40009);
 
 ---- verzija 4.0.9
 
+
+---- start verzija 4.1.3
+
+SELECT u2.execute($$
+
+ALTER TABLE fmk.rnal_doc_it ADD COLUMN it_lab_pos character(1);
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') <  40103);
+
+---- verzija 4.1.3
+
+
