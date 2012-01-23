@@ -1,3 +1,7 @@
+4.1.4, 2012-01-23
+
+ - [#26350](http://redmine.bring.out.ba/issues/26350) nepostojece polje u tabeli fakt_fakt ubaceno
+
 4.0.9, 2011-12-28 vsasa
 
  - [#25915](http://redmine.bring.out.ba/issues/25915) rnal tabele i semafori, kreiranje

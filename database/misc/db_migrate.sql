@@ -3472,3 +3472,15 @@ WHERE (u2.knowhow_package_version('fmk') < 40102);
 
 --- end 4.1.2 verzija
 
+
+--- start 4.1.4 verzija
+
+SELECT u2.execute($$
+
+ALTER TABLE fmk.fakt_fakt ADD COLUMN fisc_rn numeric(10,0);
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40104);
+
+--- end 4.1.4 verzija
+
