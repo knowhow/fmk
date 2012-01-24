@@ -1,3 +1,7 @@
+4.1.5, 2012-01-24
+
+ - ubacena tabela pkonto i njen semafor
+
 4.1.4, 2012-01-23
 
  - [#26350](http://redmine.bring.out.ba/issues/26350) nepostojece polje u tabeli fakt_fakt ubaceno
