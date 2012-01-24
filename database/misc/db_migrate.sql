@@ -3498,7 +3498,7 @@ CREATE TABLE IF NOT EXISTS fmk.pkonto
 DROP INDEX IF EXISTS pkonto_id1;
 DROP INDEX IF EXISTS pkonto_id2;
 CREATE INDEX pkonto_id1 ON fmk.pkonto(id);
-CREATE INDEX pkonto_id2 ON fmk.pkonto(naz);
+CREATE INDEX pkonto_id2 ON fmk.pkonto(tip);
 GRANT ALL ON TABLE fmk.pkonto TO xtrole;
 
 
