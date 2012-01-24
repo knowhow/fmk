@@ -3484,3 +3484,42 @@ WHERE (u2.knowhow_package_version('fmk') < 40104);
 
 --- end 4.1.4 verzija
 
+
+--- start 4.1.5 verzija
+
+SELECT u2.execute($$
+
+CREATE TABLE IF NOT EXISTS fmk.pkonto
+(
+  id character(7),
+  tip character(1)
+);
+
+DROP INDEX IF EXISTS pkonto_id1;
+DROP INDEX IF EXISTS pkonto_id2;
+CREATE INDEX pkonto_id1 ON fmk.pkonto(id);
+CREATE INDEX pkonto_id2 ON fmk.pkonto(naz);
+GRANT ALL ON TABLE fmk.pkonto TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_pkonto
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_pkonto_user_code_idx;
+CREATE INDEX on fmk.semaphores_pkonto(user_code);
+GRANT ALL ON TABLE fmk.semaphores_pkonto TO xtrole;
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40105);
+
+--- end 4.1.5 verzija
+
