@@ -729,4 +729,30 @@ WHERE (u2.knowhow_package_version('fmk') <  40103);
 
 ---- verzija 4.1.3
 
+---- start verzija 4.1.6
+
+SELECT u2.execute($$
+
+DROP TABLE IF EXISTS fmk.semaphores_rnal_docs CASCADE;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_rnal_docs
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm varchar(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_rnal_docs_user_code_idx;
+CREATE INDEX on fmk.semaphores_rnal_docs(user_code);
+GRANT ALL ON TABLE fmk.semaphores_rnal_docs TO xtrole;
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') <  40106);
+
+---- verzija 4.1.6
 
