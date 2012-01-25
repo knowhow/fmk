@@ -3523,3 +3523,42 @@ WHERE (u2.knowhow_package_version('fmk') < 40105);
 
 --- end 4.1.5 verzija
 
+
+--- start 4.1.7 verzija
+
+SELECT u2.execute($$
+
+CREATE TABLE IF NOT EXISTS fmk.vrstep
+(
+  id character(2),
+  naz character(20)
+);
+
+DROP INDEX IF EXISTS vrstep_id1;
+DROP INDEX IF EXISTS vrstep_id2;
+CREATE INDEX vrstep_id1 ON fmk.vrstep(id);
+CREATE INDEX vrstep_id2 ON fmk.vrstep(naz);
+GRANT ALL ON TABLE fmk.vrstep TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_vrstep
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_vrstep_user_code_idx;
+CREATE INDEX on fmk.semaphores_vrstep(user_code);
+GRANT ALL ON TABLE fmk.semaphores_vrstep TO xtrole;
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40107);
+
+--- end 4.1.7 verzija
+
