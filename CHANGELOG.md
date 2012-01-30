@@ -1,3 +1,7 @@
+4.1.8, 2012-01-30
+
+ - ubacene tabele jprih, vrprim, ldvirm, kalvir - modul VIRM
+
 4.1.5, 2012-01-24
 
  - ubacena tabela pkonto i njen semafor

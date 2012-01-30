@@ -3562,3 +3562,146 @@ WHERE (u2.knowhow_package_version('fmk') < 40107);
 
 --- end 4.1.7 verzija
 
+
+--- start 4.1.8 verzija
+
+SELECT u2.execute($$
+
+CREATE TABLE IF NOT EXISTS fmk.vrprim
+(
+  id character(4),
+  naz varchar(55),
+  pom_txt varchar(100),
+  idkonto character(7),
+  idpartner character(6),
+  nacin_pl character(1),
+  racun character(16),
+  dobav character(1)
+);
+
+DROP INDEX IF EXISTS vrprim_id;
+DROP INDEX IF EXISTS vrprim_naz;
+DROP INDEX IF EXISTS vrprim_idkonto;
+CREATE INDEX vrprim_id ON fmk.vrprim(id);
+CREATE INDEX vrprim_naz ON fmk.vrprim(naz);
+CREATE INDEX vrprim_idkonto ON fmk.vrprim(idkonto, idpartner);
+GRANT ALL ON TABLE fmk.vrprim TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_vrprim
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_vrprim_user_code_idx;
+CREATE INDEX on fmk.semaphores_vrprim(user_code);
+GRANT ALL ON TABLE fmk.semaphores_vrprim TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.ldvirm
+(
+  id character(4),
+  naz varchar(50),
+  formula varchar(200)
+);
+
+DROP INDEX IF EXISTS ldvirm_id;
+CREATE INDEX ldvirm_id ON fmk.ldvirm(id);
+GRANT ALL ON TABLE fmk.ldvirm TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_ldvirm
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_ldvirm_user_code_idx;
+CREATE INDEX on fmk.semaphores_ldvirm(user_code);
+GRANT ALL ON TABLE fmk.semaphores_ldvirm TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.kalvir
+(
+  id character(4),
+  naz varchar(20),
+  formula varchar(200),
+  pnabr character(10)
+);
+
+DROP INDEX IF EXISTS kalvir_id;
+CREATE INDEX kalvir_id ON fmk.kalvir(id);
+GRANT ALL ON TABLE fmk.kalvir TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_kalvir
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_kalvir_user_code_idx;
+CREATE INDEX on fmk.semaphores_kalvir(user_code);
+GRANT ALL ON TABLE fmk.semaphores_kalvir TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.jprih
+(
+  id character(6),
+  idn0 character(1),
+  idkan character(2),
+  idops character(3),
+  naz varchar(40),
+  racun character(16),
+  budzorg character(7)
+);
+
+DROP INDEX IF EXISTS jprih_id;
+DROP INDEX IF EXISTS jprih_naz;
+CREATE INDEX jprih_id ON fmk.jprih(id, idops, idkan, idn0, racun);
+CREATE INDEX jprih_naz ON fmk.jprih(naz);
+GRANT ALL ON TABLE fmk.jprih TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_jprih
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_jprih_user_code_idx;
+CREATE INDEX on fmk.semaphores_jprih(user_code);
+GRANT ALL ON TABLE fmk.semaphores_jprih TO xtrole;
+
+
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40108);
+
+--- end 4.1.8 verzija
+
