@@ -3705,3 +3705,99 @@ WHERE (u2.knowhow_package_version('fmk') < 40108);
 
 --- end 4.1.8 verzija
 
+--- start 4.1.9 verzija
+
+SELECT u2.execute($$
+
+CREATE TABLE IF NOT EXISTS fmk.sii_sii
+(
+  id character(10),
+  match_code character(10),
+  naz character(30),
+  idrj character(4),
+  datum date,
+  datotp date,
+  opisotp character(30),
+  idkonto character(7),
+  kolicina numeric(6,1),
+  jmj character(3),
+  idam character(8),
+  idrev character(4),
+  nabvr numeric(18,2),
+  otpvr numeric(18,2),
+  amd numeric(18,2),
+  amp numeric(18,2),
+  revd numeric(18,2),
+  revp numeric(18,2),
+  k1 character(4),
+  k2 character(1),
+  k3 character(2),
+  opis character(25),
+  brsoba character(6),
+  idpartner character(6)
+);
+
+DROP INDEX IF EXISTS sii_sii_id1;
+CREATE INDEX sii_sii_id1 ON fmk.sii_sii(id);
+GRANT ALL ON TABLE fmk.sii_sii TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.sii_promj
+(
+  id character(10),
+  match_code character(10),
+  opis character(30),
+  datum date,
+  tip character(2),
+  nabvr numeric(18,2),
+  otpvr numeric(18,2),
+  amd numeric(18,2),
+  amp numeric(18,2),
+  revd numeric(18,2),
+  revp numeric(18,2)
+);
+
+DROP INDEX IF EXISTS sii_promj_id1;
+CREATE INDEX sii_promj_id1 ON fmk.sii_promj(id, datum);
+GRANT ALL ON TABLE fmk.sii_promj TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_sii_sii
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_sii_sii_user_code_idx;
+CREATE INDEX on fmk.semaphores_sii_sii(user_code);
+GRANT ALL ON TABLE fmk.semaphores_sii_sii TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_sii_promj
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_sii_promj_user_code_idx;
+CREATE INDEX on fmk.semaphores_sii_promj(user_code);
+GRANT ALL ON TABLE fmk.semaphores_sii_promj TO xtrole;
+
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40109);
+
+--- end 4.1.9 verzija
+

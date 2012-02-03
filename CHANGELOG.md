@@ -1,3 +1,7 @@
+4.1.9, 2012-02-03
+
+ - ubacene sii tabele sii_sii, sii_promj
+
 4.1.8, 2012-01-30
 
  - ubacene tabele jprih, vrprim, ldvirm, kalvir - modul VIRM
