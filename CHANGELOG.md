@@ -1,3 +1,7 @@
+4.2.0, 2012-02-08
+
+ - ubacena tabela kalk_doks2
+
 4.1.9, 2012-02-03
 
  - ubacene sii tabele sii_sii, sii_promj
