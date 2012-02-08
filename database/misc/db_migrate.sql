@@ -3801,3 +3801,46 @@ WHERE (u2.knowhow_package_version('fmk') < 40109);
 
 --- end 4.1.9 verzija
 
+
+--- start 4.2.0 verzija
+
+SELECT u2.execute($$
+
+CREATE TABLE IF NOT EXISTS fmk.kalk_doks2
+(
+  idfirma character(2),
+  idvd character(2),
+  brdok character(8),
+  datval date,
+  opis varchar(20),
+  k1 character(1),
+  k2 character(2),
+  k3 character(3)
+);
+
+DROP INDEX IF EXISTS kalk_doks2_id1;
+CREATE INDEX kalk_doks2_id1 ON fmk.kalk_doks2(idfirma, idvd, brdok);
+GRANT ALL ON TABLE fmk.kalk_doks2 TO xtrole;
+
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_kalk_doks2
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_kalk_doks2_user_code_idx;
+CREATE INDEX on fmk.semaphores_kalk_doks2(user_code);
+GRANT ALL ON TABLE fmk.semaphores_kalk_doks2 TO xtrole;
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40200);
+
+--- end 4.2.0 verzija
+
