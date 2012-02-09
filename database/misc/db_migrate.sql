@@ -3857,3 +3857,16 @@ WHERE (u2.knowhow_package_version('fmk') < 40201);
 
 --- end 4.2.1 verzija
 
+--- start 4.2.2 verzija
+
+SELECT u2.execute($$
+
+ALTER TABLE fmk.fakt_fakt DROP COLUMN fisc_st;
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40202);
+
+--- end 4.2.2 verzija
+
+
+
