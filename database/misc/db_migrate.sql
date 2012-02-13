@@ -3869,4 +3869,19 @@ WHERE (u2.knowhow_package_version('fmk') < 40202);
 --- end 4.2.2 verzija
 
 
+--- start 4.2.3 verzija
+
+SELECT u2.execute($$
+
+ALTER TABLE fmk.ld_parobr ADD COLUMN obr character(1);
+ALTER TABLE fmk.ld_ld ADD COLUMN radsat numeric(10, 0);
+
+UPDATE fmk.ld_ld SET obr = '1' WHERE obr = ' ';
+ALTER TABLE fmk.ld_ld ALTER COLUMN obr SET DEFAULT '1';
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40203);
+
+--- end 4.2.3 verzija
+
 

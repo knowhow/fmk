@@ -1,3 +1,8 @@
+4.2.3, 2012-02-13
+
+ - modifikovana tabela ld_ld
+ - modifikacije na ld tabelama
+
 4.2.0, 2012-02-08
 
  - ubacena tabela kalk_doks2
