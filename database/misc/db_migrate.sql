@@ -3874,11 +3874,9 @@ WHERE (u2.knowhow_package_version('fmk') < 40202);
 SELECT u2.execute($$
 
 ALTER TABLE fmk.ld_ld ADD COLUMN radsat numeric(10, 0);
-UPDATE fmk.ld_ld SET obr = '1' WHERE obr = ' ';
 ALTER TABLE fmk.ld_ld ALTER COLUMN obr SET DEFAULT '1';
 
 ALTER TABLE fmk.ld_parobr ADD COLUMN obr character(1);
-UPDATE fmk.ld_parobr SET obr = '1' WHERE obr = ' ';
 ALTER TABLE fmk.ld_parobr ALTER COLUMN obr SET DEFAULT '1';
 
 $$)
