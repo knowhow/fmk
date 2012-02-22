@@ -3884,19 +3884,4 @@ WHERE (u2.knowhow_package_version('fmk') < 40203);
 
 --- end 4.2.3 verzija
 
---- start 4.2.4 verzija
-
-SELECT u2.execute($$
-
-ALTER TABLE fmk.kalk_kalk DROP CONSTRAINT "kalk_kalk_pkey";
-ALTER TABLE fmk.fakt_fakt DROP CONSTRAINT "fakt_fakt_pkey";
-ALTER TABLE fmk.fin_suban DROP CONSTRAINT "fin_suban_pkey";
-ALTER TABLE fmk.fin_sint DROP CONSTRAINT "fin_sint_pkey";
-ALTER TABLE fmk.fin_anal DROP CONSTRAINT "fin_anal_pkey";
-
-$$)
-WHERE (u2.knowhow_package_version('fmk') < 40204);
-
---- end 4.2.4 verzija
-
 

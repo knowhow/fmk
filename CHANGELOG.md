@@ -1,3 +1,7 @@
+4.2.3, 2012-02-22
+
+ - verzija vraćena na prethodnu, pogledaj [#26845](http://redmine.bring.out.ba/issues/26845)
+
 4.2.4, 2012-02-22
 
  - ukinuo PKEY za tabele sa stavkama [#26845](http://redmine.bring.out.ba/issues/26845)
