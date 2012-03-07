@@ -3884,4 +3884,3 @@ WHERE (u2.knowhow_package_version('fmk') < 40203);
 
 --- end 4.2.3 verzija
 
-
