@@ -4043,21 +4043,21 @@ GRANT ALL ON TABLE fmk.semaphores_pos_promvp TO xtrole;
 
 
 
-CREATE TABLE IF NOT EXISTS fmk.strad
+CREATE TABLE IF NOT EXISTS fmk.pos_strad
 (
   id varchar(2),
   naz varchar(15),
   prioritet character(1)
 );
 
-DROP INDEX IF EXISTS strad_id1;
-DROP INDEX IF EXISTS strad_id2;
-CREATE INDEX strad_id1 ON fmk.strad( id );
-CREATE INDEX strad_id2 ON fmk.strad( naz );
-GRANT ALL ON TABLE fmk.strad TO xtrole;
+DROP INDEX IF EXISTS pos_strad_id1;
+DROP INDEX IF EXISTS pos_strad_id2;
+CREATE INDEX pos_strad_id1 ON fmk.pos_strad( id );
+CREATE INDEX pos_strad_id2 ON fmk.pos_strad( naz );
+GRANT ALL ON TABLE fmk.pos_strad TO xtrole;
 
 
-CREATE TABLE IF NOT EXISTS fmk.semaphores_strad
+CREATE TABLE IF NOT EXISTS fmk.semaphores_pos_strad
 (
       user_code varchar(20) NOT NULL PRIMARY KEY,
       algorithm character(15) NOT NULL DEFAULT 'full',
@@ -4069,12 +4069,12 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_strad
       ids text[]
 );
 
-DROP INDEX IF EXISTS semaphores_strad_user_code_idx;
-CREATE INDEX on fmk.semaphores_strad(user_code);
-GRANT ALL ON TABLE fmk.semaphores_strad TO xtrole;
+DROP INDEX IF EXISTS semaphores_pos_strad_user_code_idx;
+CREATE INDEX on fmk.semaphores_pos_strad(user_code);
+GRANT ALL ON TABLE fmk.semaphores_pos_strad TO xtrole;
 
 
-CREATE TABLE IF NOT EXISTS fmk.osob
+CREATE TABLE IF NOT EXISTS fmk.pos_osob
 (
   id varchar(4),
   korsif varchar(6),
@@ -4082,14 +4082,14 @@ CREATE TABLE IF NOT EXISTS fmk.osob
   status character(2)
 );
 
-DROP INDEX IF EXISTS osob_id1;
-DROP INDEX IF EXISTS osob_id2;
-CREATE INDEX osob_id1 ON fmk.osob( korsif );
-CREATE INDEX osob_id2 ON fmk.osob( id );
-GRANT ALL ON TABLE fmk.osob TO xtrole;
+DROP INDEX IF EXISTS pos_osob_id1;
+DROP INDEX IF EXISTS pos_osob_id2;
+CREATE INDEX pos_osob_id1 ON fmk.pos_osob( korsif );
+CREATE INDEX pos_osob_id2 ON fmk.pos_osob( id );
+GRANT ALL ON TABLE fmk.pos_osob TO xtrole;
 
 
-CREATE TABLE IF NOT EXISTS fmk.semaphores_osob
+CREATE TABLE IF NOT EXISTS fmk.semaphores_pos_osob
 (
       user_code varchar(20) NOT NULL PRIMARY KEY,
       algorithm character(15) NOT NULL DEFAULT 'full',
@@ -4101,24 +4101,24 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_osob
       ids text[]
 );
 
-DROP INDEX IF EXISTS semaphores_osob_user_code_idx;
-CREATE INDEX on fmk.semaphores_osob(user_code);
-GRANT ALL ON TABLE fmk.semaphores_osob TO xtrole;
+DROP INDEX IF EXISTS semaphores_pos_osob_user_code_idx;
+CREATE INDEX on fmk.semaphores_pos_osob(user_code);
+GRANT ALL ON TABLE fmk.semaphores_pos_osob TO xtrole;
 
 
-CREATE TABLE IF NOT EXISTS fmk.kase
+CREATE TABLE IF NOT EXISTS fmk.pos_kase
 (
   id varchar(2),
   naz varchar(15),
   ppath varchar(50)
 );
 
-DROP INDEX IF EXISTS kase_id1;
-CREATE INDEX kase_id1 ON fmk.kase( id );
-GRANT ALL ON TABLE fmk.kase TO xtrole;
+DROP INDEX IF EXISTS pos_kase_id1;
+CREATE INDEX pos_kase_id1 ON fmk.pos_kase( id );
+GRANT ALL ON TABLE fmk.pos_kase TO xtrole;
 
 
-CREATE TABLE IF NOT EXISTS fmk.semaphores_kase
+CREATE TABLE IF NOT EXISTS fmk.semaphores_pos_kase
 (
       user_code varchar(20) NOT NULL PRIMARY KEY,
       algorithm character(15) NOT NULL DEFAULT 'full',
@@ -4130,12 +4130,12 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_kase
       ids text[]
 );
 
-DROP INDEX IF EXISTS semaphores_kase_user_code_idx;
-CREATE INDEX on fmk.semaphores_kase(user_code);
-GRANT ALL ON TABLE fmk.semaphores_kase TO xtrole;
+DROP INDEX IF EXISTS semaphores_pos_kase_user_code_idx;
+CREATE INDEX on fmk.semaphores_pos_kase(user_code);
+GRANT ALL ON TABLE fmk.semaphores_pos_kase TO xtrole;
 
 
-CREATE TABLE IF NOT EXISTS fmk.odj
+CREATE TABLE IF NOT EXISTS fmk.pos_odj
 (
   id varchar(2),
   naz varchar(25),
@@ -4143,12 +4143,12 @@ CREATE TABLE IF NOT EXISTS fmk.odj
   idkonto varchar(7)
 );
 
-DROP INDEX IF EXISTS odj_id1;
-CREATE INDEX odj_id1 ON fmk.odj( id );
-GRANT ALL ON TABLE fmk.odj TO xtrole;
+DROP INDEX IF EXISTS pos_odj_id1;
+CREATE INDEX pos_odj_id1 ON fmk.pos_odj( id );
+GRANT ALL ON TABLE fmk.pos_odj TO xtrole;
 
 
-CREATE TABLE IF NOT EXISTS fmk.semaphores_odj
+CREATE TABLE IF NOT EXISTS fmk.semaphores_pos_odj
 (
       user_code varchar(20) NOT NULL PRIMARY KEY,
       algorithm character(15) NOT NULL DEFAULT 'full',
@@ -4160,11 +4160,9 @@ CREATE TABLE IF NOT EXISTS fmk.semaphores_odj
       ids text[]
 );
 
-DROP INDEX IF EXISTS semaphores_odj_user_code_idx;
-CREATE INDEX on fmk.semaphores_odj(user_code);
-GRANT ALL ON TABLE fmk.semaphores_odj TO xtrole;
-
-
+DROP INDEX IF EXISTS semaphores_pos_odj_user_code_idx;
+CREATE INDEX on fmk.semaphores_pos_odj(user_code);
+GRANT ALL ON TABLE fmk.semaphores_pos_odj TO xtrole;
 
 
 $$)
