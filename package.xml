@@ -2,36 +2,11 @@
          name="fmk"
          developer="vsasa@bring.out.ba"
          descrip="xtuple fmk package"
-         version="4.2.3"
+         version="4.2.4"
          updater="2.2.4">
-  <pkgnotes></pkgnotes>
 
-  <prerequisite type="Query"
-                name="knowhowERP version">
-    <query>
-      SELECT (SUBSTRING(fetchMetricText('ServerVersion') FOR 1) > '3') 
-          OR (SUBSTRING(fetchMetricText('ServerVersion') FOR 1) = '3'
-          AND SUBSTRING(fetchMetricText('ServerVersion') FROM 3 FOR 1) >= '6');
-    </query>
-    <message>
-      Ova verzija fmk_reports radi samo sa xTuple ERP verzijom 3.6.0 ili većom.
-    </message>
-  </prerequisite>
-
-  <prerequisite type="license" name="knowhow ERP EULA">
-    <message>
-      &lt;p>
-          This file is part of the knowhow ERP, a free and open source
-          Enterprise Resource Planning software suite,
-          Copyright (c) 2010-2011 by bring.out d.o.o Sarajevo.
-          It is licensed to you under the Common Public Attribution License
-          version 1.0, the full text of which (including knowhow-specific Exhibits)
-          is available in the file LICENSE_CPAL_bring.out_knowhow.md located at the
-          root directory of this source code archive.
-          By using this software, you agree to be bound by its terms.
-      &lt;/p>
-    </message>
-  </prerequisite>
+  <pkgnotes>
+  </pkgnotes>
 
   <script file="database/misc/schemaComment.sql" />
   <script file="database/misc/db_migrate.sql" name="db_migrate"/>
