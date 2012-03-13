@@ -3884,7 +3884,7 @@ WHERE (u2.knowhow_package_version('fmk') < 40203);
 
 --- end 4.2.3 verzija
 
---- start 4.2.4 verzija
+--- start 4.2.5 verzija
 
 SELECT u2.execute($$
 
@@ -4167,7 +4167,7 @@ GRANT ALL ON TABLE fmk.semaphores_pos_odj TO xtrole;
 
 
 $$)
-WHERE (u2.knowhow_package_version('fmk') < 40204);
+WHERE (u2.knowhow_package_version('fmk') < 40205);
 
---- end 4.2.4 verzija
+--- end 4.2.5 verzija
 

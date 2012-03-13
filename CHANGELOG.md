@@ -1,4 +1,4 @@
-4.2.4, 2012-03-13
+4.2.5, 2012-03-13
 
  - modul POS, tabele [#27081](http://redmine.bring.out.ba/issues/27081)
 
