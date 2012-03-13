@@ -3909,6 +3909,7 @@ CREATE TABLE IF NOT EXISTS fmk.pos_doks
   c_3 varchar(50),
   fisc_rn numeric(10, 0),
   zak_br numeric(6, 0),
+  sto_br numeric(3, 0),
   funk numeric(3, 0),
   PRIMARY KEY(idpos, idvd, brdok)
 );
