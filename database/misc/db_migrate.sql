@@ -4171,3 +4171,15 @@ WHERE (u2.knowhow_package_version('fmk') < 40205);
 
 --- end 4.2.5 verzija
 
+--- start 4.2.6 verzija
+
+SELECT u2.execute($$
+
+ALTER TABLE fmk.pos_pos ADD COLUMN rbr varchar(5);
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40206);
+
+--- end 4.2.6 verzija
+
+
