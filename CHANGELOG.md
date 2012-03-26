@@ -1,3 +1,7 @@
+4.3.0, 2012-03-26
+
+ - log usera
+
 4.2.6, 2012-03-13
 
  - modul POS, novo polje rbr [#27092](http://redmine.bring.out.ba/issues/27092)
