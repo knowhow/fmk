@@ -10,7 +10,7 @@
 --
 
 
---- start 4.3.0 verzija
+--- start 4.3.1 verzija
 
 SELECT u2.execute($$
 
@@ -22,19 +22,19 @@ CREATE TABLE IF NOT EXISTS fmk.log
       msg  text NOT NULL
 );
 
-DROP   INDEX IF EXISTS log_l_time_idx;
-CREATE INDEX on fmk.log_l_time_idx(l_time);
+DROP   INDEX IF EXISTS fmk.log_l_time_idx;
+CREATE INDEX on fmk.log(l_time);
 
-DROP   INDEX IF EXISTS log_user_code_idx;
-CREATE INDEX on fmk.log_user_code_idx(user_code);
+DROP   INDEX IF EXISTS fmk.log_user_code_idx;
+CREATE INDEX ON fmk.log(user_code);
 
 
 GRANT ALL ON TABLE fmk.log TO xtrole;
 
 
 $$)
-WHERE (u2.knowhow_package_version('fmk') < 40300);
+WHERE (u2.knowhow_package_version('fmk') < 40301);
 
---- end 4.3.0 verzija
+--- end 4.3.1 verzija
 
 
