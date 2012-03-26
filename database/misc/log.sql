@@ -38,3 +38,17 @@ WHERE (u2.knowhow_package_version('fmk') < 40301);
 --- end 4.3.1 verzija
 
 
+--- start 4.3.2 verzija
+
+SELECT u2.execute($$
+
+GRANT ALL ON TABLE fmk.log_id_seq TO xtrole;
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40302);
+
+--- end 4.3.2 verzija
+
+
+
+
