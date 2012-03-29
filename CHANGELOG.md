@@ -1,6 +1,10 @@
-4.2.7, 2012-03-13
+4.3.3, 2012-03-29
 
  - tabela adresara [#27320](http://redmine.bring.out.ba/issues/27320)
+
+4.3.2, 2012-03-26
+
+ - log usera
 
 4.2.6, 2012-03-13
 

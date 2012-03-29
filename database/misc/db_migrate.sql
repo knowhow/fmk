@@ -4182,7 +4182,7 @@ WHERE (u2.knowhow_package_version('fmk') < 40206);
 
 --- end 4.2.6 verzija
 
---- start 4.2.7 verzija
+--- start 4.3.3 verzija
 
 SELECT u2.execute($$
 
@@ -4227,8 +4227,8 @@ CREATE INDEX on fmk.semaphores_adres(user_code);
 GRANT ALL ON TABLE fmk.semaphores_adres TO xtrole;
 
 $$)
-WHERE (u2.knowhow_package_version('fmk') < 40207);
+WHERE (u2.knowhow_package_version('fmk') < 40303);
 
---- end 4.2.7 verzija
+--- end 4.3.3 verzija
 
 
