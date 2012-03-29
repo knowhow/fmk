@@ -1,3 +1,7 @@
+4.2.7, 2012-03-13
+
+ - tabela adresara [#27320](http://redmine.bring.out.ba/issues/27320)
+
 4.2.6, 2012-03-13
 
  - modul POS, novo polje rbr [#27092](http://redmine.bring.out.ba/issues/27092)
