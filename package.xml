@@ -1,8 +1,8 @@
 <package id="fmk"
          name="fmk"
          developer="vsasa@bring.out.ba"
-         descrip="xtuple fmk package"
-         version="4.3.3"
+         descrip="knowhow ERP F18 server db"
+         version="4.4.0"
          updater="2.2.4">
 
   <pkgnotes>
@@ -19,6 +19,11 @@
   <script file="database/misc/rnal_semaphore_v2.sql" name="rnal_semaphore_v2"/>
   
   <script file="database/misc/client_id.sql" name="client_id"/>
+  
+  <script file="database/misc/epdv.sql" name="epdv"/>
+
+  <script file="database/misc/sifarnici.sql" name="sifarnici"/>
+
   <script file="database/misc/semaphore_v2.sql" name="semaphore_v2"/>
 
   <script file="database/misc/log.sql" name="log"/>
