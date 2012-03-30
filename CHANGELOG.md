@@ -1,3 +1,8 @@
+4.4.1, 2012-03-30
+
+ - tabela pos_dokspf [#27341](http://redmine.bring.out.ba/issues/27341)
+ - tabele pos-a izdvojene u pos.sql skriptu
+
 4.3.3, 2012-03-29
 
  - tabela adresara [#27320](http://redmine.bring.out.ba/issues/27320)

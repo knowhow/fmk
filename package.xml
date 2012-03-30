@@ -2,7 +2,7 @@
          name="fmk"
          developer="vsasa@bring.out.ba"
          descrip="knowhow ERP F18 server db"
-         version="4.4.0"
+         version="4.4.1"
          updater="2.2.4">
 
   <pkgnotes>
@@ -21,6 +21,8 @@
   <script file="database/misc/client_id.sql" name="client_id"/>
   
   <script file="database/misc/epdv.sql" name="epdv"/>
+  
+  <script file="database/misc/pos.sql" name="pos"/>
 
   <script file="database/misc/sifarnici.sql" name="sifarnici"/>
 
