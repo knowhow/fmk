@@ -58,3 +58,17 @@ $$)
 WHERE (u2.knowhow_package_version('fmk') < 40303);
 
 --- end 4.3.3 verzija
+
+
+--- start 4.4.2 verzija
+
+SELECT u2.execute($$
+
+ALTER TABLE fmk.roba ALTER COLUMN naz TYPE varchar(250);
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40402);
+
+--- end 4.4.2 verzija
+
+

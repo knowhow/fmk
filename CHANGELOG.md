@@ -1,3 +1,7 @@
+4.4.2, 2012-04-12
+
+ - tabela fmk.roba, promjena dužine polja naz [#27544](http://redmine.bring.out.ba/issues/27544)
+
 4.4.1, 2012-03-30
 
  - tabela pos_dokspf [#27341](http://redmine.bring.out.ba/issues/27341)
