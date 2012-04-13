@@ -1,3 +1,7 @@
+4.4.3, 2012-04-13
+
+ - ubačene tabele, fin_parek, fin_fond, fin_funk, fin_ulimit [#27581](http://redmine.bring.out.ba/issues/27581)
+
 4.4.2, 2012-04-12
 
  - tabela fmk.roba, promjena dužine polja naz [#27544](http://redmine.bring.out.ba/issues/27544)

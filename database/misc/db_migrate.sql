@@ -3694,3 +3694,180 @@ WHERE (u2.knowhow_package_version('fmk') < 40203);
 --- end 4.2.3 verzija
 
 
+--- start 4.4.3 verzija
+
+SELECT u2.execute($$
+
+--- fin_fond
+CREATE TABLE IF NOT EXISTS fmk.fin_fond
+(
+  id character(4),
+  naz varchar(35)
+);
+
+DROP INDEX IF EXISTS fin_fond_id1;
+CREATE INDEX fin_fond_id1 ON fmk.fin_fond(id);
+GRANT ALL ON TABLE fmk.fin_fond TO xtrole;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_fond
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_fin_fond_user_code_idx;
+CREATE INDEX on fmk.semaphores_fin_fond(user_code);
+GRANT ALL ON TABLE fmk.semaphores_fin_fond TO xtrole;
+
+--- fin_funk
+CREATE TABLE IF NOT EXISTS fmk.fin_funk
+(
+  id character(5),
+  naz varchar(35)
+);
+
+DROP INDEX IF EXISTS fin_funk_id1;
+CREATE INDEX fin_funk_id1 ON fmk.fin_funk(id);
+GRANT ALL ON TABLE fmk.fin_funk TO xtrole;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_funk
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_fin_funk_user_code_idx;
+CREATE INDEX on fmk.semaphores_fin_funk(user_code);
+GRANT ALL ON TABLE fmk.semaphores_fin_funk TO xtrole;
+
+--- fin_parek
+CREATE TABLE IF NOT EXISTS fmk.fin_parek
+(
+  idpartija character(6),
+  idkonto character(7)
+);
+
+DROP INDEX IF EXISTS fin_parek_id1;
+CREATE INDEX fin_parek_id1 ON fmk.fin_parek(idpartija);
+GRANT ALL ON TABLE fmk.fin_parek TO xtrole;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_parek
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_fin_parek_user_code_idx;
+CREATE INDEX on fmk.semaphores_fin_parek(user_code);
+GRANT ALL ON TABLE fmk.semaphores_fin_parek TO xtrole;
+
+
+--- fin_buiz
+CREATE TABLE IF NOT EXISTS fmk.fin_buiz
+(
+  id character(7),
+  naz character(10)
+);
+
+DROP INDEX IF EXISTS fin_buiz_id1;
+CREATE INDEX fin_buiz_id1 ON fmk.fin_buiz(id);
+GRANT ALL ON TABLE fmk.fin_buiz TO xtrole;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_buiz
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_fin_buiz_user_code_idx;
+CREATE INDEX on fmk.semaphores_fin_buiz(user_code);
+GRANT ALL ON TABLE fmk.semaphores_fin_buiz TO xtrole;
+
+
+--- fin_ulimit
+CREATE TABLE IF NOT EXISTS fmk.fin_ulimit
+(
+  id character(3),
+  idpartner character(6),
+  f_limit numeric(15,2)
+);
+
+DROP INDEX IF EXISTS fin_ulimit_id1;
+CREATE INDEX fin_ulimit_id1 ON fmk.fin_ulimit(id);
+GRANT ALL ON TABLE fmk.fin_ulimit TO xtrole;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_fin_ulimit
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_fin_ulimit_user_code_idx;
+CREATE INDEX on fmk.semaphores_fin_ulimit(user_code);
+GRANT ALL ON TABLE fmk.semaphores_fin_ulimit TO xtrole;
+
+--- objekti
+CREATE TABLE IF NOT EXISTS fmk.objekti
+(
+  id character(2),
+  naz character(10),
+  idobj character(7)
+);
+
+DROP INDEX IF EXISTS objekti_id1;
+CREATE INDEX objekti_id1 ON fmk.objekti(id);
+GRANT ALL ON TABLE fmk.objekti TO xtrole;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_objekti
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_objekti_user_code_idx;
+CREATE INDEX on fmk.semaphores_objekti(user_code);
+GRANT ALL ON TABLE fmk.semaphores_objekti TO xtrole;
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40403);
+
+--- end 4.4.3 verzija
+
+
+
