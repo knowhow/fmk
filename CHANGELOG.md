@@ -1,3 +1,7 @@
+4.4.4, 2012-04-24
+
+ - koncij, polje "sufiks" [#27768](http://redmine.bring.out.ba/issues/27768)
+
 4.4.3, 2012-04-13
 
  - ubačene tabele, fin_parek, fin_fond, fin_funk, fin_ulimit [#27581](http://redmine.bring.out.ba/issues/27581)

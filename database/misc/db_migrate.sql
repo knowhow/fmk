@@ -3871,3 +3871,15 @@ WHERE (u2.knowhow_package_version('fmk') < 40403);
 
 
 
+--- start 4.4.4 verzija
+
+SELECT u2.execute($$
+
+ALTER TABLE fmk.koncij ADD COLUMN sufiks character(3);
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40404);
+
+--- end 4.4.4 verzija
+
+
