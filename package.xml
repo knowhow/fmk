@@ -30,5 +30,49 @@
 
   <script file="database/misc/log.sql" name="log"/>
   <script file="database/misc/end_migrate.sql" name="end_migrate"/>
+
+  <loadpriv name="standard_profile" module="F18">
+     Standardni profil korisnika F18.
+  </loadpriv>
+   
+  <loadpriv name="advanced_profile" module="F18">
+     Napredni profil korisnika F18.
+  </loadpriv>
   
+  <loadpriv name="proizvodnja_profile" module="F18">
+     Profil korisnika F18 namjenjen funkcijama proizvodnje.
+  </loadpriv>
+    
+  <loadpriv name="vindija_profile" module="F18">
+     Vindija profil korisnika F18.
+  </loadpriv>
+   
+  <loadpriv name="cago_profile" module="F18">
+     Cago profil korisnika F18.
+  </loadpriv>
+ 
+  <loadpriv name="ld_unos_podataka" module="F18_LD">
+     Unos podataka u modulu LD.
+  </loadpriv>
+
+  <loadpriv name="ld_brisanje_podataka" module="F18_LD">
+     Brisanje podataka u modulu LD.
+  </loadpriv>
+  
+  <loadpriv name="ld_pregled_podataka" module="F18_LD">
+     Pregled podataka u modulu LD.
+  </loadpriv>
+  
+  <loadpriv name="ld_obrada_kredita" module="F18_LD">
+     Obrada kredita u modulu LD.
+  </loadpriv>
+   
+  <loadpriv name="ld_korekcija_sifrarnika" module="F18_LD">
+     Korekcije sifrarnika u modulu LD.
+  </loadpriv>
+    
+  <loadpriv name="ld_podesenje_parametara" module="F18_LD">
+     Podesenje parametara u modulu LD.
+  </loadpriv>
+ 
 </package>
