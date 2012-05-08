@@ -1,3 +1,7 @@
+4.4.5, 2012-05-08
+
+ - tabela relation [#25915](http://redmine.bring.out.ba/issues/25915)
+
 4.4.4, 2012-04-24
 
  - koncij, polje "sufiks" [#27768](http://redmine.bring.out.ba/issues/27768)
