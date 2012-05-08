@@ -3883,3 +3883,46 @@ WHERE (u2.knowhow_package_version('fmk') < 40404);
 --- end 4.4.4 verzija
 
 
+--- start 4.4.5 verzija
+
+SELECT u2.execute($$
+
+--- relations
+CREATE TABLE IF NOT EXISTS fmk.relation
+(
+  tfrom character(10),
+  tto character(10),
+  tfromid character(10),
+  ttoid character(10)
+);
+
+DROP INDEX IF EXISTS relation_id1;
+CREATE INDEX relation_id1 ON fmk.relation(tfrom, tto, tfromid);
+GRANT ALL ON TABLE fmk.relation TO xtrole;
+
+CREATE TABLE IF NOT EXISTS fmk.semaphores_relation
+(
+      user_code varchar(20) NOT NULL PRIMARY KEY,
+      algorithm character(15) NOT NULL DEFAULT 'full',
+      version bigint NOT NULL, 
+      last_trans_version bigint ,
+      last_trans_time timestamp DEFAULT CURRENT_TIMESTAMP,
+      last_trans_user_code varchar(20),
+      dat date,
+      ids text[]
+);
+
+DROP INDEX IF EXISTS semaphores_relation_user_code_idx;
+CREATE INDEX on fmk.semaphores_relation(user_code);
+GRANT ALL ON TABLE fmk.semaphores_relation TO xtrole;
+
+
+
+
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40405);
+
+--- end 4.4.5 verzija
+
+
