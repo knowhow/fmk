@@ -166,7 +166,7 @@ CREATE TABLE IF NOT EXISTS fmk.kalk_kalk
   pu_i character(1),
   error character(1),
   podbr character(2),
-  CONSTRAINT kalk_kalk_pkey PRIMARY KEY (idfirma , idvd , brdok , rbr )
+  CONSTRAINT kalk_kalk_pkey PRIMARY KEY (idfirma , idvd , brdok , rbr, pkonto, mkonto, tbanktr )
 );
 
 DROP INDEX IF EXISTS kalk_kalk_datdok;
