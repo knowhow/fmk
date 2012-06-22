@@ -3921,4 +3921,27 @@ WHERE (u2.knowhow_package_version('fmk') < 40405);
 
 --- end 4.4.5 verzija
 
+--- start 4.4.6 verzija
+
+SELECT u2.execute($$
+
+ALTER TABLE fmk.roba DROP COLUMN IF EXISTS mpc4;
+ALTER TABLE fmk.roba DROP COLUMN IF EXISTS mpc5;
+ALTER TABLE fmk.roba DROP COLUMN IF EXISTS mpc6;
+ALTER TABLE fmk.roba DROP COLUMN IF EXISTS mpc7;
+ALTER TABLE fmk.roba DROP COLUMN IF EXISTS mpc8;
+ALTER TABLE fmk.roba DROP COLUMN IF EXISTS mpc9;
+
+ALTER TABLE fmk.roba ADD COLUMN mpc4 numeric(18,8);
+ALTER TABLE fmk.roba ADD COLUMN mpc5 numeric(18,8);
+ALTER TABLE fmk.roba ADD COLUMN mpc6 numeric(18,8);
+ALTER TABLE fmk.roba ADD COLUMN mpc7 numeric(18,8);
+ALTER TABLE fmk.roba ADD COLUMN mpc8 numeric(18,8);
+ALTER TABLE fmk.roba ADD COLUMN mpc9 numeric(18,8);
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40406);
+
+--- end 4.4.6 verzija
+
 
