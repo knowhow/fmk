@@ -1,3 +1,7 @@
+4.4.8, 2012-07-23 hernad
+
+ - fmk.doks oper_id num(3,0) -> integer, partner c(30) -> varchar(200) 
+
 4.4.5, 2012-05-08
 
  - tabela relation [#25915](http://redmine.bring.out.ba/issues/25915)
