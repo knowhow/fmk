@@ -3945,14 +3945,15 @@ WHERE (u2.knowhow_package_version('fmk') < 40406);
 --- end 4.4.6 verzija
 
 
---- start 4.4.7 verzija
+--- start 4.4.8 verzija
 
 SELECT u2.execute($$
 
+ALTER TABLE fmk.fakt_doks ALTER COLUMN partner TYPE varchar(200);
 ALTER TABLE fmk.fakt_doks ALTER COLUMN oper_id TYPE integer;
 
 $$)
-WHERE (u2.knowhow_package_version('fmk') < 40407);
+WHERE (u2.knowhow_package_version('fmk') < 40408);
 
 --- end 4.4.7 verzija
 
