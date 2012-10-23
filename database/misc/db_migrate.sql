@@ -4000,6 +4000,19 @@ WHERE (u2.knowhow_package_version('fmk') < 40409);
 
 --- end 4.4.9 verzija
 
+--- start 4.5.1 verzija
+
+SELECT u2.execute($$
+
+ALTER TABLE fmk.rj ADD COLUMN tip character(2);
+ALTER TABLE fmk.rj ADD COLUMN konto character(7);
+ALTER TABLE fmk.fakt_ftxt ALTER COLUMN naz TYPE varchar;
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40501);
+
+--- end 4.5.1 verzija
+
 
 
 

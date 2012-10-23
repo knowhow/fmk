@@ -756,3 +756,17 @@ WHERE (u2.knowhow_package_version('fmk') <  40106);
 
 ---- verzija 4.1.6
 
+
+--- start 4.5.0 verzija
+
+SELECT u2.execute($$
+
+ALTER TABLE fmk.rnal_docs ALTER COLUMN operater_i TYPE integer;
+ALTER TABLE fmk.rnal_doc_log ALTER COLUMN operater_i TYPE integer;
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40500);
+
+--- end 4.5.0 verzija
+
+
