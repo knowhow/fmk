@@ -2,7 +2,7 @@
          name="fmk"
          developer="podrska@bring.out.ba"
          descrip="knowhow ERP F18 server db"
-         version="4.5.2"
+         version="4.5.3"
          updater="2.2.4">
 
   <pkgnotes>
@@ -29,6 +29,9 @@
   <script file="database/misc/semaphore_v2.sql" name="semaphore_v2"/>
 
   <script file="database/misc/log.sql" name="log"/>
+  
+  <script file="database/misc/fakt_atributi.sql" name="fakt_atributi"/>
+
   <script file="database/misc/end_migrate.sql" name="end_migrate"/>
 
 </package>
