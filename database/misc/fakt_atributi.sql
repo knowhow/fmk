@@ -26,14 +26,10 @@ WHERE (u2.knowhow_package_version('fmk') < 40502);
 
 SELECT u2.execute($$
 
-ALTER TABLE fmk.fakt_atributi ALTER COLUMN idfirma  TYPE varchar(2);
-ALTER TABLE fmk.fakt_atributi ALTER COLUMN idtipdok TYPE varchar(2);
-ALTER TABLE fmk.fakt_atributi ALTER COLUMN brdok    TYPE varchar(8);
-ALTER TABLE fmk.fakt_atributi ALTER COLUMN rbr      TYPE varchar(3);
-ALTER TABLE fmk.fakt_atributi ALTER COLUMN value    TYPE text;
-
+    ALTER TABLE fmk.fakt_fakt_atributi
+    ADD CONSTRAINT brdok FOREIGN KEY (idfirma, idtipdok, brdok, rbr) 
+    REFERENCES fmk.fakt_fakt (idfirma, idtipdok, brdok, rbr);
 $$)
 WHERE (u2.knowhow_package_version('fmk') < 40503);
 
---- end 4.5.3 verzija
 
