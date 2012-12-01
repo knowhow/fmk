@@ -22,14 +22,17 @@ WHERE (u2.knowhow_package_version('fmk') < 40502);
 
 --- end 4.5.2 verzija
 
---- start 4.5.3 verzija
+--- start 4.6.0 verzija
 
 SELECT u2.execute($$
 
     ALTER TABLE fmk.fakt_fakt_atributi
     ADD CONSTRAINT brdok FOREIGN KEY (idfirma, idtipdok, brdok, rbr) 
     REFERENCES fmk.fakt_fakt (idfirma, idtipdok, brdok, rbr);
+
+    -- mora se koristiti xml entiteti lt, gt
+    INSERT into fmk.fakt_fakt_atributi(idfirma, idtipdok, brdok, rbr, atribut, value) select idfirma, idtipdok, brdok, rbr, 'opis', opis as value from fmk.fakt_fakt where opis is not null and length(trim(opis))>0;
 $$)
-WHERE (u2.knowhow_package_version('fmk') < 40503);
+WHERE (u2.knowhow_package_version('fmk') < 40600);
 
-
+--- end 4.6.0 verzija
