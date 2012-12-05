@@ -14,6 +14,7 @@
   <script file="database/views/views_rnal_migrate.sql" name="views_rnal_migrate"/>
   
   <script file="database/misc/fetch_metric.sql" name="fetch_metric"/>
+  <script file="database/misc/primary_keys.sql" name="primary_keys"/>
   <script file="database/misc/u2_permissions.sql" name="u2_permissions"/>
   <script file="database/misc/rnal_create_tables.sql" name="rnal_create_tables"/>
   <script file="database/misc/rnal_semaphore_v2.sql" name="rnal_semaphore_v2"/>

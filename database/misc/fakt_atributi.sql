@@ -33,6 +33,7 @@ SELECT u2.execute($$
     -- mora se koristiti xml entiteti lt, gt
     INSERT into fmk.fakt_fakt_atributi(idfirma, idtipdok, brdok, rbr, atribut, value) select idfirma, idtipdok, brdok, rbr, 'opis', opis as value from fmk.fakt_fakt where opis is not null and length(trim(opis))>0;
 $$)
-WHERE (u2.knowhow_package_version('fmk') < 40600);
+WHERE ( fmk.primary_keys_on_off() = '1' and u2.knowhow_package_version('fmk') < 40600 );
+
 
 --- end 4.6.0 verzija
