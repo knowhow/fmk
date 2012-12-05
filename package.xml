@@ -9,7 +9,7 @@
   </pkgnotes>
 
   <prerequisite type="Query" 
-                  name="Provjera prethodne verzije. Mora biti = 4.5.9" >
+                name="Provjera prethodne verzije. Mora biti = 4.5.9" >
         <query>
           SELECT COUNT(*) &lt;= 0
           FROM (SELECT *
@@ -21,6 +21,18 @@
         </query>
         <message>
           Ovaj update baze zahtjeva prethodnu verziju 4.5.9 !
+        </message>
+  </prerequisite>
+
+  <prerequisite type="Query" 
+                name="Provjera primarnog ključa" >
+        <query>
+          SELECT COUNT(*) &gt;= 0
+          FROM (SELECT fmk.primary_keys_on_off()
+               ) AS dummy;
+        </query>
+        <message>
+          Setujemo parametar primarnog ključa na bazi !
         </message>
   </prerequisite>
 
