@@ -8,6 +8,22 @@
   <pkgnotes>
   </pkgnotes>
 
+  <prerequisite type="Query" 
+                  name="Provjera prethodne verzije. Mora biti = 4.5.9" >
+        <query>
+          SELECT COUNT(*) &lt;= 0
+          FROM (SELECT *
+                FROM pkghead
+                WHERE (
+                   ( pkghead_version &lt; '4.5.9' ) AND ( pkghead_name = 'fmk' )
+                      )
+               ) AS dummy;
+        </query>
+        <message>
+          Ovaj update baze zahtjeva prethodnu verziju 4.5.9 !
+        </message>
+  </prerequisite>
+
   <script file="database/misc/schemaComment.sql" />
   <script file="database/misc/db_migrate.sql" name="db_migrate"/>
   <script file="database/views/views_migrate.sql" name="views_migrate"/>
