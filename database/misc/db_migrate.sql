@@ -288,6 +288,7 @@ CREATE TABLE IF NOT EXISTS fmk.fakt_fakt
   n2 numeric(10,3),
   opis character(120),
   dok_veza character(150),
+  idrnal character(10),
   CONSTRAINT fakt_fakt_pkey PRIMARY KEY (idfirma , idtipdok , brdok, rbr )
 );
 

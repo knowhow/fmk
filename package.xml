@@ -1,8 +1,8 @@
 <package id="fmk"
          name="fmk"
-         developer="vsasa@bring.out.ba"
+         developer="podrska@bring.out.ba"
          descrip="knowhow ERP F18 server db"
-         version="4.4.7"
+         version="4.4.58"
          updater="2.2.4">
 
   <pkgnotes>
