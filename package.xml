@@ -2,14 +2,14 @@
          name="fmk"
          developer="podrska@bring.out.ba"
          descrip="knowhow ERP F18 server db"
-         version="4.6.1"
+         version="4.7.0"
          updater="2.2.4">
 
   <pkgnotes>
   </pkgnotes>
 
   <prerequisite type="Query" 
-                name="Provjera prethodne verzije. Mora biti = 4.5.9" >
+        name="Provjera prethodne verzije. Mora biti > 4.5.9" >
         <query>
           SELECT COUNT(*) &lt;= 0
           FROM (SELECT *
@@ -58,8 +58,10 @@
   <script file="database/misc/semaphore_v2.sql" name="semaphore_v2"/>
 
   <script file="database/misc/log.sql" name="log"/>
-  
+
   <script file="database/misc/fakt_atributi.sql" name="fakt_atributi"/>
+  <script file="database/misc/fakt_objekti.sql" name="fakt_objekti"/>
+  <script file="database/misc/brojaci_sufix_godina.sql" name="brojaci_sufix"/>
 
   <script file="database/misc/end_migrate.sql" name="end_migrate"/>
 
