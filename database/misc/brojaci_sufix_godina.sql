@@ -1,4 +1,5 @@
 --- start 4.7.0 verzija
+SELECT u2.execute($$
 
 ALTER TABLE fmk.fakt_fakt  ALTER COLUMN brdok TYPE varchar(12);
 ALTER TABLE fmk.fakt_doks  ALTER COLUMN brdok TYPE varchar(12);
