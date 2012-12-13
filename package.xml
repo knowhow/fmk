@@ -29,6 +29,7 @@
   <script file="database/misc/semaphore_v2.sql" name="semaphore_v2"/>
 
   <script file="database/misc/log.sql" name="log"/>
+  <script file="database/misc/fmk_migration.sql" name="fmk_migration"/>
   <script file="database/misc/end_migrate.sql" name="end_migrate"/>
 
 </package>
