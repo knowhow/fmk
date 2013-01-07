@@ -4012,5 +4012,3 @@ $$)
 WHERE (u2.knowhow_package_version('fmk') < 40501);
 
 --- end 4.5.1 verzija
-
-
