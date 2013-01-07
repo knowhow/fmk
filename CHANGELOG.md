@@ -1,3 +1,7 @@
+4.4.58 2012-12-13
+
+ - fmk_migrate cetvrti put
+
 4.4.5, 2012-05-08
 
  - tabela relation [#25915](http://redmine.bring.out.ba/issues/25915)
