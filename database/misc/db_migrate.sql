@@ -4059,7 +4059,7 @@ WHERE (u2.knowhow_package_version('fmk') < 40601);
 SELECT u2.execute($$
 
 ALTER TABLE fmk.por ADD PRIMARY KEY (id);
-ALTER TABLE fmk.dopr ADD PRIMARY KEY (id);
+ALTER TABLE fmk.dopr ADD PRIMARY KEY ( id, naz, tiprada );
 ALTER TABLE fmk.banke ADD PRIMARY KEY (id);
 ALTER TABLE fmk.os_amort ADD PRIMARY KEY (id);
 ALTER TABLE fmk.pkonto ADD PRIMARY KEY (id);
