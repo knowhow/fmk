@@ -4052,6 +4052,29 @@ WHERE (u2.knowhow_package_version('fmk') < 40601);
 --- end 4.6.1 verzija
 
 
+--- start 4.6.2 verzija
+--- setovanje primarnih kljuceva samo tabelama kod kojih se koristi 
+--- primarni kljucevi...
+
+SELECT u2.execute($$
+
+ALTER TABLE fmk.por ADD PRIMARY KEY (id);
+ALTER TABLE fmk.dopr ADD PRIMARY KEY (id);
+ALTER TABLE fmk.banke ADD PRIMARY KEY (id);
+ALTER TABLE fmk.os_amort ADD PRIMARY KEY (id);
+ALTER TABLE fmk.pkonto ADD PRIMARY KEY (id);
+ALTER TABLE fmk.tdok ADD PRIMARY KEY (id);
+ALTER TABLE fmk.tnal ADD PRIMARY KEY (id);
+
+ALTER TABLE fmk.ld_obracuni ALTER COLUMN obr SET DEFAULT '1';
+
+$$)
+WHERE ( fmk.primary_keys_on_off() = 1 and u2.knowhow_package_version('fmk') < 40602 );
+
+--- end 4.6.2 verzija
+
+
+
 
 
 
