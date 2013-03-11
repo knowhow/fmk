@@ -2,25 +2,25 @@
          name="fmk"
          developer="podrska@bring.out.ba"
          descrip="knowhow ERP F18 server db"
-         version="4.6.2"
+         version="4.6.3"
          updater="2.2.4">
 
   <pkgnotes>
   </pkgnotes>
 
   <prerequisite type="Query" 
-                name="Provjera prethodne verzije. Mora biti = 4.5.9" >
+                name="Provjera prethodne verzije. Mora biti = 4.6.1" >
         <query>
           SELECT COUNT(*) &lt;= 0
           FROM (SELECT *
                 FROM pkghead
                 WHERE (
-                   ( pkghead_version &lt; '4.5.9' ) AND ( pkghead_name = 'fmk' )
+                   ( pkghead_version &lt; '4.6.1' ) AND ( pkghead_name = 'fmk' )
                       )
                ) AS dummy;
         </query>
         <message>
-          Ovaj update baze zahtjeva prethodnu verziju 4.5.9 !
+          Ovaj update baze zahtjeva prethodnu verziju 4.6.1 !
         </message>
   </prerequisite>
 
