@@ -4069,7 +4069,7 @@ ALTER TABLE fmk.tnal ADD PRIMARY KEY (id);
 ALTER TABLE fmk.ld_obracuni ALTER COLUMN obr SET DEFAULT '1';
 
 $$)
-WHERE ( fmk.primary_keys_on_off() = 0 and u2.knowhow_package_version('fmk') < 40602 );
+WHERE ( fmk.primary_keys_on_off() < 1 and u2.knowhow_package_version('fmk') < 40602 );
 
 --- end 4.6.2 verzija
 
