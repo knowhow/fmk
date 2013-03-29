@@ -1,3 +1,7 @@
+4.7.3, 2012-09-30 vsasa
+
+ - git merge master
+
 4.4.8, 2012-07-23 hernad
 
  - fmk.doks oper_id num(3,0) -> integer, partner c(30) -> varchar(200) 
