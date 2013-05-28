@@ -1,3 +1,15 @@
+4.6.6, 2013-05-28 vsasa
+
+  - modifikacije RNAL tabela
+
+4.6.5, 2013-05-27 vsasa
+
+  - kadev tabele dodane
+
+4.6.3, 2013-01-15 vsasa
+  
+  - niz promjena na tabelama
+
 4.4.8, 2012-07-23 hernad
 
  - fmk.doks oper_id num(3,0) -> integer, partner c(30) -> varchar(200) 
