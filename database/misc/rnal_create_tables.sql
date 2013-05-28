@@ -770,17 +770,4 @@ WHERE (u2.knowhow_package_version('fmk') < 40500);
 --- end 4.5.0 verzija
 
 
---- start 4.6.6 verzija
-
-SELECT u2.execute($$
-
-ALTER TABLE fmk.rnal_docs ADD COLUMN doc_type TYPE character(2);
-ALTER TABLE fmk.rnal_doc_ops ADD COLUMN op_status TYPE character(1);
-ALTER TABLE fmk.rnal_doc_ops ADD COLUMN op_notes TYPE varchar;
-
-$$)
-WHERE (u2.knowhow_package_version('fmk') < 40606);
-
---- end 4.6.6 verzija
-
 
