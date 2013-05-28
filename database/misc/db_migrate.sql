@@ -4271,6 +4271,18 @@ WHERE ( u2.knowhow_package_version('fmk') < 40603 );
 
 --- end 4.6.3 verzija
 
+--- start 4.6.6 verzija
+
+SELECT u2.execute($$
+
+ALTER TABLE fmk.fakt_doks ADD COLUMN fisc_time TYPE character(10);
+ALTER TABLE fmk.fakt_doks ADD COLUMN fisc_date TYPE date;
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40606);
+
+--- end 4.6.6 verzija
+
 
 
 
