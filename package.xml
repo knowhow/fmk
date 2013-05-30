@@ -2,7 +2,7 @@
          name="fmk"
          developer="podrska@bring.out.ba"
          descrip="knowhow ERP F18 server db"
-         version="4.7.3"
+         version="4.7.4"
          updater="2.2.4">
 
   <pkgnotes>
@@ -24,18 +24,6 @@
         </message>
   </prerequisite>
 
-  <prerequisite type="Query" 
-                name="Provjera primarnog ključa" >
-        <query>
-          SELECT COUNT(*) &gt;= 0
-          FROM (SELECT fmk.primary_keys_on_off()
-               ) AS dummy;
-        </query>
-        <message>
-          Setujemo parametar primarnog ključa na bazi !
-        </message>
-  </prerequisite>
-
   <script file="database/misc/schemaComment.sql" />
   <script file="database/misc/db_migrate.sql" name="db_migrate"/>
   <script file="database/views/views_migrate.sql" name="views_migrate"/>
@@ -50,6 +38,7 @@
   <script file="database/misc/client_id.sql" name="client_id"/>
   
   <script file="database/misc/epdv.sql" name="epdv"/>
+  <script file="database/misc/kadev.sql" name="kadev"/>
   
   <script file="database/misc/pos.sql" name="pos"/>
 
