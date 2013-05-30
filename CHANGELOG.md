@@ -1,3 +1,7 @@
+4.7.4, 2013-05-30 vsasa
+
+ - git merge master, iz 4.6.6
+
 4.7.3, 2012-09-30 vsasa
 
  - git merge master
