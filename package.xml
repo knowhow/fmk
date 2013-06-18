@@ -9,18 +9,18 @@
   </pkgnotes>
 
   <prerequisite type="Query" 
-        name="Provjera prethodne verzije. Mora biti > 4.5.9" >
+        name="Provjera prethodne verzije. Mora biti > 4.7.3" >
         <query>
           SELECT COUNT(*) &lt;= 0
           FROM (SELECT *
                 FROM pkghead
                 WHERE (
-                   ( pkghead_version &lt; '4.5.9' ) AND ( pkghead_name = 'fmk' )
+                   ( pkghead_version &lt; '4.7.3' ) AND ( pkghead_name = 'fmk' )
                       )
                ) AS dummy;
         </query>
         <message>
-          Ovaj update baze zahtjeva prethodnu verziju 4.5.9 !
+          Ovaj update baze zahtjeva prethodnu verziju 4.7.3 !
         </message>
   </prerequisite>
 
