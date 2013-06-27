@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS fmk.fin_suban
 (
   idfirma varchar(2),
   idvn varchar(2),
-  brnal varchar(10),
+  brnal varchar(8),
   idkonto varchar(10),
   idpartner varchar(6),
   rbr varchar(4),
