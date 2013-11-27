@@ -1,3 +1,7 @@
+4.6.7, 2013-11-27 vsasa
+
+  - dodane tabele kalk_kalk_atributi, fin_fin_atributi
+
 4.6.6, 2013-05-28 vsasa
 
   - modifikacije RNAL tabela

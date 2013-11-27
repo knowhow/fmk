@@ -2,7 +2,7 @@
          name="fmk"
          developer="podrska@bring.out.ba"
          descrip="knowhow ERP F18 server db"
-         version="4.6.6"
+         version="4.6.7"
          updater="2.2.4">
 
   <pkgnotes>
@@ -47,7 +47,7 @@
 
   <script file="database/misc/log.sql" name="log"/>
   
-  <script file="database/misc/fakt_atributi.sql" name="fakt_atributi"/>
+  <script file="database/misc/tbl_atributi.sql" name="tbl_atributi"/>
   
   <script file="database/misc/kadev.sql" name="kadev"/>
 
