@@ -4285,6 +4285,17 @@ WHERE (u2.knowhow_package_version('fmk') < 40606);
 --- end 4.6.6 verzija
 
 
+--- start 4.6.8 verzija
+
+SELECT u2.execute($$
+
+ALTER TABLE fmk.pos_doks ADD COLUMN fisc_st character(10), ADD COLUMN ukupno numeric( 15,5 );
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40608 );
+
+--- end 4.6.8 verzija
+
 
 
 
