@@ -2,7 +2,7 @@
          name="fmk"
          developer="podrska@bring.out.ba"
          descrip="knowhow ERP F18 server db"
-         version="4.6.7"
+         version="4.6.8"
          updater="2.2.4">
 
   <pkgnotes>
@@ -20,7 +20,7 @@
                ) AS dummy;
         </query>
         <message>
-          Ovaj update baze zahtjeva prethodnu verziju 4.5.9 !
+          Ovaj update baze zahtjeva prethodnu verziju 4.6.3 !
         </message>
   </prerequisite>
 
@@ -30,6 +30,7 @@
   <script file="database/views/views_rnal_migrate.sql" name="views_rnal_migrate"/>
   
   <script file="database/misc/fetch_metric.sql" name="fetch_metric"/>
+  <script file="database/misc/fetch_brojac.sql" name="fetch_brojac"/>
   <script file="database/misc/primary_keys.sql" name="primary_keys"/>
   <script file="database/misc/u2_permissions.sql" name="u2_permissions"/>
   <script file="database/misc/rnal_create_tables.sql" name="rnal_create_tables"/>
