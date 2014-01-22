@@ -4289,7 +4289,7 @@ WHERE (u2.knowhow_package_version('fmk') < 40606);
 
 SELECT u2.execute($$
 
-ALTER TABLE fmk.pos_doks ADD COLUMN fisc_st character(10), ADD COLUMN ukupno numeric( 15,5 );
+ALTER TABLE fmk.pos_doks ADD COLUMN fisc_st character(10), ADD COLUMN rabat numeric( 15,5 ), ADD COLUMN ukupno numeric( 15,5 );
 
 $$)
 WHERE (u2.knowhow_package_version('fmk') < 40608 );
