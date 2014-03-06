@@ -4297,5 +4297,18 @@ WHERE (u2.knowhow_package_version('fmk') < 40608 );
 --- end 4.6.8 verzija
 
 
+--- start 4.6.9 verzija
+
+SELECT u2.execute($$
+
+ALTER TABLE fmk.fakt_fakt DROP COLUMN IF EXISTS fisc_rn;
+ALTER TABLE fmk.fakt_fakt DROP COLUMN IF EXISTS opis;
+ALTER TABLE fmk.fakt_fakt DROP COLUMN IF EXISTS dok_veza;
+ALTER TABLE fmk.fakt_doks DROP COLUMN IF EXISTS dok_veza;
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40609 );
+
+--- end 4.6.9 verzija
 
 
