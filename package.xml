@@ -2,7 +2,7 @@
          name="fmk"
          developer="podrska@bring.out.ba"
          descrip="knowhow ERP F18 server db"
-         version="4.6.9"
+         version="4.7.0"
          updater="2.2.4">
 
   <pkgnotes>
