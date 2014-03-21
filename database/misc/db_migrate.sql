@@ -4313,3 +4313,15 @@ WHERE (u2.knowhow_package_version('fmk') < 40609 );
 
 --- end 4.6.9 verzija
 
+--- start 4.8.0 verzija
+
+SELECT u2.execute($$
+
+ALTER TABLE fmk.rnal_doc_it2 ADD COLUMN jmj character(3);
+ALTER TABLE fmk.rnal_doc_it2 ADD COLUMN jmj_art character(3);
+
+$$)
+WHERE (u2.knowhow_package_version('fmk') < 40800 );
+
+--- end 4.8.0 verzija
+
